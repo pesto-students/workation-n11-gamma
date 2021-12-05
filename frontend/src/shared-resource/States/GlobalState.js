@@ -41,3 +41,5 @@ const initialState = {
     }
 
 }
+
+export {initialState}

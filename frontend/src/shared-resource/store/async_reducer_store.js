@@ -1,4 +1,4 @@
-import {initialState} from '';
+import {initialState} from '../States/GlobalState';
 import {customer_user_reducer} from "../reducers/customer_user_reducer"
 
 function createAsyncReducer(initialState, init, success, failure, reset = null) {

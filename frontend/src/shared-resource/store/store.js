@@ -1,14 +1,15 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
-// import { appReducer } from "./async_reducer_store"
+import { appReducer } from "./async_reducer_store";
+import {AllMiddleware} from "./Middlewares"
 // combine all reducers
 const reducers = combineReducers({
-        // app : appReducer 
+        app : appReducer 
 });
 
 const dev_extension = '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__';
 
-const middleware = [ReduxThunk];
+const middleware = [...AllMiddleware, ReduxThunk];
 
 const composeEnhancers = window[dev_extension] || compose;
 
