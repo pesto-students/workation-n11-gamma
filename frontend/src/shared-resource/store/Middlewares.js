@@ -1,7 +1,8 @@
-import {loadCustomer} from '../middleware-methods/load-customer-user'
+import {loadCustomer, authorizeUserLogin} from '../middleware-methods/load-customer-user'
 
 const AllMiddleware = [
-    loadCustomer
+    loadCustomer,
+    authorizeUserLogin
 ]
 
 export {AllMiddleware}

@@ -43,7 +43,7 @@ function Login() {
                                         
                                         <Form.Text className=" sign-up-text text-muted">
                                         Don't have an account ? 
-                                        <Link to="" className="link-text">
+                                        <Link to="/host/signup" className="link-text">
                                             &nbsp;Sign Up
                                         </Link>
                                         </Form.Text>

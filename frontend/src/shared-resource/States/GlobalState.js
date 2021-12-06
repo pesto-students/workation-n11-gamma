@@ -1,3 +1,4 @@
+// import { Action } from "history"
 
 
 
@@ -29,6 +30,8 @@ const initialState = {
     },
 
     user : {
+        status : 'NotStarted',
+        user : {
         isLogin: false,
         userEmail: '',
         userName: '',
@@ -38,6 +41,8 @@ const initialState = {
         isCustomer: false,
         isHost: false,
         userId: ''
+       },
+       error: ''
     }
 
 }
