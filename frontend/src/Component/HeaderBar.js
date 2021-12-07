@@ -2,7 +2,9 @@ import React from 'react';
 // import {userContext} from "../shared-resource/Contexts/User_Context"
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
+import {Container, Row, Col, Navbar, Nav, NavDropdown,Offcanvas} from 'react-bootstrap'
 
+import "./headerbar.css"
 
 function HeaderBar({authorize_user_login}){
     //   const users = useContext(userContext);
@@ -12,11 +14,69 @@ function HeaderBar({authorize_user_login}){
         authorize_user_login();
     }
     return (
-        <div>
-             Hi I am Header!
-             <Link to="/customer/login">Login CUstomer</Link>
-             <input type="button" name="login" onClick={loginUser} value="Login"/>
-        </div>
+        <div className="main-header-top">
+        <Container className="header-top-container" fluid >
+            <Row className="gx-0">
+                <Col className=" text-white logo-div" xs={1}>
+                    Logo
+                </Col>
+                <Col className="navbar-div" xs={10}>
+                <Navbar className="navbar-main-top" expand={false}>
+                    <Container className="justify-content-end"fluid>
+                        <Nav className=" me-auto navs-list d-none d-md-flex flex-md-row pl-md-2">
+                            <Link className="navbar-links" to="/">Home</Link>
+                            <Link className="navbar-links" to="/customer/login">Link</Link>
+                            <Link className="navbar-links" to="/host/login">Link</Link>
+                            <Link className="navbar-links" to="/admin/login">Link</Link>
+                            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                            <NavDropdown.Item to="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item to="#action/3.2">Another action</NavDropdown.Item>
+                            <NavDropdown.Item to="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item to="#action/3.4">Separated link</NavDropdown.Item>
+                            </NavDropdown> */}
+                        </Nav>
+                <Navbar.Toggle className="d-md-none toggle-hamburger" aria-controls="offcanvasNavbar" >
+                    <span className="toggle-arrow">
+                        &rarr;
+                    </span>
+                    </Navbar.Toggle>
+                        <Navbar.Offcanvas
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                        placement="end"
+                        className="right-panel d-md-none"
+                        >
+                        <Offcanvas.Header className="right-panel-top" closeButton>
+                            <Offcanvas.Title id="offcanvasNavbarLabel">Work@tion</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                            <Link className="navbar-links-panel" to="/">Home</Link>
+                            <Link className="navbar-links-panel" to="/customer/login">Link</Link>
+                            <Link className="navbar-links-panel" to="/host/login">Link</Link>
+                            <Link className="navbar-links-panel" to="/admin/login">Link</Link>
+                            {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
+                                <NavDropdown.Item to="#action3">Action</NavDropdown.Item>
+                                <NavDropdown.Item to="#action4">Another action</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item to="#action5">
+                                Something else here
+                                </NavDropdown.Item>
+                            </NavDropdown> */}
+                            </Nav>
+                        </Offcanvas.Body>
+                        </Navbar.Offcanvas>
+                        </Container>
+                        </Navbar>
+
+                </Col>
+                <Col className="right-div" xs={1}>
+                    
+                </Col>
+            </Row>
+        </Container>
+  </div>
     )
 }
 

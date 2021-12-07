@@ -8,6 +8,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  background-image: url("./shared-resource/images/app-background.jpg");
+  background-position: 70% 30%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  padding: 0 !important;
 }
 
 code {

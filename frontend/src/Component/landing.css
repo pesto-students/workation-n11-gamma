@@ -1,0 +1,229 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-landing-page {
+  width: 100%;
+}
+
+.landing-page-top-container {
+  font-size: 2em;
+  font-weight: 700;
+  color: white;
+  height: 10em;
+  display: flex;
+  flex-direction: row;
+  padding-top: 3em;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.landing-first-div {
+  width: 100%;
+  position: relative;
+  height: 55em;
+  background-color: rgba(2, 17, 20, 0.7);
+  border-radius: 4em 4em 0 0;
+}
+
+.landing-page-second-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 2em 7em;
+  height: 4em;
+  color: white;
+}
+
+.search-bar-landing {
+  width: 100%;
+  height: 8em;
+  border-radius: 2em;
+  background-color: rgba(32, 72, 75, 0.6);
+  margin-top: -6em;
+  position: relative;
+}
+
+.search-landing-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(35%) brightness(55%);
+  padding: 1em 3em;
+}
+
+.under-search-landing {
+  padding: 1em 6em 1em 6em;
+  color: white;
+  font-size: 0.72em;
+  line-height: 1.5em;
+}
+
+.explore-top-location {
+  padding: 11em 4em 2em 4em;
+}
+
+.location-main-container-first-row-col {
+  padding-left: 0.4em;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.location-main-container-second-row-col {
+  padding-top: 2em;
+}
+
+.location-cards {
+  height: 22em;
+  position: relative;
+  border: none !important;
+  border-radius: 0.7em;
+}
+
+.location-card-image {
+  position: absolute;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(90%);
+  border-radius: 0.6em;
+}
+
+.location-card-body {
+  position: absolute;
+  /* height: 100%; */
+  bottom: 0;
+
+  /* backdrop-filter: brightness(15%); */
+  z-index: 999;
+  border-radius: 0.6em;
+  overflow: hidden;
+}
+
+.location-card-title {
+  font-size: 1.2em;
+  background-color: rgba(0, 10, 10, 1);
+  padding: 0.1em 0.5em;
+  border-radius: 0.6em;
+  word-wrap: break-word;
+}
+
+.location-main-container-third-row-col {
+  padding-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 0.8em;
+}
+
+.explore-location-link {
+  text-decoration: none;
+  padding: 0.1em 0.5em 0.3em 0.5em;
+  border-radius: 0.9em;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(0, 206, 192)
+  );
+  color: black;
+  filter: brightness(70%);
+  font-weight: 500;
+}
+
+.landing-page-video-div {
+  background-image: url("../shared-resource/images/landing_middle_video_1.jpg");
+  height: 50em;
+  object-fit: contain;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.landing-page-video-container {
+  position: relative;
+  height: 100%;
+  backdrop-filter: brightness(45%);
+  padding: 0 7em;
+}
+
+.landing-video-text-top {
+  /* border: 2px solid white; */
+  padding-top: 9em;
+  padding-left: 5em;
+  padding-bottom: 1em;
+}
+
+.landing-video-text-top-col {
+  color: white;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.landing-video-text-middle {
+  padding-left: 5em;
+  padding-bottom: 3em;
+}
+
+.landing-video-text-middle-col {
+  color: rgb(218, 195, 195);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-weight: 500;
+  word-spacing: 0.1em;
+  letter-spacing: 0.01em;
+  /* filter: contrast(60%); */
+}
+
+.landing-video-text-middle-col .video-link-text {
+  color: white;
+  text-decoration: none;
+  margin-right: 1.2em;
+  border: 3px solid white;
+  padding: 0.2em 0.6em;
+  padding-bottom: 0.4em;
+  border-radius: 50%;
+  color: white;
+  /* filter: contrast(100%); */
+  /* font-weight: 300; */
+}
+
+.landing-video-text-third {
+  padding-left: 5em;
+  padding-bottom: 1em;
+}
+
+.landing-video-text-third-col-A {
+  color: rgb(218, 195, 195);
+  font-size: 0.85em;
+  line-height: 1.3em;
+  padding-top: 0;
+  font-weight: 500;
+  word-break: normal;
+  word-wrap: break-word;
+  padding-right: 10em;
+}
+
+.landing-video-text-third-col-B {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.landing-video-card {
+  width: 13em;
+  margin-right: 3em;
+  height: 7em;
+  position: relative;
+  border: none;
+}
+
+.landing-video {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  filter: brightness(100%);
+}

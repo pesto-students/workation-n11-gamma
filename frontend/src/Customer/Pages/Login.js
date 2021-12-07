@@ -9,7 +9,7 @@ function Login() {
               <Container className="login-image-container" fluid >
                   <Row>
                       <Col className="customer-login-image-background" xs={12}>
-                          <Container className="customer-login-container-panel" xs={12}>
+                          <Container className="customer-login-container-panel" fluid>
                               <div className="panel-main-div">
                                   <div className="main-div-parent">
                                        <div className="login-form">
