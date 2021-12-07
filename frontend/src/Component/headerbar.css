@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-header-top {
+  position: relative;
+}
+
+.header-top-container {
+  height: 70px;
+  padding: 0 !important;
+}
+
+.logo-div {
+  position: relative;
+  height: 70px;
+}
+.navbar-main-top {
+  height: 50px;
+  background: transparent;
+  border-bottom: 2px solid white;
+  color: white;
+  width: 100%;
+  padding-bottom: 0;
+  /* height: calc(70px - 30%); */
+}
+
+.toggle-hamburger {
+  outline: none;
+  border: none;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.toggle-arrow {
+  color: white;
+  font-weight: 500;
+}
+
+.navbar-links,
+.navbar-links-panel {
+  color: rgb(248, 202, 202) !important;
+  padding-bottom: 2px;
+  margin-right: 8rem;
+  text-decoration: none;
+}
+
+/* .navbar-links-panel {
+  text-decoration: line-through;
+} */
+
+/* .navbar-links:active {
+  color: white !important;
+  text-decoration: line-through;
+} */
+
+/* .navbar-links:link {
+  color: white;
+}
+
+.navbar-links:visited {
+  color: blue;
+}
+
+.navbar-links:active {
+  color: red !important;
+} */
+
+.navbar-links:hover,
+.navbar-links-panel:hover {
+  color: white !important;
+  text-decoration: line-through;
+}
+
+.right-panel {
+  background-color: rgba(32, 61, 64, 0.6);
+  filter: blur(40%);
+}
+
+.right-panel-top {
+  background-color: rgba(250, 240, 240, 0.4);
+  height: 2.7em;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-main-top {
+    border: none;
+  }
+}

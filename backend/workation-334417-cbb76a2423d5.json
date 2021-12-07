@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "workation-334417",
+  "private_key_id": "cbb76a2423d586a7e1f1a81156d0779de0827e88",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCZikVsV6QN6xSP\nMgyS+nTwX550uaBnGAnew+mFP8Ql0OhJUpyoVbpZsaUfI2pxoq1IWKnuWVhmOsvq\nPCDOYOL7vYvm/DQ5j10xZL/WQq/KVCvffSkxXG0m2H74EodtbPyNPj7VavIqMYsz\nvjbdUgaEWe+i103D357KZwe3EAubzehJrlgOwy3s1gpztu2Hkqk7hqFcIVZg+BOe\nMvLxdnEnR8yV/O5jTy5ym38j8f7NhfCgjEVz4VvRSBQzQewt8G0GaGRaJFPL/t5k\nZvGsUQ1xozysp2ApQL1n75xM6w14v0nsqu+Xk92XKtpMuMHUzXbgVWZ2q0MutO0e\n9o3px0LnAgMBAAECggEAAdqq6o6HMCboTq+WNZ62efEMEWRTR4g9N5uz/qrZgGGs\nw2FiHhAHgHJByHS3MzFf9kSZcHtkVRCDtQeJ2+IIx20m/zGrPLgtqZB5EpkWkPlf\ntiC2ce+5GmPjyBs1tc1qszkGYMLPkPvgYee/6ndN4qSu/1OqOdlKcrdaZ7tOcJT7\nog00s9/bou/SBLMbuagcMx8rnIuH7qHHO+7vv/3usH/8BtY+/9zleNlcm0v8bs+C\n5KzEoI6jawbWhP3IDoHyT5OHS004/FOIuoByXipEdZMz/K7eR6y5MA8yG1u5FyFz\ngoZ00HnrA29fSrocFgdmNSFqjCglSqinqCv/TUub1QKBgQDHNooLaCCVmeIr1ScS\ndyPUH458dcON7zGYFD8AojfZyklP8+/rRIsHWYiPBhXTzczn/NbAlkMF9gPof+AE\nMMhglhgKlkhxIyuE14FAArgfkFffVU0GnWmPCYabqMgb2fqDGBzYai/h9qfN096+\n+h0ngbJ85EILQbvd5n5/uZM9WwKBgQDFTsajnXjoZM+c8GD9ElGz1gkM79+K3nHr\nJtTgublD+YFMOaJ+naFLKQVFD5N53wnmAED2rHPO0lpYal2WrzYfw4G+CjT17A54\n1tweV6yWgnIH4varktOHAOFtnsSjbrMEJSQL2zhk5bSYOvCrw+vvJrDnZxRxyrl+\nZa61LGeKZQKBgGFttw3lGyqPXCH72WQaiJdR56nPHpjoBuVN4ZI5w/7sA/bqYsg5\neZVaoILygvJXkINVEOKXmqfrrfWjtLfX8+fpAFENNti+TqZlj3zy14H4YkGDwmwd\nyGaATikK3vNgJDjBLjpZlJl6vI7Zs/LK+D8+G0EhkXtX5r2b4PoulGhJAoGBAIfF\n/7cTY+I3jQ5n87XyZzqjbLL0VhXPoQC6Rf8mjrCR/0Ge34zVl+qKnc+6OjfBHaSi\nRBH69e46nmT9PM22YD5XYO6PQ4Z/HC5XXD2dA2zG8wUuT6Qdc2YRWw7+FD6KrLGL\nhVSLVDFKSI4A8SChv7dgHpf+PPlZEXBDNIgDuHRpAoGBAJhM92GXkmcd9PLgA809\nb7FJ4nixjlDvBJzBtrpQqQX9Sl9aVuRptipmKf+fpxHVNzeKuZZM7MtplH3TyBlD\npJ+5d4XDVuym+5ZuZVU7a3TrBLMBjmTYwd3kcRHj9kIGvBGWzUpluT/C15n9TeTU\ngVPrHjdAFoBVWp9tWHxnsw+H\n-----END PRIVATE KEY-----\n",
+  "client_email": "workation@workation-334417.iam.gserviceaccount.com",
+  "client_id": "113375451200766560407",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/workation%40workation-334417.iam.gserviceaccount.com"
+}

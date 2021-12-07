@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+.footer-main-div {
+  height: 15em;
+  /* background-image: linear-gradient(to bottom, rgb(1, 0, 1), rgb(10, 10, 10)); */
+  background-image: url("../shared-resource/images/landing_middle_video.jpg");
+}
+
+.first-main-container {
+  backdrop-filter: brightness(5%);
+  height: 100%;
+  padding: 2em 10em;
+}
+
+.first-main-container > div {
+  color: white;
+}
+.first-stack-first {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.first-stack-common {
+  font-size: 0.9em;
+  color: rgb(219, 208, 219);
+  font-weight: 500;
+}
+
+.stack-common-heading {
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.copyright-text {
+  color: white;
+  padding-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(219, 208, 219);
+  font-size: 0.75em;
+}
