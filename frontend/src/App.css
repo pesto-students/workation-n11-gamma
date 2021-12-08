@@ -1,6 +1,8 @@
 .main-app {
   position: absolute;
-  height: calc(3 * 100vh + 6.8vh);
+  /* height: calc(3 * 100vh + 6.8vh); */
+  /* height: fit-content; */
+  height: max-content;
   width: 100%;
   top: 0;
   left: 0;
