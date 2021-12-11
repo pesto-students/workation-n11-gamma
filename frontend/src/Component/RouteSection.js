@@ -9,6 +9,7 @@ import {SignUp as HostSignUp} from '../Host/Pages/SignUp';
 import {Login as AdminLogin} from '../Admin/Pages/Login';
 import {SignUp as AdminSignUp} from '../Admin/Pages/SignUp';
 import {withRouter} from '../shared-resource/store/withRouter'
+import HotelAvailable from './HotelAvailable';
 import history from '../shared-resource/store/history';
 import FindCity from './Find_city'
 
@@ -34,6 +35,7 @@ function RouteSection(props){
                 <Route path="/admin/login" element={<AdminLogin/>}/>
                 <Route path="/admin/signup" element={<AdminSignUp/>}/>
                 <Route path="/customer/:cityName" element={<FindCity/>}/>
+                <Route path="/customer/:name/:id" element={<HotelAvailable/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </div>

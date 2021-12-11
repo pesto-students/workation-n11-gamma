@@ -207,7 +207,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '1'
         },
         {
             name:"Pandit",
@@ -219,7 +220,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '2'
         },
         {
             name:"Pandit",
@@ -231,7 +233,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '3'
         },
         {
             name:"Pandit",
@@ -243,7 +246,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '4'
         },
         {
             name:"Pandit",
@@ -255,7 +259,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '6'
         },
         {
             name:"Pandit",
@@ -267,7 +272,8 @@ app.post("/getSearchPlace",(req,res,next)=>{
             minNumberOfDays: '7',
             amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
             price: '23000',
-            bedsAvailable: '2'
+            bedsAvailable: '2',
+            id: '5'
         }
     ]
     })
