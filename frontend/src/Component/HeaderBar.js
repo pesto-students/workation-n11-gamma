@@ -1,18 +1,30 @@
-import React from 'react';
-// import {userContext} from "../shared-resource/Contexts/User_Context"
+import React,{useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
-import {Container, Row, Col, Navbar, Nav, NavDropdown,Offcanvas} from 'react-bootstrap'
-
+import {Container, Row, Col, Navbar, Nav, Offcanvas, Button} from 'react-bootstrap'
+import {withRouter} from '../shared-resource/store/withRouter';
+import { userContext } from '../shared-resource/Contexts/User_Context';
 import "./headerbar.css"
 
-function HeaderBar({authorize_user_login}){
-    //   const users = useContext(userContext);
-    //  console.log(users);
-    //Object.is
+function HeaderBar(props){
+      const usersAuth = useContext(userContext);
+    
     function loginUser(e){
-        authorize_user_login();
+        props.authorize_user_login();
     }
+
+    function pleaseLogout(){
+        props.authorize_user_logout()
+    }
+
+    function pleaseLogin(){
+        props.router.navigate("/customer/login")
+    }
+
+    function pleaseSignin(){
+        props.router.navigate("/customer/signin")
+    }
+    
     return (
         <div className="main-header-top">
         <Container className="header-top-container" fluid >
@@ -35,6 +47,14 @@ function HeaderBar({authorize_user_login}){
                             <NavDropdown.Divider />
                             <NavDropdown.Item to="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown> */}
+                            {
+                                usersAuth?.isLogin ?
+                                <Button variant='secondary' onClick={pleaseLogout}>SIGNOUT</Button> :
+                                (<><Button variant='secondary' onClick={pleaseLogin}>LOGIN</Button>
+                                <Button variant='secondary' onClick={pleaseSignin}>SIGNIN</Button></>)
+                            }
+                            
+                            
                         </Nav>
                 <Navbar.Toggle className="d-md-none toggle-hamburger" aria-controls="offcanvasNavbar" >
                     <span className="toggle-arrow">
@@ -83,7 +103,7 @@ function HeaderBar({authorize_user_login}){
 
 const mapStatesToProps = (states,props)=>{
     return {
-      
+        authorized_user_login: states.app.user
     }
   }
   
@@ -91,10 +111,11 @@ const mapStatesToProps = (states,props)=>{
     return {
         authorize_user_login : () => dispatch({
             type: 'LOGIN_AUTHORIZE'
+        }),
+        authorize_user_logout : () => dispatch({
+            type: 'LOGOUT_AUTHORIZE'
         })
     }
   }
-  
-  
-export default connect(mapStatesToProps,mapDispatchToProps)(HeaderBar);
-// export {HeaderBar};
+
+export default withRouter(connect(mapStatesToProps,mapDispatchToProps)(HeaderBar));

@@ -6,9 +6,10 @@ import App from './App';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {store} from './shared-resource/store/store'
+import history from "./shared-resource/store/history"
 
 ReactDOM.render(
-  <Router>
+  <Router history={history}>
     <React.StrictMode>
       <Provider store={store}>
         <App className="main-app"/>

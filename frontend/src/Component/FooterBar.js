@@ -1,11 +1,8 @@
 import React from 'react';
-import {Container, Row, Col, Card, Stack} from "react-bootstrap"
-
+import {Container, Row, Col, Stack} from "react-bootstrap"
 import "./footerbar.css"
 
-
 function FooterBar(){
-
 
     return (
         <div className="footer-main-div">

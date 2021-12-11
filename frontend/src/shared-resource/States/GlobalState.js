@@ -40,7 +40,8 @@ const initialState = {
         isAdmin : false,
         isCustomer: false,
         isHost: false,
-        userId: ''
+        userId: '',
+        token: ''
        },
        error: ''
     }

@@ -1,41 +1,39 @@
 import {initialState} from "../States/GlobalState";
 import {createAsyncReducer} from "../store/async_reducer_store";
 
+
 const init = (state,action) => ({
     ...state,
-    customer : {
         user: {
             status : action.status,
-            data : null,
+            user : null,
             error : ''
         }
-    }
+    
 })
 
 const success = (state,action) => ({
     ...state,
-    customer : {
         user: {
             status : action.status,
-            data : action.payload,
+            user : {...action.payload},
             error : ''
         }
-    }
+    
 })
 
 
 const failure = (state,action) => ({
     ...state,
-    customer : {
         user: {
             status : action.status,
-            data : null,
+            user : state.user.user,
             error : action.error
         }
-    }
+    
 })
 
 
-const customer_user_reducer = createAsyncReducer(initialState, init, success, failure);
+const load_customer_login_reducer = createAsyncReducer(initialState, init, success, failure);
 
-export {customer_user_reducer}
+export {load_customer_login_reducer}

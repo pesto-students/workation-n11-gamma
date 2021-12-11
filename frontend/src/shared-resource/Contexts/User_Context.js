@@ -10,7 +10,8 @@ const defaultUser =
         isAdmin : false,
         isCustomer: false,
         isHost: false,
-        userId: ''
+        userId: '',
+        token:''
     }
 
 const userContext = React.createContext(defaultUser);

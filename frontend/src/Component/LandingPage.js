@@ -6,8 +6,7 @@ import "./landing.css"
 import {Link} from 'react-router-dom'
 import firstvideo from "../shared-resource/images/aleksandra-boguslawska-MS7KD9Ti7FQ-unsplash.jpg"
 function LandingPage(props){
-    //   const users = useContext(userContext);
-    //  console.log(users);
+
     return (
         <div className="main-landing-page">
             <Container className="landing-page-top-container" fluid>
@@ -110,7 +109,6 @@ function LandingPage(props){
             </div>
         </div>
     )
-
 }
 
 export {LandingPage};
