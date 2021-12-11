@@ -1,7 +1,7 @@
 
 const Route = require('express').Router()
 const Users = require("../database/config"); 
-
+const authorize = require("../auth_routes/authorize")
 
 Route.post("/getSearchPlace",(req,res,next)=>{
     res.status(200).send({
@@ -103,5 +103,16 @@ Route.post("/isPlaceAvailable", (req,res,next)=>{
         isAvailable : true
     })
 })
+
+/**
+             * Description: Sample for authorization working on both side,
+             * Author: Rishabh Verma
+             * Warning: Please dont remove the below code
+             */
+// Route.post("/register",authorize, (req,res,next)=>{
+//     res.status(200).json({
+//         isAvailable : true
+//     })
+// })
 
 module.exports = Route

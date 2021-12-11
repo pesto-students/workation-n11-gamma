@@ -144,7 +144,25 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                     })
                     .catch(err=>{
                         notify(err)
-                    }) 
+                    })
+            
+            /**
+             * Description: Sample for authorization working on both side,
+             * Author: Rishabh Verma
+             * Warning: Please dont remove the below code
+             */
+            // await axios.post("/place/register",{...action.payload})
+            //                 .then((res)=>{
+            //                     console.log(res);
+            //                     storeAPI.dispatch({
+            //                         status: 'Success',
+            //                         payload: res.data,
+            //                         type: 'LANDING_SEARCH_BUDGET'
+            //                     })
+            //                 })
+            //                 .catch(err=>{
+            //                     notify(err.response.data.error)
+            //                 }) 
             next(action)
             break;
         
