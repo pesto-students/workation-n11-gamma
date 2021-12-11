@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import {NotFound} from './NotFound';
@@ -9,9 +9,9 @@ import {SignUp as HostSignUp} from '../Host/Pages/SignUp';
 import {Login as AdminLogin} from '../Admin/Pages/Login';
 import {SignUp as AdminSignUp} from '../Admin/Pages/SignUp';
 import {withRouter} from '../shared-resource/store/withRouter'
-import HotelAvailable from './HotelAvailable';
+import HotelAvailable from '../Customer/Pages/HotelAvailable';
 import history from '../shared-resource/store/history';
-import FindCity from './Find_city'
+import FindCity from '../Customer/Pages/Find_city'
 
 import {connect} from "react-redux";
 

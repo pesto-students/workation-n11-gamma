@@ -55,15 +55,12 @@ function App(props) {
     })
   }
 
-  console.log(props);
   return (
     <div className="main-app">
       <userContext.Provider value={userObj}>
 
         {!locationRef ? <HeaderBar/> : null}
-
         <RouteSection/>
-
         {!locationRef ? <FooterBar/> : null}
         
       </userContext.Provider>
@@ -76,7 +73,6 @@ function App(props) {
 const mapStatesToProps = (states,props)=>{
   return {
         authorized_user_login: states.app.user,
-        otherInfo: states
   }
 }
 

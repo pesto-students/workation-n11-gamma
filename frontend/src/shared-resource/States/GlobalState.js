@@ -1,6 +1,3 @@
-// import { Action } from "history"
-
-
 
 const initialState = {
     admin : {

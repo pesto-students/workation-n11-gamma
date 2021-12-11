@@ -1,4 +1,4 @@
-import React,{useEffect, useContext} from 'react';
+import React,{ useContext } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
 import {Container, Row, Col, Navbar, Nav, Offcanvas, Button} from 'react-bootstrap'
@@ -113,9 +113,6 @@ const mapStatesToProps = (states,props)=>{
   
   const mapDispatchToProps = (dispatch)=>{
     return {
-        authorize_user_login : () => dispatch({
-            type: 'LOGIN_AUTHORIZE'
-        }),
         authorize_user_logout : () => dispatch({
             type: 'LOGOUT_AUTHORIZE'
         }),
