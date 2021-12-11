@@ -9,7 +9,7 @@ const notify = async (data) => {
 }
 
 const isAuthenticated = async ()=>{
-    return await axios("/isAuth",{method: "GET"})
+    return await axios("/v1/isAuth",{method: "GET"})
     .then(data=>data)
     .catch(err => {
       console.log(err.response.data,"verifying error");
@@ -144,7 +144,7 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
             status: 'Initiated',
             type: 'LOGOUT_USER_REDUCER',
         })
-     await axios.post("/logout",{...action.payload})
+     await axios.post("/v1/logout",{...action.payload})
             .then((res)=>{
                 console.log(res);
                 const output = {
@@ -182,7 +182,7 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
 
 if (action.type === 'IS_LANDING_SEARCH_AVAILABLE'){
     console.log(action.payload);
- await axios.post("/isPlaceAvailable",{...action.payload})
+     await axios.post("/place/isPlaceAvailable",{...action.payload})
         .then((res)=>{
               if (res.data.isAvailable){
               window.location.href=`/customer/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`
@@ -196,8 +196,7 @@ if (action.type === 'IS_LANDING_SEARCH_AVAILABLE'){
 }
 
 if (action.type === 'LANDING_SEARCH_ON_BUDGET'){
-        //    console.log(action.payload);
-        await axios.post("/getSearchPlace",{...action.payload})
+        await axios.post("/place/getSearchPlace",{...action.payload})
         .then((res)=>{
             console.log(res);
             storeAPI.dispatch({
