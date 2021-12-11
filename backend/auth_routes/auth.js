@@ -2,7 +2,7 @@
 const Route = require('express').Router()
 const bcrypt = require('bcrypt');
 const modifyPassword = require("./modify_password")
-const Users = require("../config"); 
+const Users = require("../database/config"); 
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv')

@@ -11,12 +11,12 @@ const corsOptions = {
     },
 }
 //
+dotenv.config();
 const app = express();
 
-const authRoute = require("./auth_routes/auth")
 const placeRoute = require("./place_route/place")
-// dotenv config
-dotenv.config();
+const authRoute = require("./auth_routes/auth")
+
 
 //applying middlewares
 app.use(bodyParser.urlencoded({extended: false}));

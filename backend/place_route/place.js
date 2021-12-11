@@ -1,12 +1,6 @@
 
 const Route = require('express').Router()
-const bcrypt = require('bcrypt');
-const Users = require("../config"); 
-const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid');
-const dotenv = require('dotenv')
-dotenv.config();
-const secret = process.env.COOKIE_SECRET;
+const Users = require("../database/config"); 
 
 
 Route.post("/getSearchPlace",(req,res,next)=>{
