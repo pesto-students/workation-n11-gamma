@@ -20,6 +20,10 @@ function HeaderBar(props){
     function pleaseSignin(){
         props.router.navigate("/customer/signin")
     }
+
+    function guestLogin(){
+        props.registerGuest();
+    }
     
     return (
         <div className="main-header-top">
@@ -36,6 +40,7 @@ function HeaderBar(props){
                             <Link className="navbar-links" to="/customer/login">Link</Link>
                             <Link className="navbar-links" to="/host/login">Link</Link>
                             <Link className="navbar-links" to="/admin/login">Link</Link>
+                            
                             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item to="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item to="#action/3.2">Another action</NavDropdown.Item>
@@ -47,7 +52,10 @@ function HeaderBar(props){
                                 usersAuth?.isLogin ?
                                 <Button variant='secondary' onClick={pleaseLogout}>SIGNOUT</Button> :
                                 (<><Button variant='secondary' onClick={pleaseLogin}>LOGIN</Button>
-                                <Button variant='secondary' onClick={pleaseSignin}>SIGNIN</Button></>)
+                                <Button variant='secondary' onClick={pleaseSignin}>SIGNIN</Button>
+                                <a className='btn btn-secondary' onClick={guestLogin}>GuestLogin</a></>
+                                
+                                )
                             }
                             
                             
@@ -110,6 +118,13 @@ const mapStatesToProps = (states,props)=>{
         }),
         authorize_user_logout : () => dispatch({
             type: 'LOGOUT_AUTHORIZE'
+        }),
+        registerGuest : () => dispatch({
+            type: 'LOAD_CUSTOMER_LOGIN',
+            payload: {
+                email: 'Rishabhv47@gmail.com',
+                password: '1234'
+            }
         })
     }
   }

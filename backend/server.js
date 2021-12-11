@@ -278,8 +278,6 @@ app.post("/getSearchPlace",(req,res,next)=>{
     // })
 })
 
-
-
 app.post("/isPlaceAvailable", (req,res,next)=>{
     res.status(200).json({
         isAvailable : true

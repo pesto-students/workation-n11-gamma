@@ -1,7 +1,6 @@
 // https://redux.js.org/tutorials/fundamentals/part-6-async-logic
 import axios from "axios"
 import { toast } from 'react-toastify';
-import history from '../store/history'
 
 toast.configure()
 
@@ -61,6 +60,46 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
                             })
                         })
     }
+
+//     if (action.type === 'REGISTER_GUEST'){
+//         storeAPI.dispatch({
+//             status: 'Initiated',
+//             type: 'REGISTER_GUEST_REDUCER',
+//         })
+//      await axios.post("/v1/guestLogin",{...action.payload})
+//             .then((res)=>{
+//                 const output = {
+//                     data : {
+//                             isLogin: true,
+//                             userEmail: res.data.email,
+//                             userName: 'Rishabh Verma',
+//                             userPassword: '',
+//                             isLogout: false,
+//                             isAdmin : false,
+//                             isCustomer: true,
+//                             isHost: false,
+//                             userId: res.data.id,
+//                             token: res.data.token
+//                     }
+//                 }
+//                 storeAPI.dispatch({
+//                     status: 'Success',
+//                     type: 'REGISTER_GUEST_REDUCER',
+//                     payload: output.data
+//                 })
+//             //    history.push("/")
+//             window.location.href="/"
+
+//             })
+//             .catch(err=>{
+//                 notify(err.response.data.error)
+//                 storeAPI.dispatch({
+//                     status: 'Failure',
+//                     type: 'REGISTER_GUEST_REDUCER',
+//                     error: (err && err.response.data.error) || 'Some internal error'
+//                 })
+//             })
+// }
 
     if (action.type === 'UPDATE_USER'){
         storeAPI.dispatch({
