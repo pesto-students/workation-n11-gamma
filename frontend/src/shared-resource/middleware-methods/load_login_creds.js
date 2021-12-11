@@ -48,7 +48,8 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
                                 type: 'LOGIN_USER_REDUCER',
                                 payload: output.data
                             })
-                           history.push("/")
+                        //    history.push("/")
+                        window.location.href="/"
 
                         })
                         .catch(err=>{
@@ -126,7 +127,8 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
                     type: 'LOGOUT_USER_REDUCER',
                     payload: null
                 })
-               history.push("/")
+            //    history.push("/")
+            window.location.href='/'
 
             })
             .catch(err=>{
@@ -137,6 +139,37 @@ export const load_login_creds = (storeAPI)=>(next)=>async(action)=>{
                     error: (err && err.response.data.error) || 'Some internal error'
                 })
             })
+}
+
+if (action.type === 'IS_LANDING_SEARCH_AVAILABLE'){
+    console.log(action.payload);
+ await axios.post("/isPlaceAvailable",{...action.payload})
+        .then((res)=>{
+              if (res.data.isAvailable){
+              window.location.href=`/customer/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`
+              } else {
+                notify('Sorry! Place is not available!')
+              }
+        })
+        .catch(err=>{
+            notify(err)
+        })   
+}
+
+if (action.type === 'LANDING_SEARCH_ON_BUDGET'){
+        //    console.log(action.payload);
+        await axios.post("/getSearchPlace",{...action.payload})
+        .then((res)=>{
+            console.log(res);
+            storeAPI.dispatch({
+                status: 'Success',
+                payload: res.data,
+                type: 'LANDING_SEARCH_BUDGET'
+            })
+        })
+        .catch(err=>{
+            notify(err.response.data.error)
+        })  
 }
 
     next(action)

@@ -6,7 +6,6 @@ import RouteSection from './Component/RouteSection';
 import {connect} from "react-redux";
 import {userContext} from "./shared-resource/Contexts/User_Context"
 import {withRouter} from './shared-resource/store/withRouter.js'
-import Loader  from "./Component/Loader"
 // import { ToastContainer } from 'react-toastify';
 
 function App(props) {
@@ -47,11 +46,6 @@ function App(props) {
       }
       },[props.router.location.pathname, locationRef])
 
-  function resetUser(){
-    changeUserObj({
-      contextValue
-    })
-  }
 
   if (userObj 
     && props?.authorized_user_login?.user?.isLogin !== userObj.isLogin){
@@ -61,7 +55,7 @@ function App(props) {
     })
   }
 
-  
+  console.log(props);
   return (
     <div className="main-app">
       <userContext.Provider value={userObj}>
@@ -81,7 +75,8 @@ function App(props) {
 
 const mapStatesToProps = (states,props)=>{
   return {
-        authorized_user_login: states.app.user
+        authorized_user_login: states.app.user,
+        otherInfo: states
   }
 }
 

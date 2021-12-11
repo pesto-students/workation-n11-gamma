@@ -44,6 +44,11 @@ const initialState = {
         token: ''
        },
        error: ''
+    },
+    customerPlaceSearch:{
+        status: 'NotStarted',
+        data: [],
+        error: ''
     }
 
 }

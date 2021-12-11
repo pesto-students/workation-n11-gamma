@@ -8,10 +8,6 @@ import "./headerbar.css"
 
 function HeaderBar(props){
       const usersAuth = useContext(userContext);
-    
-    function loginUser(e){
-        props.authorize_user_login();
-    }
 
     function pleaseLogout(){
         props.authorize_user_logout()
