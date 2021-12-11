@@ -87,14 +87,14 @@ Route.get("/isAuth",async (req,res,next)=>{
     let auth = false;
     console.log(req_token,"req_token");
     if (!req_token){
-        return res.status(401).json({
+        return res.status(200).send({
             message:'Please login'
         })
     }
 
     try{
         if(!jwt.verify(req_token,process.env.COOKIE_SECRET)){
-            throw 'toekn not valid'
+            throw 'token not valid'
         } else {
             auth = true
         }
@@ -102,13 +102,13 @@ Route.get("/isAuth",async (req,res,next)=>{
     catch(err){
         console.log(jwt.verify(req_token,process.env.COOKIE_SECRET));
         console.log('Invalid token');
-        return res.status(401).json({
+        return res.status(200).send({
             message:'Invalide token'
         })
     }
 
     if(!auth){
-        return res.status(403).json({
+        return res.status(200).send({
             'message': 'token verification failed'
         })
     } else {
@@ -116,7 +116,7 @@ Route.get("/isAuth",async (req,res,next)=>{
         console.log(data);
         const dbUser = await Users.doc(`${data.id}`).get();
         if (!dbUser.exists){
-            return res.status(403).json({
+            return res.status(200).json({
                 'message': 'token verification failed'
             })
         } else {

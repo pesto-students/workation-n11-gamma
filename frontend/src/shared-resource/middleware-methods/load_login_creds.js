@@ -72,27 +72,35 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                 type: 'UPDATE_USER_REDUCER',
             })
             isAuthenticated()
-            .then(data=>{
-              const output = {
-                  data : {
-                          isLogin: true,
-                          userEmail:data.data.email,
-                          userName: 'Rishabh Verma',
-                          userPassword: '',
-                          isLogout: false,
-                          isAdmin : false,
-                          isCustomer: true,
-                          isHost: false,
-                          userId:  data.data.id,
-                          token: data.data.token
-                  }
-              }
-              storeAPI.dispatch({
-                status: 'Success',
-                type: 'UPDATE_USER_REDUCER',
-                payload: output.data
-            })
-              
+                .then(data => {
+                    if (data && data.data && data.data.message) {
+                        storeAPI.dispatch({
+                        status: 'Failure',
+                        type: 'UPDATE_USER_REDUCER',
+                        error: 'Some internal error'
+                        })
+                        
+                    } else {
+                        const output = {
+                                        data : {
+                                                isLogin: true,
+                                                userEmail:data.data.email,
+                                                userName: 'Rishabh Verma',
+                                                userPassword: '',
+                                                isLogout: false,
+                                                isAdmin : false,
+                                                isCustomer: true,
+                                                isHost: false,
+                                                userId:  data.data.id,
+                                                token: data.data.token
+                                        }
+                                    }
+                                    storeAPI.dispatch({
+                                        status: 'Success',
+                                        type: 'UPDATE_USER_REDUCER',
+                                        payload: output.data
+                                    })
+                    }
             })
             .catch((error)=>{
                storeAPI.dispatch({

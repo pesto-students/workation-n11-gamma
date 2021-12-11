@@ -27,7 +27,18 @@ const failure = (state,action) => ({
     ...state,
         user: {
             status : action.status,
-            user : state.user.user,
+            user : {
+            isLogin: false,
+            userEmail: '',
+            userName: '',
+            userPassword: '',
+            isLogout: true,
+            isAdmin : false,
+            isCustomer: false,
+            isHost: false,
+            userId: '',
+            token: ''
+            },
             error : action.error
         }
     
