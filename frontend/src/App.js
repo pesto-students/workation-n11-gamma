@@ -6,6 +6,7 @@ import RouteSection from './Component/RouteSection';
 import {connect} from "react-redux";
 import {userContext} from "./shared-resource/Contexts/User_Context"
 import {withRouter} from './shared-resource/store/withRouter.js'
+import Loader from './Component/Loader';
 // import { ToastContainer } from 'react-toastify';
 
 function App(props) {
@@ -58,8 +59,11 @@ function App(props) {
   return (
     <div className="main-app">
       <userContext.Provider value={userObj}>
-
-        {!locationRef ? <HeaderBar/> : null}
+        {
+          props.authorized_user_login.status === 'Initiated' ?
+            <Loader/> : null
+         }
+        {!locationRef ? <HeaderBar /> : null}
         <RouteSection/>
         {!locationRef ? <FooterBar/> : null}
         

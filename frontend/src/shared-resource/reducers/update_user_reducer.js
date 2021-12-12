@@ -26,7 +26,7 @@ const success = (state,action) => ({
 const failure = (state,action) => ({
     ...state,
         user: {
-            status : action.status,
+            status : 'NotStarted',
             user : {
             isLogin: false,
             userEmail: '',
@@ -39,7 +39,7 @@ const failure = (state,action) => ({
             userId: '',
             token: ''
             },
-            error : action.error
+            error : ''
         }
     
 })
