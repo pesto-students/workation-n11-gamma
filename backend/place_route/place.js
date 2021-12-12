@@ -16,80 +16,26 @@ Route.post("/getSearchPlace",(req,res,next)=>{
         hotelAvailable:[
             {
             name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
             id: '1'
         },
         {
-            name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
+            name:"sandit",
             id: '2'
         },
         {
-            name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
+            name:"Roma",
             id: '3'
         },
         {
-            name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
+            name:"OLX",     
             id: '4'
         },
         {
-            name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
+            name:"prem",
             id: '6'
         },
         {
-            name:"Pandit",
-            location:'dsdfsdfdf',
-            availability: {
-                from:'sdfdf',
-                to:'dfddf'
-            },
-            minNumberOfDays: '7',
-            amenities: ['asds','sdsdas','dsdsd','sdsdsa'],
-            price: '23000',
-            bedsAvailable: '2',
+            name:"rain",
             id: '5'
         }
     ]

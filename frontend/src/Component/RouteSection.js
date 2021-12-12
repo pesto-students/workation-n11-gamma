@@ -35,7 +35,7 @@ function RouteSection(props){
                 <Route path="/admin/login" element={<AdminLogin/>}/>
                 <Route path="/admin/signup" element={<AdminSignUp/>}/>
                 <Route path="/customer/:cityName" element={<FindCity/>}/>
-                <Route path="/customer/:name/:id" element={<HotelAvailable/>}/>
+                <Route path="/customer/hotel/:id" element={<HotelAvailable/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </div>

@@ -62,7 +62,7 @@ function FindCity(props){
                         <Row xs={1} sm={2} md={4} className="g-5">
                                 {props.customer_searched_place.data?.hotelAvailable?.map((_, idx) => (
                                 <Col>
-                                    <Link to={`/customer/${_.name}/${_.id}`} className="text-white">
+                                    <Link to={`/customer/hotel/${_.id}`} className="text-white">
                                         <Card className="location-cards p-0">
                                         <Card.Img variant="top" src={samplePic} className="location-card-image m-0" />
                                         <Card.Body className="location-card-body">
