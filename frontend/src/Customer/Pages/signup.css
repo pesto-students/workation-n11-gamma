@@ -1,0 +1,169 @@
+.main-customer-signup {
+  position: relative;
+}
+
+.signup-image-container {
+  height: 100%;
+}
+
+.customer-signup-image-background {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background-image: url("../../shared-resource/images/customer_background_login.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.customer-signup-container-panel {
+  backdrop-filter: brightness(45%);
+  filter: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.panel-main-signup-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+}
+
+.main-div-signup-parent {
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(149, 156, 158, 0.2);
+  border-radius: 2em;
+  height: 475px;
+}
+
+.login-form {
+  /* position: inherit; */
+  /* background-color: #959c9e; */
+  backdrop-filter: blur(0.5px);
+  border-radius: 2em 0 0 2em;
+  padding: 2em;
+  width: 55%;
+}
+.sign-in-heading {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  line-height: 1.5 rem;
+  margin-bottom: 2rem;
+}
+
+.customer-signup-form > * {
+  width: 100%;
+}
+
+.email-group,
+.password-group,
+.username-group,
+.reenterpassword-group
+ {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.email-label,
+.password-label {
+  position: absolute;
+  color: white;
+  left: 1em;
+  bottom: -0.2rem;
+}
+
+.email-input,
+.password-input,
+.reenterpassword-input,
+.username-input {
+  background-color: rgba(12, 24, 26, 0.8);
+  border-radius: 0.8em;
+  border: none;
+  height: 2rem;
+  width: 100%;
+  outline: none;
+  padding-left: 0.5em;
+  color: white;
+}
+
+.email-input::placeholder,
+.password-input::placeholder,
+.reenterpassword-input::placeholder,
+.username-input::placeholder {
+  color: white;
+}
+
+.email-input:focus,
+.password-input:focus,
+.reenterpassword-input:focus,
+.username-input:focus {
+  color: black;
+  background: linear-gradient(to right, rgb(247, 220, 220), rgb(216, 190, 190));
+  font-weight: 500;
+}
+
+.email-input:focus::placeholder,
+.password-input:focus::placeholder,
+.reenterpassword-input:focus::placeholder,
+.username-input:focus::placeholder {
+  color: black;
+}
+
+.password-group {
+  margin-bottom: 0.4em;
+}
+
+.sign-up-text {
+  display: block;
+  color: rgb(245, 214, 214);
+  font-size: 0.7em;
+  padding-left: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.signup-button {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 0.9em;
+  height: 2rem;
+  border-radius: 1rem;
+  border: none;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.login-button:hover {
+  cursor: pointer;
+}
+
+.sign-up-text {
+  font-size: 0.8em;
+  margin-top: 3rem !important;
+  text-align: center;
+}
+
+.link-text {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-image-customer {
+  position: relative;
+  background-image: url("../../shared-resource/images/customer_login_right_panel.jpg");
+  background-repeat: no-repeat;
+  /* background-position: center center; */
+  background-size: 100% 100%;
+  object-fit: contain;
+  width: 45%;
+  border-radius: 0 2em 2em 0;
+  filter: brightness(75%);
+}

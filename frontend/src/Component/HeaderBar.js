@@ -18,7 +18,7 @@ function HeaderBar(props){
     }
 
     function pleaseSignin(){
-        props.router.navigate("/customer/signin")
+        props.router.navigate("/customer/signup")
     }
 
     function guestLogin(){
@@ -34,30 +34,38 @@ function HeaderBar(props){
                 </Col>
                 <Col className="navbar-div" xs={10}>
                 <Navbar className="navbar-main-top" expand={false}>
-                    <Container className="justify-content-end"fluid>
-                        <Nav className=" me-auto navs-list d-none d-md-flex flex-md-row pl-md-2">
+                    <Container className="justify-content-center" fluid>
+                        <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2 ">
                             <Link className="navbar-links" to="/">Home</Link>
-                            <Link className="navbar-links" to="/customer/login">Link</Link>
-                            <Link className="navbar-links" to="/host/login">Link</Link>
-                            <Link className="navbar-links" to="/admin/login">Link</Link>
-                            
-                            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item to="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item to="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item to="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item to="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown> */}
+                            <Link className="navbar-links" to="/customer/login">Cities</Link>
+                            <Link className="navbar-links" to="/host/login">Hotels</Link>
+                            <Link className="navbar-links" to="/admin/login">About us</Link>
+                                    <Link className="navbar-links" to="/admin/login">Contact us</Link>
+                            <div className=" login-signup-button flex-grow-1">       
                             {
                                 usersAuth?.isLogin ?
-                                <Button variant='secondary' onClick={pleaseLogout}>SIGNOUT</Button> :
-                                (<><Button variant='secondary' onClick={pleaseLogin}>LOGIN</Button>
-                                <Button variant='secondary' onClick={pleaseSignin}>SIGNIN</Button>
-                                <a className='btn btn-secondary' onClick={guestLogin}>GuestLogin</a></>
-                                
-                                )
+                                <>
+                                <Button className='signout-header-button' onClick={pleaseLogout}>SIGNOUT</Button>
+                                <Button className='signin-header-button' onClick={guestLogin}>User PRofile</Button> 
+                                </>
+                                :
+                                null
                             }
-                            
+                            {
+                                usersAuth?.isLogin ?
+                                
+                                null :
+                                (
+                                    <>
+                                        <Button className='login-header-button' onClick={pleaseLogin}>LOGIN</Button>  
+                                        <Button className='signin-header-button' onClick={pleaseSignin}>SIGNUP</Button>
+                                        <Button className='signin-header-button' onClick={guestLogin}>GuestLogin</Button> 
+                                    </>
+                                                              
+                                )
+                                    }
+
+                            </div> 
                             
                         </Nav>
                 <Navbar.Toggle className="d-md-none toggle-hamburger" aria-controls="offcanvasNavbar" >
@@ -76,10 +84,11 @@ function HeaderBar(props){
                         </Offcanvas.Header>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Link className="navbar-links-panel" to="/">Home</Link>
-                            <Link className="navbar-links-panel" to="/customer/login">Link</Link>
-                            <Link className="navbar-links-panel" to="/host/login">Link</Link>
-                            <Link className="navbar-links-panel" to="/admin/login">Link</Link>
+                            <Link className="navbar-links" to="/">Home</Link>
+                            <Link className="navbar-links" to="/customer/login">Cities</Link>
+                            <Link className="navbar-links" to="/host/login">Hotels</Link>
+                            <Link className="navbar-links" to="/admin/login">About us</Link>
+                            <Link className="navbar-links" to="/admin/login">Contact us</Link>
                             {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
                                 <NavDropdown.Item to="#action3">Action</NavDropdown.Item>
                                 <NavDropdown.Item to="#action4">Another action</NavDropdown.Item>

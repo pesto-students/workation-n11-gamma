@@ -86,6 +86,41 @@
   color: white;
 }
 
+.signout-header-button,
+.signin-header-button,
+.login-header-button{
+     background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(0, 206, 192)
+  );
+  color: black;
+  font-weight: 700;
+  font-size: 10px;
+  margin: 0;
+  margin-left: 5px;
+  padding: 3px 6px;
+  box-shadow: 1.5px 1.5px 2px black;
+}
+
+.signout-header-button:focus,
+.signout-header-button:active,
+.signin-header-button:focus,
+.signin-header-button:active,
+.login-header-button:focus,
+.login-header-button:active{
+  color: black;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.signout-header-button:hover,
+.signin-header-button:hover,
+.login-header-button:hover {
+  color: black;
+  box-shadow: 3px 3px 3px black;
+}
+
 @media screen and (max-width: 767px) {
   .navbar-main-top {
     border: none;

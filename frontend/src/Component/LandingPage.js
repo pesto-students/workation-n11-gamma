@@ -102,7 +102,7 @@ function LandingPage(props){
                              <Col sm={12} className="location-main-container-second-row-col">
                                 <Row xs={1} sm={2} md={4} className="g-5">
                                 {Array.from({ length: 4 }).map((_, idx) => (
-                                <Col>
+                                <Col key={idx}>
                                     <Link to="#" className="text-white">
                                         <Card className="location-cards p-0">
                                         <Card.Img variant="top" src={samplePic} className="location-card-image m-0" />
