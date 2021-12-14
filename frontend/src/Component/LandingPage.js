@@ -16,7 +16,7 @@ function LandingPage(props){
      }
 
     return (
-        <div className="main-landing-page">
+        <div className=" app-background main-landing-page">
             <Container className="landing-page-top-container" fluid>
             <Row>
             <Col sm={12}>Live the life better way, Explore with us</Col>

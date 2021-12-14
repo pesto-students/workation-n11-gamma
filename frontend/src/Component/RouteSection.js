@@ -27,7 +27,7 @@ function RouteSection(props){
     return (
         <div>
             <Routes history={history} >
-                <Route path="/" element={<LandingPage/>} exact/>
+                <Route path="/" element={<LandingPage className={ props.className }/>} exact/>
                 <Route path="/customer/login" element={<CustomerLogin/>}/>
                 <Route path="/customer/signup" element={<CustomerSignUp/>}/>
                 <Route path="/host/login" element={<HostLogin/>}/>

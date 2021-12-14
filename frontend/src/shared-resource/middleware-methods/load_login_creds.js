@@ -190,6 +190,37 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                             }) 
             next(action)
             break;
+        case 'SEARCH_ON_FILTER':
+             
+            storeAPI.dispatch({
+                status: 'Initiated',
+                type: 'SEARCH_ON_FILTER_REDUCER',
+            })
+
+            await axios.post("/place/searchonfilter", { ...action.payload })
+                .then((res) => {
+                    console.log(res);
+                    storeAPI.dispatch({
+                                        status: 'Success',
+                                        type: 'SEARCH_ON_FILTER_REDUCER',
+                                        payload: res.data
+                                    })
+                })
+                .catch((err) => {
+                    console.log(err.response.data);
+                    notify(err?.response?.data?.message)
+                    storeAPI.dispatch({
+                        status: 'Failure',
+                        type: 'SEARCH_ON_FILTER_REDUCER',
+                        error: (err?.response?.data?.message || 'Some internal error')
+                    })
+                })
+                
+            
+            
+            
+            next(action);
+            break;
         default:
             next(action)
     }

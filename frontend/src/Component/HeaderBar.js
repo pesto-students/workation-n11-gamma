@@ -26,7 +26,7 @@ function HeaderBar(props){
     }
     
     return (
-        <div className="main-header-top">
+        <div className="app-background main-header-top">
         <Container className="header-top-container" fluid >
             <Row className="gx-0">
                 <Col className=" text-white logo-div" xs={1}>
