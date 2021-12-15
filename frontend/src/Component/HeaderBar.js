@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Container, Row, Col, Navbar, Nav, Offcanvas, Button} from 'react-bootstrap'
 import {withRouter} from '../shared-resource/store/withRouter';
 import { userContext } from '../shared-resource/Contexts/User_Context';
+import logo from "../shared-resource/images/Workation_2x.png"
 import "./headerbar.css"
 
 function HeaderBar(props){
@@ -63,7 +64,7 @@ function HeaderBar(props){
         <Container className="header-top-container" fluid >
             <Row className="gx-0">
                 <Col className=" text-white logo-div" xs={1}>
-                    Logo
+                    <Link to="/"> <img src={logo} alt="work@tion" className="logo-iamge" /></Link>
                 </Col>
                 <Col className="navbar-div" xs={10}>
                 <Navbar className="navbar-main-top" expand={false}>
