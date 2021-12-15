@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react';
+import React,{ useContext, useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
 import {Container, Row, Col, Navbar, Nav, Offcanvas, Button} from 'react-bootstrap'
@@ -8,22 +8,55 @@ import "./headerbar.css"
 
 function HeaderBar(props){
       const usersAuth = useContext(userContext);
+      
+    const [selectloginUser, ChangeSelectLoginUser] = useState(false);
+    const [selectSignupUser, ChangeSelectSignupUser] = useState(false);
 
+    useEffect(() => {
+        
+    }, [selectloginUser,selectSignupUser]);
+    
     function pleaseLogout(){
         props.authorize_user_logout()
     }
 
-    function pleaseLogin(){
+    function forWhichLogin() {
+        ChangeSelectLoginUser(true);
+        ChangeSelectSignupUser(false);
+        // props.router.navigate("/customer/login")
+    }
+
+    function customerLogin() {
+        // ChangeSelectLoginUser(true);
         props.router.navigate("/customer/login")
     }
 
-    function pleaseSignin(){
+    function hostLogin() {
+        // ChangeSelectLoginUser(true);
+        props.router.navigate("/host/login")
+    }
+
+    function customerSignup() {
+        // ChangeSelectLoginUser(true);
         props.router.navigate("/customer/signup")
+    }
+
+    function hostSignup() {
+        // ChangeSelectLoginUser(true);
+        props.router.navigate("/host/signup")
+    }
+
+    function forWhichSignup() {
+        ChangeSelectSignupUser(true)
+        ChangeSelectLoginUser(false);
+
+        // props.router.navigate("/customer/signup")
     }
 
     function guestLogin(){
         props.registerGuest();
     }
+
     
     return (
         <div className="app-background main-header-top">
@@ -57,9 +90,24 @@ function HeaderBar(props){
                                 null :
                                 (
                                     <>
-                                        <Button className='login-header-button' onClick={pleaseLogin}>LOGIN</Button>  
-                                        <Button className='signin-header-button' onClick={pleaseSignin}>SIGNUP</Button>
-                                        <Button className='signin-header-button' onClick={guestLogin}>GuestLogin</Button> 
+                                                        {   !selectloginUser ?
+                                                            <Button className='login-header-button' onClick={forWhichLogin}>LOGIN</Button>
+                                                            : <>
+                                                            <Button className='login-header-button' onClick={customerLogin}>CUSTOMER</Button>
+                                                            <Button className='login-header-button' onClick={hostLogin}>HOST</Button>
+                                                            </>
+                                                        }
+                                                        {
+                                                            !selectSignupUser ?
+                                                                <Button className='signin-header-button' onClick={forWhichSignup}>SIGNUP</Button>
+                                                                :
+                                                                <>
+                                                                <Button className='signin-header-button' onClick={customerSignup}>CUSTOMER</Button>
+                                                                <Button className='signin-header-button' onClick={hostSignup}>HOST</Button> 
+                                                                </>   
+                                                        }
+                                                        <Button className='signin-header-button' onClick={guestLogin}>GuestLogin</Button> 
+                                        
                                     </>
                                                               
                                 )

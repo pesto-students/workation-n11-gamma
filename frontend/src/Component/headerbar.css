@@ -103,6 +103,14 @@
   box-shadow: 1.5px 1.5px 2px black;
 }
 
+.signin-header-button{
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(5, 70, 65)
+  );
+}
+
 .signout-header-button:focus,
 .signout-header-button:active,
 .signin-header-button:focus,
