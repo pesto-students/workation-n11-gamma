@@ -47,6 +47,12 @@ const initialState = {
         data: [],
         error: ''
     }
+    ,
+    bookingPlace:{
+        status:'NotStarted',
+        data:{},
+        error : ''
+    }
 
 }
 
