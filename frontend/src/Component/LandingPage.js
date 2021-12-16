@@ -19,12 +19,10 @@ function LandingPage(props){
     const [budget, changeBudget] = useState(12000);
 
     function searchPlaceOnBudget() {
-         console.log(location, fromDate, toDate, budget);
              props.searchPlace({name:location, date:{from:fromDate,to:toDate},budget:budget})
     }
     
     function changeBudgetOnScroll(e) {
-        // console.log(e.target.value);
         changeBudget(e.target.value)
     }
 
@@ -92,7 +90,7 @@ function LandingPage(props){
                             </Form.Label>
                             <>
                             <Form.Range min='0' max='30000' value={budget} onChange={changeBudgetOnScroll}/>
-                            <Form.Label>{budget}</Form.Label>
+                            <Form.Label className="d-flex flex-row justify-content-end ">upto &nbsp;{budget}</Form.Label>
                             </>
                             </Col>
 

@@ -8,5 +8,11 @@ admin.initializeApp({
 let db = admin.firestore();
 
 let Users = db.collection('Users')
+let cities = db.collection('cities')
+let places = db.collection('places')
+let hotelOwners = db.collection('owners')
 
-module.exports = Users
+const dBase = {
+  Users, cities, places, hotelOwners
+}
+module.exports = dBase;

@@ -66,6 +66,8 @@
   border: 0;
   border-radius: 0;
   border-bottom: 2px solid white;
+  color: white;
+  padding-left: 0;
 }
 
 .area-input:focus, .area-input:active{

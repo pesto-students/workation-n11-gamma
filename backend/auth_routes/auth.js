@@ -2,7 +2,7 @@
 const Route = require('express').Router()
 const bcrypt = require('bcrypt');
 const modifyPassword = require("./modify_password")
-const Users = require("../database/config"); 
+const Users = require("../database/config").Users; 
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv')
@@ -25,7 +25,7 @@ const secret = process.env.COOKIE_SECRET;
 // });
 
 Route.post('/signup',modifyPassword, async (req, res) => {  
-    console.log(req.body);
+    // console.log(req.body);
     const isCorrectPassword = function(password,thisPassword, callback) {
         bcrypt.compare(password, thisPassword, function(err, same) {
           if (err) {
@@ -150,7 +150,7 @@ Route.post('/login', async(req,res)=>{
 Route.get("/isAuth",async (req,res,next)=>{
     const req_token = req.cookies.token;
     let auth = false;
-    console.log(req_token,"req_token");
+    // console.log(req_token,"req_token");
     if (!req_token){
         return res.status(200).send({
             message:'Please login'
@@ -165,8 +165,8 @@ Route.get("/isAuth",async (req,res,next)=>{
         }
     }
     catch(err){
-        console.log(jwt.verify(req_token,process.env.COOKIE_SECRET));
-        console.log('Invalid token');
+        // console.log(jwt.verify(req_token,process.env.COOKIE_SECRET));
+        // console.log('Invalid token');
         return res.status(200).send({
             message:'Invalide token'
         })
@@ -178,7 +178,7 @@ Route.get("/isAuth",async (req,res,next)=>{
         })
     } else {
         const data = jwt.verify(req_token, process.env.COOKIE_SECRET);
-        console.log(data);
+        // console.log(data);
         const dbUser = await Users.doc(`${data.id}`).get();
         if (!dbUser.exists){
             return res.status(200).json({

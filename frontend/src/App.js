@@ -35,7 +35,7 @@ function App(props) {
 
   useEffect(()=>{
     document.title = 'Work@tion-Home'  
-    console.log(userObj);
+    // console.log(userObj);
   },[props.authorized_user_login.user,userObj])
 
   useEffect(()=>{

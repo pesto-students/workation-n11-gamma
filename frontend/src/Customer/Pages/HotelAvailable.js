@@ -10,7 +10,7 @@ function HotelAvailable(props){
       const city = useParams();
       const queryLocation = useLocation();
       const queries = queryString.parse(queryLocation.search)
-      console.log(props);
+      // console.log(props);
       const [searchParams] = useState({...queries, city:city?.cityName})
  
       useEffect(()=>{

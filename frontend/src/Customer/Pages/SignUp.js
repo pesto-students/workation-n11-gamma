@@ -106,7 +106,7 @@ function SignUp(props) {
               notifyPasswordSame()
         }
         else {  
-            console.log('loading props');
+            // console.log('loading props');
             props.load_signup_user({ emailAddress, userPassword, username });  
         }
     }

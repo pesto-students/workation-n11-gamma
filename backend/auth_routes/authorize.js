@@ -20,7 +20,7 @@ const authorize = (req,res,next) => {
                    } else{
                        req.email = decoded.email;
                        req.id = decoded.id
-                       console.log(decoded,"decoded");
+                    //    console.log(decoded,"decoded");
                        next();
                    }
                 })

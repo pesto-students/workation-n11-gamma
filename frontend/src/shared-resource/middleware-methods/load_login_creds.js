@@ -12,7 +12,7 @@ const isAuthenticated = async ()=>{
     return await axios("/v1/isAuth",{method: "GET"})
     .then(data=>data)
     .catch(err => {
-      console.log(err.response.data,"verifying error");
+    //   console.log(err.response.data,"verifying error");
       throw new Error({
         statusCode: 401,
         message: err.response.data.message
@@ -219,7 +219,6 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             //success failure is pending
             await axios.post("/place/getSearchPlace",{...action.payload})
                             .then((res)=>{
-                                console.log(res);
                                 storeAPI.dispatch({
                                     status: 'Success',
                                     payload: res.data,
@@ -240,7 +239,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
             await axios.post("/place/searchonfilter", { ...action.payload })
                 .then((res) => {
-                    console.log(res);
+                    console.log(res,"res");
                     storeAPI.dispatch({
                                         status: 'Success',
                                         type: 'SEARCH_ON_FILTER_REDUCER',
@@ -248,7 +247,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                                     })
                 })
                 .catch((err) => {
-                    console.log(err.response.data);
+                    // console.log(err.response.data);
                     notify(err?.response?.data?.message)
                     storeAPI.dispatch({
                         status: 'Failure',
