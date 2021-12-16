@@ -3,10 +3,18 @@
 }
 
 .place-main-div {
-  background-image: url("../../shared-resource/images/place-background.png");
+  /* background-image: url("../../shared-resource/images/place-background.png"); */
   height: fit-content;
 }
 
+.top-container{
+  backdrop-filter: brightness(50%);
+  padding: 2em 6em;
+}
+
+.second-container{
+  color: white;
+}
 .location-cards {
   height: 22em;
   position: relative;
@@ -39,4 +47,124 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+}
+
+.filter-container{
+  background-color: rgba(0,0,0,0.5);
+  padding: 2.2em 1.5em;
+  border-radius: 1.5em;
+  height: max-content;
+}
+
+.area-text, .roomandbeds-text, .price-text, .facilities-text{
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.area-input{
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid white;
+}
+
+.area-input:focus, .area-input:active{
+  outline: none !important;
+  box-shadow: none;
+  background: transparent;
+  color: white;
+  padding-left: 0;
+}
+
+
+.price-badge-div{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.price-badge{
+    background: white !important;
+    color: black;
+    font-weight: 500;
+    width: 8rem;
+    font-size: 1em;
+filter: brightness(70%);
+}
+
+.price-range{
+  padding: 1em 0 0.2em 0;
+}
+
+.roomandbeds-column, .facilities-column{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0.2em;
+}
+
+.roomandbeds-column-text, .facilities-column-text{
+ font-weight: 300;
+ padding: 0.2em 0.4em 0 0;
+}
+
+.input-group-rooms, .input-group-facilities{
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* padding:0; */
+}
+#button-addon1, #button-addon2{
+  border: 0.0001em solid white;
+  display: block;
+  /* width: 8px !important; */
+  height: 1.5em;
+  margin: 0;
+  background: transparent;
+  text-decoration: none;
+  text-align: center;
+  line-height: 0.4em;
+  border-radius: 50%;
+  color: white;
+}
+
+.rooms-label-text{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 3em;
+  
+}
+
+.minus-sign, .plus-sign{
+    display: block;
+    position: absolute;
+    top: 20%; 
+    left:30%;
+}
+
+.input-group-facilities{
+  width: 6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.facilities-checkbox:focus, .facilities-checkbox:active, .facilities-checkbox:enabled {
+        outline: none !important;
+        box-shadow: none;
+}
+
+.filter-search-button{
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(0, 206, 192)
+  );
+  color: black;
+  filter: brightness(70%);
+   font-weight: 500;
 }

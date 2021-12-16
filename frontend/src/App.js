@@ -5,8 +5,10 @@ import {FooterBar} from './Component/FooterBar'
 import RouteSection from './Component/RouteSection';
 import {connect} from "react-redux";
 import {userContext} from "./shared-resource/Contexts/User_Context"
-import {withRouter} from './shared-resource/store/withRouter.js'
+import { withRouter } from './shared-resource/store/withRouter.js'
+import { useLocation } from 'react-router';
 import Loader from './Component/Loader';
+
 // import { ToastContainer } from 'react-toastify';
 
 function App(props) {
@@ -56,14 +58,16 @@ function App(props) {
     })
   }
 
+  const isUrlChange = useLocation().pathname === '/';
+  const changeClassUrlChange = isUrlChange ? null : 'url-change';
   return (
-    <div className="main-app">
+    <div className={`main-app ${changeClassUrlChange}`}>
       <userContext.Provider value={userObj}>
         {
           props.authorized_user_login.status === 'Initiated' ?
             <Loader/> : null
          }
-        {!locationRef ? <HeaderBar /> : null}
+        {!locationRef ? <HeaderBar/> : null}
         <RouteSection/>
         {!locationRef ? <FooterBar/> : null}
         

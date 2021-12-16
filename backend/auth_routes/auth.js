@@ -10,19 +10,84 @@ dotenv.config();
 const secret = process.env.COOKIE_SECRET;
 
 
-Route.post("/register",modifyPassword, async (req,res)=>{
-    const {email,password} = req.body;
+// Route.post("/register",modifyPassword, async (req,res)=>{
+//     const {email,password} = req.body;
+//     const alreaydExists = await
+//           Users.where('email', '=', email).get();
+//     if(alreaydExists._size){
+//          res.status(401).json({
+//              error: 'Email Already Present'
+//          })
+//     } else {
+//         await Users.doc(uuidv4()).set(req.body);
+//      res.status(200).send('Welcome to the Project!');
+//     }
+// });
+
+Route.post('/signup',modifyPassword, async (req, res) => {  
+    console.log(req.body);
+    const isCorrectPassword = function(password,thisPassword, callback) {
+        bcrypt.compare(password, thisPassword, function(err, same) {
+          if (err) {
+            callback(err);
+          } else {
+            callback(err, same);
+          }
+        });
+      }
+    const {emailAddress:email,password,username} = req.body;
     const alreaydExists = await
-          Users.where('email', '=', email).get();
+           Users.where('email', '=', email).get();
     if(alreaydExists._size){
          res.status(401).json({
-             error: 'Email Already Present'
+             error: 'User already exists !'
          })
     } else {
-        await Users.doc(uuidv4()).set(req.body);
-     res.status(200).send('Welcome to the Project!');   
+        const userId = uuidv4()
+        try {
+            await Users.doc(userId).set({email,password,username});
+           const currentUser = await
+                Users.where('email', '=', email).get();
+            if(!currentUser._size){
+                res.status(401).json({
+                    error: 'User not created !'
+                })
+            } else {
+        const user = currentUser.docs.map((doc)=>{
+            const userDetail = {
+                data: doc.data(),
+                id: doc.id
+            }
+            return userDetail;
+        })[0];
+
+                    
+        const payload = { email, id: user?.id };
+        const token = jwt.sign(payload, secret , {
+            expiresIn: '1h'
+        });
+        const cookie = req.cookies.token
+        if (!cookie){
+            res.cookie('token', token, {httpOnly: true})
+        }
+    
+            res.status(201).send({
+                token,
+                id: user?.id
+            })
+                     
+         
+
+    }     
+        } catch (err) {
+            console.log(err);
+           res.status(500).json({
+             error: 'Server Error !'
+         })   
+        }
     }
-});
+})
+
 
 
 Route.post('/login', async(req,res)=>{  

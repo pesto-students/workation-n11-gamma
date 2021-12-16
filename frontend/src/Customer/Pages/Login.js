@@ -102,7 +102,7 @@ function Login(props) {
                                             Login &nbsp;&nbsp;&nbsp;&nbsp; {<span className="arrow-inline">&rarr;</span>}
                                             </Button>
                                             
-                                            <Form.Text className=" sign-up-text text-muted">
+                                            <Form.Text className=" sign-up-text ">
                                             Don't have an account ? 
                                             <Link to="/customer/signup" className="link-text">
                                                 &nbsp;Sign Up
