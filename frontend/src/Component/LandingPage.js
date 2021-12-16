@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import {userContext} from "../shared-resource/Contexts/User_Context"
 import {Container, Row, Col, Card, Form, InputGroup, Button, FormControl} from "react-bootstrap"
 import samplePic from "../shared-resource/images/alessio-furlan-Vw3a0HgE7AM-unsplash.jpg"
@@ -9,14 +9,45 @@ import {connect} from "react-redux";
 import {withRouter} from '../shared-resource/store/withRouter';
 
 function LandingPage(props){
+     
+    const todayDate = new Date();
+    const nextDay = new Date();
+    nextDay.setDate(nextDay.getDate() + 7);
+    const [location, changeLocation] = useState('')
+    const [fromDate, changeFromDate] = useState(todayDate.getFullYear()+'-'+todayDate.getMonth()+'-'+todayDate.getDate())
+    const [toDate, changeToDate] = useState(nextDay.getFullYear()+'-'+nextDay.getMonth()+'-'+(nextDay.getDate()))
+    const [budget, changeBudget] = useState(12000);
+
+    function searchPlaceOnBudget() {
+         console.log(location, fromDate, toDate, budget);
+             props.searchPlace({name:location, date:{from:fromDate,to:toDate},budget:budget})
+    }
+    
+    function changeBudgetOnScroll(e) {
+        // console.log(e.target.value);
+        changeBudget(e.target.value)
+    }
+
+    function getLocation(e) {
+        changeLocation(e.target.value)
+    }
+
+    function getChangeFromDate(e) {
+        changeFromDate(e.target.value)
+    }
+
+    function getChangeToDate(e) {
+        changeToDate(e.target.value)
+    }
 
 
-     function searchPlaceOnBudget(){
-             props.searchPlace({name:"Rishikesh", date:{from:"dsds",to:"dcd"},budget:"1234"})
-     }
+
+    useEffect(() => {
+        
+    },[budget,location,fromDate,toDate])
 
     return (
-        <div className="main-landing-page">
+        <div className=" app-background main-landing-page">
             <Container className="landing-page-top-container" fluid>
             <Row>
             <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -37,37 +68,37 @@ function LandingPage(props){
                             Location
                             </Form.Label>
                             <InputGroup className="location-input-group">
-                                <InputGroup.Text className="location-input-text">@</InputGroup.Text>
-                                <Form.Control id="inlineFormInputName" className="input-location-box" placeholder="" />
+                                <InputGroup.Text className="location-input-text"><i className="fa fa-map-pin"></i></InputGroup.Text>
+                                                        <Form.Control id="inlineFormInputName" className="input-location-box" value={location} placeholder="" onChange={ getLocation}/>
                             </InputGroup>
                             
                             </Col>
 
-                            <Col sm={3} className="my-1 px-5 d-flex flex-column">
+                            <Col sm={4} className="my-1 px-5 d-flex flex-column">
                             <Form.Label htmlFor="location-date-group-id" className="text-center search-label" >
                             Dates
                             </Form.Label>
                             <div id="location-date-group-id" className='location-date-group'>
-                            <FormControl id="inlineFormInputGroupDates1" className="location-date-pick-class" type="date" />
+                            <FormControl id="inlineFormInputGroupDates1" className="location-date-pick-class" type="date" value={fromDate} onChange={getChangeFromDate} />
                             <span className='d-flex flex-row justify-content-center align-items-center'>&nbsp;to&nbsp;</span>
-                            <FormControl id="inlineFormInputGroupDates2" className="location-date-pick-class" type="date"/>
+                                                        <FormControl id="inlineFormInputGroupDates2" className="location-date-pick-class" type="date" value={toDate} onChange={ getChangeToDate}/>
                             </div>
                            
                             </Col>
 
-                            <Col xs={3} className="my-1 px-5 d-flex flex-column">
+                            <Col xs={2} className="my-1 px-5 d-flex flex-column">
                             <Form.Label htmlFor="inlineFormInputGroupBudget" className="text-center search-label" >
                             Budget
                             </Form.Label>
                             <>
-                            <Form.Range min='0' max='100000'/>
-                            <Form.Label>13000</Form.Label>
+                            <Form.Range min='0' max='30000' value={budget} onChange={changeBudgetOnScroll}/>
+                            <Form.Label>{budget}</Form.Label>
                             </>
                             </Col>
 
                             <Col xs={3} className="my-1 px-5 d-flex flex-column">
                             <Form.Label htmlFor="inlineFormInputButton" className="text-center search-label">
-                            Search
+                            <i className='fa fa-search fa-x'/>
                             </Form.Label>
                             <Button type="button" id="inlineFormInputButton" className="search-button-location" onClick={searchPlaceOnBudget}>Search</Button>
                             </Col>
@@ -102,7 +133,7 @@ function LandingPage(props){
                              <Col sm={12} className="location-main-container-second-row-col">
                                 <Row xs={1} sm={2} md={4} className="g-5">
                                 {Array.from({ length: 4 }).map((_, idx) => (
-                                <Col>
+                                <Col key={idx}>
                                     <Link to="#" className="text-white">
                                         <Card className="location-cards p-0">
                                         <Card.Img variant="top" src={samplePic} className="location-card-image m-0" />

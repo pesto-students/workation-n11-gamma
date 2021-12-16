@@ -65,7 +65,48 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                         })
             next(action)
             break;
-        
+        case 'LOAD_CUSTOMER_SIGNUP': 
+            storeAPI.dispatch({
+                        status: 'Initiated',
+                        type: 'LOAD_CUSTOMER_SIGNUP_REDUCER',
+            })
+            console.log(action.payload);
+            await axios.post("/v1/signup",{...action.payload})
+                        .then((res)=>{
+                            const output = {
+                                data : {
+                                        isLogin: true,
+                                        userEmail: action.payload.emailAddress,
+                                        userName: action.payload.username,
+                                        userPassword: '',
+                                        isLogout: false,
+                                        isAdmin : false,
+                                        isCustomer: true,
+                                        isHost: false,
+                                        userId: res.data.id,
+                                        token: res.data.token
+                                }
+                            }
+
+                            storeAPI.dispatch({
+                                status: 'Success',
+                                type: 'LOAD_CUSTOMER_SIGNUP_REDUCER',
+                                payload: output.data
+                            })
+
+                        window.location.href="/"
+                            //  console.log(res);
+                        })
+                        .catch(err=>{
+                            notify(err.response.data.error)
+                            storeAPI.dispatch({
+                                status: 'Failure',
+                                type: 'LOAD_CUSTOMER_SIGNUP_REDUCER',
+                                error: (err && err.response.data.error) || 'Some internal error'
+                            })
+                        })
+            next(action)
+            break;
         case types.updateUser:
             storeAPI.dispatch({
                 status: 'Initiated',
@@ -145,7 +186,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             await axios.post("/place/isPlaceAvailable",{...action.payload})
                     .then((res)=>{
                         if (res.data.isAvailable){
-                        window.location.href=`/customer/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`
+                        window.location.href=`/customer/city/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`
                         } else {
                             notify('Sorry! Place is not available!')
                         }
@@ -189,6 +230,37 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                                 notify(err.response.data.error)
                             }) 
             next(action)
+            break;
+        case 'SEARCH_ON_FILTER':
+             
+            storeAPI.dispatch({
+                status: 'Initiated',
+                type: 'SEARCH_ON_FILTER_REDUCER',
+            })
+
+            await axios.post("/place/searchonfilter", { ...action.payload })
+                .then((res) => {
+                    console.log(res);
+                    storeAPI.dispatch({
+                                        status: 'Success',
+                                        type: 'SEARCH_ON_FILTER_REDUCER',
+                                        payload: res.data
+                                    })
+                })
+                .catch((err) => {
+                    console.log(err.response.data);
+                    notify(err?.response?.data?.message)
+                    storeAPI.dispatch({
+                        status: 'Failure',
+                        type: 'SEARCH_ON_FILTER_REDUCER',
+                        error: (err?.response?.data?.message || 'Some internal error')
+                    })
+                })
+                
+            
+            
+            
+            next(action);
             break;
         default:
             next(action)

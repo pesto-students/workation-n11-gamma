@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import {NotFound} from './NotFound';
 import CustomerLogin from '../Customer/Pages/Login';
-import {SignUp as CustomerSignUp} from '../Customer/Pages/SignUp';
+import CustomerSignUp from '../Customer/Pages/SignUp';
 import {Login as HostLogin} from '../Host/Pages/Login';
 import {SignUp as HostSignUp} from '../Host/Pages/SignUp';
 import {Login as AdminLogin} from '../Admin/Pages/Login';
@@ -27,15 +27,15 @@ function RouteSection(props){
     return (
         <div>
             <Routes history={history} >
-                <Route path="/" element={<LandingPage/>} exact/>
+                <Route path="/" element={<LandingPage />} exact/>
                 <Route path="/customer/login" element={<CustomerLogin/>}/>
                 <Route path="/customer/signup" element={<CustomerSignUp/>}/>
                 <Route path="/host/login" element={<HostLogin/>}/>
                 <Route path="/host/signup" element={<HostSignUp/>}/>
                 <Route path="/admin/login" element={<AdminLogin/>}/>
                 <Route path="/admin/signup" element={<AdminSignUp/>}/>
-                <Route path="/customer/:cityName" element={<FindCity/>}/>
-                <Route path="/customer/hotel/:id" element={<HotelAvailable/>}/>
+                <Route path="/customer/city/:cityName" element={<FindCity/>} exact/>
+                <Route path="/customer/hotel/:id" element={<HotelAvailable/>} exact/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </div>
