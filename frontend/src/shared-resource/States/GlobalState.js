@@ -46,6 +46,11 @@ const initialState = {
         status: 'NotStarted',
         data: [],
         error: ''
+    },
+    landingPageData:{
+        status: 'NotStarted',
+        data: [],
+        error: ''
     }
 
 }

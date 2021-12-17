@@ -14,8 +14,8 @@ function LandingPage(props){
     const nextDay = new Date();
     nextDay.setDate(nextDay.getDate() + 7);
     const [location, changeLocation] = useState('')
-    const [fromDate, changeFromDate] = useState(todayDate.getFullYear()+'-'+todayDate.getMonth()+'-'+todayDate.getDate())
-    const [toDate, changeToDate] = useState(nextDay.getFullYear()+'-'+nextDay.getMonth()+'-'+(nextDay.getDate()))
+    const [fromDate, changeFromDate] = useState(todayDate.getFullYear()+'-'+parseInt(todayDate.getMonth()+1)+'-'+todayDate.getDate())
+    const [toDate, changeToDate] = useState(nextDay.getFullYear()+'-'+ parseInt(nextDay.getMonth()+1)+'-'+(nextDay.getDate()))
     const [budget, changeBudget] = useState(12000);
 
     function searchPlaceOnBudget() {
@@ -42,8 +42,13 @@ function LandingPage(props){
 
     useEffect(() => {
         
-    },[budget,location,fromDate,toDate])
-
+    }, [budget, location, fromDate, toDate])
+    
+    useEffect(() => {
+        props.loadLandingPageData();
+    },[])
+ 
+    console.log(props);
     return (
         <div className=" app-background main-landing-page">
             <Container className="landing-page-top-container" fluid>
@@ -130,18 +135,20 @@ function LandingPage(props){
                          <Row className="gx-0">
                              <Col sm={12} className="location-main-container-second-row-col">
                                 <Row xs={1} sm={2} md={4} className="g-5">
-                                {Array.from({ length: 4 }).map((_, idx) => (
+                                            {props.landing_page_data?.data && props.landing_page_data.data?.length 
+                                ? props.landing_page_data.data.map((_, idx) => (
                                 <Col key={idx}>
-                                    <Link to="#" className="text-white">
+                                    <Link to={`/customer/city/${_.name}`} className="text-white">
                                         <Card className="location-cards p-0">
                                         <Card.Img variant="top" src={samplePic} className="location-card-image m-0" />
                                         <Card.Body className="location-card-body">
-                                        <Card.Title className="location-card-title"> Tiruvanthpuram</Card.Title>
+                                        <Card.Title className="location-card-title"> {_.name}</Card.Title>
                                         </Card.Body>
                                     </Card>
                                     </Link>
                                 </Col>
-                                ))}
+                                )): <> Loading...spinner</>
+                            }
                                 </Row>
                              </Col>
                          </Row>
@@ -197,7 +204,8 @@ function LandingPage(props){
 // export {LandingPage};
 const mapStatesToProps = (states,props)=>{
     return {
-        authorized_user_login: states.app.user
+        authorized_user_login: states.app.user,
+        landing_page_data : states.app.landingPageData
     }
   }
   
@@ -206,7 +214,11 @@ const mapStatesToProps = (states,props)=>{
         searchPlace : (data) => dispatch({
             type: 'IS_LANDING_SEARCH_AVAILABLE',
             payload: data
-        })
+        }),
+    loadLandingPageData: () => dispatch({
+      type: 'LOAD_LANDING_PAGE_DATA'
+    })
+
     }
   }
 

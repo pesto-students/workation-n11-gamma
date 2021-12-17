@@ -9,11 +9,10 @@ import samplePic from "../../shared-resource/images/alessio-furlan-Vw3a0HgE7AM-u
 
 
 function FindCity(props){
-      const city = useParams();
-      const queryLocation = useLocation();
-      const queries = queryString.parse(queryLocation.search)
-    //   console.log(props);
-      const [searchParams] = useState({...queries, city:city?.cityName})
+    const city = useParams();
+    const queryLocation = useLocation();
+    const queries = queryString.parse(queryLocation.search)
+    const [searchParams] = useState({...queries, city:city?.cityName})
     const [subArea, changeSubArea] = useState('');
     const [budgetPrice, changeBudgetPrice] = useState(13000);
     const [requiredRooms, changeRequiredRooms] = useState(1);
@@ -21,13 +20,14 @@ function FindCity(props){
     const [requiredBaths, changeRequiredBaths] = useState(1);
     const [facilityRequired, changeFacilityRequired] = useState([]);
 
-      useEffect(()=>{
-            props.getPlaceDetails(searchParams)
-      }, [subArea,budgetPrice,requiredBeds, requiredRooms, requiredBaths])
+    useEffect(()=>{
+        props.getPlaceDetails(searchParams)
+    }, [subArea,budgetPrice,requiredBeds, requiredRooms, requiredBaths])
       
     useEffect(() => {
           
-      },[props.customer_searched_place])
+    }, [props.customer_searched_place])
+    
     function changeTheSubArea(e) {
           changeSubArea(e.target.value)
     }
@@ -105,10 +105,11 @@ function FindCity(props){
             rooms: requiredRooms,
             beds: requiredBeds,
             baths: requiredBaths,
-            facilties: facilityRequired
+            facilties: facilityRequired,
+            city:city?.cityName
              })
       }
-    console.log(props.customer_searched_place.data);
+
     const info = (props?.customer_searched_place?.data && props?.customer_searched_place?.data[0]);
     return (
         <div className='place-main-div'>

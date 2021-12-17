@@ -261,6 +261,37 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             
             next(action);
             break;
+        case 'LOAD_LANDING_PAGE_DATA':
+             
+            storeAPI.dispatch({
+                status: 'Initiated',
+                type: 'LOAD_LANDING_PAGE_DATA_REDUCER',
+            })
+
+            await axios.post("/place/loadLandingPageData", { ...action.payload })
+                .then((res) => {
+                    console.log(res,"res");
+                    storeAPI.dispatch({
+                                        status: 'Success',
+                                        type: 'LOAD_LANDING_PAGE_DATA_REDUCER',
+                                        payload: res.data
+                                    })
+                })
+                .catch((err) => {
+                    console.log(err.response.data);
+                    notify(err?.response?.data?.message)
+                    storeAPI.dispatch({
+                        status: 'Failure',
+                        type: 'LOAD_LANDING_PAGE_DATA_REDUCER',
+                        error: (err?.response?.data?.message || 'Some internal error')
+                    })
+                })
+                
+            
+            
+            
+            next(action);
+            break;
         default:
             next(action)
     }

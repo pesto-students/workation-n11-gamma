@@ -31,6 +31,7 @@ function App(props) {
 
   useEffect(()=>{
     props.updateUser();
+    
   },[])
 
   useEffect(()=>{
@@ -89,7 +90,7 @@ const mapDispatchToProps = (dispatch)=>{
     updateUser : ()=>
     dispatch({
           type: 'UPDATE_USER'
-      })
+    })
   }
 }
 
