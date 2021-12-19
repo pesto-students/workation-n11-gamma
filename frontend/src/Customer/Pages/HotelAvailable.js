@@ -4,7 +4,7 @@ import {withRouter} from '../../shared-resource/store/withRouter';
 import {useParams, useLocation} from 'react-router-dom'
 import queryString from 'query-string'
 import "./find_city.css"
-
+import "./hotelBooking.css"
 
 function HotelAvailable(props){
       const city = useParams();
@@ -20,7 +20,9 @@ function HotelAvailable(props){
     return (
         
         <>
-        
+        <div className="full-container">
+
+        </div>
         </>
     )
 }

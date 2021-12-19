@@ -10,3 +10,4 @@ export const isLandingSearchAvailable = 'IS_LANDING_SEARCH_AVAILABLE'
 
 export const landingSearchOnBudget = 'LANDING_SEARCH_ON_BUDGET'
 
+export const bookingPlace='BOOK_PLACE'

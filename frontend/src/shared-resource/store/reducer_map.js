@@ -8,7 +8,7 @@ import {customer_place_search_reducer} from "../reducers/customer_place_search_r
 
 import { search_on_filter_reducer } from "../reducers/search_on_filter_reducer"
 import {signup_customer_reducer} from '../reducers/signup_customer_reducer'
-
+import {booking_place_reducer} from "../reducers/booking_place_reducer"
 
 const reducerMap = Object.freeze({
     CUSTOMER_USER_REDUCER : customer_user_reducer,
@@ -19,8 +19,8 @@ const reducerMap = Object.freeze({
     LANDING_SEARCH_BUDGET: customer_place_search_reducer,
 
     SEARCH_ON_FILTER_REDUCER: search_on_filter_reducer,
-    LOAD_CUSTOMER_SIGNUP_REDUCER: signup_customer_reducer
-
+    LOAD_CUSTOMER_SIGNUP_REDUCER: signup_customer_reducer,
+    BOOK_PLACE_REDUCER: booking_place_reducer
 });
 
 

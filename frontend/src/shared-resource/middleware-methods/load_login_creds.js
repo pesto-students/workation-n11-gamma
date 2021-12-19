@@ -262,6 +262,37 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             
             next(action);
             break;
+        case 'BOOK_HOTEL':
+             
+            storeAPI.dispatch({
+                status: 'Initiated',
+                type: 'BOOK_HOTEL',
+            })
+
+            await axios.post("/booking/fromPLaceId", { ...action.payload })
+                .then((res) => {
+                    console.log(res);
+                    storeAPI.dispatch({
+                                        status: 'Success',
+                                        type: 'BOOK_HOTEL',
+                                        payload: res.data
+                                    })
+                })
+                .catch((err) => {
+                    console.log(err.response.data);
+                    notify(err?.response?.data?.message)
+                    storeAPI.dispatch({
+                        status: 'Failure',
+                        type: 'BOOK_HOTEL',
+                        error: (err?.response?.data?.message || 'Some internal error')
+                    })
+                })
+                
+            
+            
+            
+            next(action);
+            break;
         default:
             next(action)
     }

@@ -17,7 +17,7 @@ const app = express();
 const placeRoute = require("./place_route/place")
 const authRoute = require("./auth_routes/auth")
 
-
+const bookingRoute = require("./booking_routes/booking")
 //applying middlewares
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/v1', authRoute);
 app.use('/place', placeRoute)
-
+app.use('/booking', bookingRoute);
 const PORT = process.env.PORT;
 
 app.listen(PORT || 8080,(err)=>{

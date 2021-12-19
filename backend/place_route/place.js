@@ -4,7 +4,7 @@ const Users = require("../database/config");
 const authorize = require("../auth_routes/authorize")
 
 Route.post("/getSearchPlace",(req,res,next)=>{
-    res.status(200).send({
+    res.status(200).send({  
         placeId: '123-123-123',
         placeName:req.body.city,
         placeDescription: 'Rishikesh is at the verge of tihri which can be ......',
