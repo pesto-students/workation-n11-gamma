@@ -66,9 +66,6 @@ function HeaderBar(props) {
               {" "}
               <img src={logo} alt="work@tion" className="logo-iamge" />
             </Link>
-            <Button className="signout-header-button" onClick={pleaseLogout}>
-              SIGNOUT
-            </Button>
           </Col>
           <Col className="navbar-div" xs={10}>
             <Navbar className="navbar-main-top" expand={false}>

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const Route = require("express").Router();
 const bcrypt = require("bcrypt");
 const modifyPassword = require("./modify_password");
@@ -9,15 +10,6 @@ dotenv.config();
 const secret = process.env.COOKIE_SECRET;
 
 Route.post("/signup", modifyPassword, async (req, res) => {
-  const isCorrectPassword = function (password, thisPassword, callback) {
-    bcrypt.compare(password, thisPassword, function (err, same) {
-      if (err) {
-        callback(err);
-      } else {
-        callback(err, same);
-      }
-    });
-  };
   const { emailAddress: email, password, username } = req.body;
   const alreaydExists = await Users.where("email", "=", email).get();
   if (alreaydExists._size) {
@@ -66,8 +58,8 @@ Route.post("/signup", modifyPassword, async (req, res) => {
 });
 
 Route.post("/login", async (req, res) => {
-  const isCorrectPassword = function (password, thisPassword, callback) {
-    bcrypt.compare(password, thisPassword, function (err, same) {
+  const isCorrectPassword = function(password, thisPassword, callback) {
+    bcrypt.compare(password, thisPassword, function(err, same) {
       if (err) {
         callback(err);
       } else {
@@ -130,7 +122,7 @@ Route.post("/login", async (req, res) => {
   }
 });
 
-Route.get("/isAuth", async (req, res, next) => {
+Route.get("/isAuth", async (req, res) => {
   const req_token = req.cookies.token;
   let auth = false;
   if (!req_token) {
@@ -166,16 +158,6 @@ Route.get("/isAuth", async (req, res, next) => {
         message: "token verification failed",
       });
     } else {
-      const payload = {
-        email: data?.email,
-        id: data?.id,
-        usertype: data?.usertype,
-        username: data?.username,
-      };
-      const token = jwt.sign(payload, secret, {
-        expiresIn: "1h",
-      });
-
       res.status(201).send({
         token: req_token,
         id: data?.id,
@@ -187,7 +169,7 @@ Route.get("/isAuth", async (req, res, next) => {
   }
 });
 
-Route.post("/logout", (req, res, next) => {
+Route.post("/logout", (req, res) => {
   res.cookie("token", undefined);
   res.clearCookie("token");
   res.status(200).send({

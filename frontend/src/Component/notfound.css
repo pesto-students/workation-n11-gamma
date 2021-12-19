@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+.dnd-main-div {
+  padding: 0;
+}
+
+.main-container-dnd {
+  margin: 0;
+  padding: 0;
+}
+.figure-div {
+  border: 1px solid black;
+  width: 100%;
+  position: relative;
+}
+.figure-img {
+  height: 100vh;
+  width: 100%;
+}
+
+.notfoundtopdiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  backdrop-filter: brightness(50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  bottom: 0;
+  padding-top: 6em;
+}
+
+.Not-found-text {
+  color: white;
+  font-size: 4em;
+  font-weight: 700;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const Route = require("express").Router();
 const Cities = require("../database/config").cities;
 const places = require("../database/config").places;
@@ -8,13 +9,13 @@ const async = require("async");
 var nodemailer = require("nodemailer");
 require("dotenv").config();
 
-Route.post("/getSearchPlace", (req, res, next) => {
+Route.post("/getSearchPlace", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
 
   async.series(
     [
-      async (cb) => {
+      async () => {
         const ownersInCity = await owners
           .where("city", "==", req.body.city)
           .get();
@@ -28,7 +29,7 @@ Route.post("/getSearchPlace", (req, res, next) => {
           return;
         }
       },
-      async (cb) => {
+      async () => {
         const cityDetails = await Cities.where(
           "name",
           "==",
@@ -45,7 +46,7 @@ Route.post("/getSearchPlace", (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -66,19 +67,19 @@ Route.post("/getSearchPlace", (req, res, next) => {
   );
 });
 
-Route.post("/isPlaceAvailable", (req, res, next) => {
+Route.post("/isPlaceAvailable", (req, res) => {
   res.status(200).json({
     isAvailable: true,
   });
 });
 
-Route.post("/searchonfilter", (req, res, next) => {
+Route.post("/searchonfilter", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
 
   async.series(
     [
-      async (cb) => {
+      async () => {
         const ownersInCity = await owners
           .where("subarea", "==", req.body.subarea)
           .get();
@@ -92,7 +93,7 @@ Route.post("/searchonfilter", (req, res, next) => {
           return;
         }
       },
-      async (cb) => {
+      async () => {
         const cityDetails = await Cities.where(
           "name",
           "==",
@@ -109,7 +110,7 @@ Route.post("/searchonfilter", (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -131,13 +132,13 @@ Route.post("/searchonfilter", (req, res, next) => {
   );
 });
 
-Route.post("/loadLandingPageData", (req, res, next) => {
+Route.post("/loadLandingPageData", (req, res) => {
   let cityResult = [];
   let landinVideoDataList = [];
 
   async.series(
     [
-      async (cb) => {
+      async () => {
         const landinVideoData = await landingvideo.get();
         if (landinVideoData._size) {
           await landinVideoData.forEach(async (doc) => {
@@ -149,7 +150,7 @@ Route.post("/loadLandingPageData", (req, res, next) => {
           return;
         }
       },
-      async (cb) => {
+      async () => {
         const cityDetails = await Cities.get();
         if (cityDetails._size) {
           await cityDetails.forEach(async (doc) => {
@@ -166,7 +167,7 @@ Route.post("/loadLandingPageData", (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -187,14 +188,14 @@ Route.post("/loadLandingPageData", (req, res, next) => {
   );
 });
 
-Route.post("/loadHostLandingPageData", authorize, (req, res, next) => {
+Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   if (req.id === req.body.userId) {
     let owenrsHotelResult = [];
     let ownersDataList = [];
 
     async.series(
       [
-        async (cb) => {
+        async () => {
           const ownersData = await owners.get();
           if (ownersData._size) {
             await ownersData.forEach(async (doc) => {
@@ -225,7 +226,7 @@ Route.post("/loadHostLandingPageData", authorize, (req, res, next) => {
           }
         },
       ],
-      (err, result) => {
+      (err) => {
         if (err) {
           console.log(err);
           return res.status(402).send({ message: "error" });
@@ -247,7 +248,7 @@ Route.post("/loadHostLandingPageData", authorize, (req, res, next) => {
   }
 });
 
-Route.post("/loadHostHotelsPageData", authorize, (req, res, next) => {
+Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   console.log(req.body, "loading");
 
   let owenrsHotelResult = [];
@@ -255,7 +256,7 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res, next) => {
   let hotelIds = [];
   async.series(
     [
-      async (cb) => {
+      async () => {
         const ownersData = await owners.doc(req.body.hotelId).get();
         if (ownersData) {
           ownersDataObj["hotel"] = ownersData.data();
@@ -280,7 +281,7 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res, next) => {
           return cb;
         }
       },
-      async (cb) => {
+      async () => {
         if (hotelIds?.length) {
           await hotelIds.forEach(async (docid) => {
             let booking = await places.doc(docid).get();
@@ -294,7 +295,7 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -310,11 +311,11 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res, next) => {
   );
 });
 
-Route.post("/loadcitiesPageData", (req, res, next) => {
+Route.post("/loadcitiesPageData", (req, res) => {
   let cityResult = [];
   async.series(
     [
-      async (cb) => {
+      async () => {
         const cityDetails = await Cities.get();
         if (cityDetails._size) {
           await cityDetails.forEach(async (doc) => {
@@ -331,7 +332,7 @@ Route.post("/loadcitiesPageData", (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -354,11 +355,11 @@ Route.post("/loadcitiesPageData", (req, res, next) => {
   );
 });
 
-Route.post("/loadHotelsPageData", (req, res, next) => {
+Route.post("/loadHotelsPageData", (req, res) => {
   let ownersResult = [];
   async.series(
     [
-      async (cb) => {
+      async () => {
         const ownersDetails = await owners.get();
         if (ownersDetails._size) {
           await ownersDetails.forEach(async (doc) => {
@@ -376,7 +377,7 @@ Route.post("/loadHotelsPageData", (req, res, next) => {
         }
       },
     ],
-    (err, result) => {
+    (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
@@ -409,14 +410,6 @@ Route.post("/form-submit-url", (req, res) => {
     },
   });
 
-  var smtpTransport2 = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    auth: {
-      user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASS,
-    },
-  });
   const template1 = `
       <div>
          <h1>Hii ${req.body.name}, </h1>
@@ -456,8 +449,8 @@ Route.post("/form-submit-url", (req, res) => {
 
   async.series(
     [
-      async (cb) => {
-        await smtpTransport.sendMail(mailOptions1, function (error, response) {
+      async () => {
+        await smtpTransport.sendMail(mailOptions1, function(error) {
           if (error) {
             console.log(error);
             return "user mail not sent";
@@ -466,9 +459,9 @@ Route.post("/form-submit-url", (req, res) => {
           }
         });
       },
-      async (cb) => {
+      async () => {
         console.log("comming here to");
-        await smtpTransport.sendMail(mailOptions2, function (error, response) {
+        await smtpTransport.sendMail(mailOptions2, function(error) {
           if (error) {
             console.log(error);
             return " mail not sent to workation";

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // initialising variables
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -26,6 +27,7 @@ app.use(cors());
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
+// eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, "public")));
 
 // routes
@@ -36,6 +38,6 @@ app.use("/upload", uploadRoute);
 
 const PORT = process.env.PORT;
 
-app.listen(PORT || 8080, (err) => {
+app.listen(PORT || 8080, () => {
   console.log(`Running on PORT ${PORT}`);
 });

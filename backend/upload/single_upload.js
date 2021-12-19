@@ -25,7 +25,7 @@ Route.post("/upload_single", upload.single("image"), async (req, res) => {
   const result = await uploadFile(file);
   await unlinkFile(file.path);
   console.log(result);
-  const description = req.body.description;
+  // const description = req.body.description;
   res.send({ imagePath: `/images/${result.Key}` });
 });
 

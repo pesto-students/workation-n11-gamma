@@ -25,11 +25,13 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "eslint": "^8.5.0",
     "nodemon": "^2.0.15"
   },
   "scripts": {
     "start": "node server.js",
     "start:local": "nodemon server.js",
+    "lint": "eslint ./ --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

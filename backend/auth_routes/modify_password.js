@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const bcrypt = require("bcrypt");
 const modifyPassword = (req, res, next) => {
   const saltRound = parseInt(process.env.MY_SALT);
