@@ -35,7 +35,6 @@ function App(props) {
 
   useEffect(() => {
     document.title = "Work@tion-Home";
-    // console.log(userObj);
   }, [props.authorized_user_login.user, userObj]);
 
   useEffect(() => {
@@ -64,7 +63,7 @@ function App(props) {
   const isUrlChange = useLocation().pathname === "/";
   const changeClassUrlChange = isUrlChange ? null : "url-change";
   return (
-    <div className={`main-app ${changeClassUrlChange}`}>
+    <div className={`main-app ${changeClassUrlChange} p-0 m-0`}>
       <userContext.Provider value={userObj}>
         {props.authorized_user_login.status === "Initiated" ? <Loader /> : null}
         {!locationRef ? <HeaderBar /> : null}

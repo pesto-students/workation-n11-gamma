@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 // initialising variables
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require("path");
@@ -12,8 +13,8 @@ const corsOptions = {
   },
 };
 //
+
 dotenv.config();
-const app = express();
 
 const placeRoute = require("./place_route/place");
 const customerRoute = require("./auth_routes/customer_auth");

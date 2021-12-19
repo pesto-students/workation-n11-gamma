@@ -6,6 +6,7 @@
   position: absolute;
   width: 100vw;
   height: max-content;
+  margin: 0;
 }
 
 .col-spinner {
