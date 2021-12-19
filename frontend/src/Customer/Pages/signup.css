@@ -66,8 +66,7 @@
 .email-group,
 .password-group,
 .username-group,
-.reenterpassword-group
- {
+.reenterpassword-group {
   position: relative;
   margin-bottom: 2em;
 }
