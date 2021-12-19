@@ -1,13 +1,7 @@
 import React from "react";
 
-
 function SignUp() {
-    return(
-        <div>
-            Host Signup
-        </div>
-    )
+  return <div>Host Signup</div>;
 }
 
-
-export {SignUp}
+export { SignUp };

@@ -1,144 +1,217 @@
-import React,{ useContext, useState, useEffect } from 'react';
-import {Link} from 'react-router-dom'
-import {connect} from "react-redux";
-import {Container, Row, Col, Navbar, Nav, Offcanvas, Button} from 'react-bootstrap'
-import {withRouter} from '../shared-resource/store/withRouter';
-import { userContext } from '../shared-resource/Contexts/User_Context';
-import logo from "../shared-resource/images/Workation_2x.png"
-import "./headerbar.css"
+import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  Container,
+  Row,
+  Col,
+  Navbar,
+  Nav,
+  Offcanvas,
+  Button,
+} from "react-bootstrap";
+import { withRouter } from "../shared-resource/store/withRouter";
+import { userContext } from "../shared-resource/Contexts/User_Context";
+import logo from "../shared-resource/images/Workation_2x.png";
+import "./headerbar.css";
 
-function HeaderBar(props){
-      const usersAuth = useContext(userContext);
-      
-    const [selectloginUser, ChangeSelectLoginUser] = useState(false);
-    const [selectSignupUser, ChangeSelectSignupUser] = useState(false);
+function HeaderBar(props) {
+  const usersAuth = useContext(userContext);
 
-    useEffect(() => {
-        
-    }, [selectloginUser,selectSignupUser]);
-    
-    function pleaseLogout(){
-        props.authorize_user_logout()
-    }
+  const [selectCustomer, ChangeSelectCustomer] = useState(false);
+  const [selectHost, ChangeSelectHost] = useState(false);
 
-    function forWhichLogin() {
-        ChangeSelectLoginUser(true);
-        ChangeSelectSignupUser(false);
-        // props.router.navigate("/customer/login")
-    }
+  useEffect(() => {}, [selectCustomer, selectHost]);
 
-    function customerLogin() {
-        // ChangeSelectLoginUser(true);
-        props.router.navigate("/customer/login")
-    }
+  function pleaseLogout() {
+    props.authorize_user_logout();
+  }
 
-    function hostLogin() {
-        // ChangeSelectLoginUser(true);
-        props.router.navigate("/host/login")
-    }
+  function selectCustomerButtons() {
+    ChangeSelectCustomer(true);
+    ChangeSelectHost(false);
+  }
 
-    function customerSignup() {
-        // ChangeSelectLoginUser(true);
-        props.router.navigate("/customer/signup")
-    }
+  function customerLogin() {
+    props.router.navigate("/customer/login");
+  }
 
-    function hostSignup() {
-        // ChangeSelectLoginUser(true);
-        props.router.navigate("/host/signup")
-    }
+  function hostLogin() {
+    props.router.navigate("/host/login");
+  }
 
-    function forWhichSignup() {
-        ChangeSelectSignupUser(true)
-        ChangeSelectLoginUser(false);
+  function customerSignup() {
+    props.router.navigate("/customer/signup");
+  }
 
-        // props.router.navigate("/customer/signup")
-    }
+  function hostSignup() {
+    props.router.navigate("/host/signup");
+  }
 
-    function guestLogin(){
-        props.registerGuest();
-    }
+  function selectHostButtons() {
+    ChangeSelectCustomer(false);
+    ChangeSelectHost(true);
+  }
 
-    
-    return (
-        <div className="app-background main-header-top">
-        <Container className="header-top-container" fluid >
-            <Row className="gx-0">
-                <Col className=" text-white logo-div" xs={1}>
-                    <Link to="/"> <img src={logo} alt="work@tion" className="logo-iamge" /></Link>
-                </Col>
-                <Col className="navbar-div" xs={10}>
-                <Navbar className="navbar-main-top" expand={false}>
-                    <Container className="justify-content-center" fluid>
-                        <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2 ">
-                            <Link className="navbar-links" to="/">Home</Link>
-                            <Link className="navbar-links" to="/customer/login">Cities</Link>
-                            <Link className="navbar-links" to="/host/login">Hotels</Link>
-                            <Link className="navbar-links" to="/admin/login">About us</Link>
-                                    <Link className="navbar-links" to="/admin/login">Contact us</Link>
-                            <div className=" login-signup-button flex-grow-1">       
-                            {
-                                usersAuth?.isLogin ?
-                                <>
-                                <Button className='signout-header-button' onClick={pleaseLogout}>SIGNOUT</Button>
-                                <Button className='signin-header-button' onClick={guestLogin}>User PRofile</Button> 
-                                </>
-                                :
-                                null
-                            }
-                            {
-                                usersAuth?.isLogin ?
-                                
-                                null :
-                                (
-                                    <>
-                                                        {   !selectloginUser ?
-                                                            <Button className='login-header-button' onClick={forWhichLogin}>LOGIN</Button>
-                                                            : <>
-                                                            <Button className='login-header-button' onClick={customerLogin}>CUSTOMER</Button>
-                                                            <Button className='login-header-button' onClick={hostLogin}>HOST</Button>
-                                                            </>
-                                                        }
-                                                        {
-                                                            !selectSignupUser ?
-                                                                <Button className='signin-header-button' onClick={forWhichSignup}>SIGNUP</Button>
-                                                                :
-                                                                <>
-                                                                <Button className='signin-header-button' onClick={customerSignup}>CUSTOMER</Button>
-                                                                <Button className='signin-header-button' onClick={hostSignup}>HOST</Button> 
-                                                                </>   
-                                                        }
-                                                        <Button className='signin-header-button' onClick={guestLogin}>GuestLogin</Button> 
-                                        
-                                    </>
-                                                              
-                                )
-                                    }
+  function guestLogin() {
+    props.registerGuest();
+  }
 
-                            </div> 
-                            
-                        </Nav>
-                <Navbar.Toggle className="d-md-none toggle-hamburger" aria-controls="offcanvasNavbar" >
-                    <span className="toggle-arrow">
-                        &rarr;
-                    </span>
-                    </Navbar.Toggle>
-                        <Navbar.Offcanvas
-                        id="offcanvasNavbar"
-                        aria-labelledby="offcanvasNavbarLabel"
-                        placement="end"
-                        className="right-panel d-md-none"
+  return (
+    <div className="app-background main-header-top">
+      <Container className="header-top-container" fluid>
+        <Row className="gx-0">
+          <Col className=" text-white logo-div" xs={1}>
+            <Link to="/">
+              {" "}
+              <img src={logo} alt="work@tion" className="logo-iamge" />
+            </Link>
+            <Button className="signout-header-button" onClick={pleaseLogout}>
+              SIGNOUT
+            </Button>
+          </Col>
+          <Col className="navbar-div" xs={10}>
+            <Navbar className="navbar-main-top" expand={false}>
+              <Container className="justify-content-center" fluid>
+                <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2 ">
+                  <Link className="navbar-links" to="/">
+                    Home
+                  </Link>
+                  {usersAuth?.isHost ? null : (
+                    <Link className="navbar-links" to="/customer/findcities">
+                      Cities
+                    </Link>
+                  )}
+                  {usersAuth?.isHost ? null : (
+                    <Link className="navbar-links" to="/customer/findHotels">
+                      Hotels
+                    </Link>
+                  )}
+                  <Link className="navbar-links" to="/about-us">
+                    About us
+                  </Link>
+                  <Link className="navbar-links" to="/contact-us">
+                    Contact us
+                  </Link>
+                  <div className=" login-signup-button flex-grow-1">
+                    {usersAuth?.isLogin ? (
+                      <>
+                        <Button
+                          className="signout-header-button"
+                          onClick={pleaseLogout}
                         >
-                        <Offcanvas.Header className="right-panel-top" closeButton>
-                            <Offcanvas.Title id="offcanvasNavbarLabel">Work@tion</Offcanvas.Title>
-                        </Offcanvas.Header>
-                        <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3">
-                            <Link className="navbar-links" to="/">Home</Link>
-                            <Link className="navbar-links" to="/customer/login">Cities</Link>
-                            <Link className="navbar-links" to="/host/login">Hotels</Link>
-                            <Link className="navbar-links" to="/admin/login">About us</Link>
-                            <Link className="navbar-links" to="/admin/login">Contact us</Link>
-                            {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
+                          SIGNOUT
+                        </Button>
+                        {usersAuth?.isCustomer ? (
+                          <Button
+                            className="signin-header-button"
+                            onClick={guestLogin}
+                          >
+                            Customer PRofile
+                          </Button>
+                        ) : usersAuth?.isHost ? (
+                          <Button
+                            className="signin-header-button"
+                            onClick={guestLogin}
+                          >
+                            Host PRofile
+                          </Button>
+                        ) : null}
+                      </>
+                    ) : null}
+                    {usersAuth?.isLogin ? null : (
+                      <>
+                        {!selectCustomer ? (
+                          <Button
+                            className="login-header-button book-login"
+                            onClick={selectCustomerButtons}
+                          >
+                            BOOK
+                          </Button>
+                        ) : (
+                          <>
+                            <Button
+                              className="login-header-button book-login"
+                              onClick={customerLogin}
+                            >
+                              LOGIN
+                            </Button>
+                            <Button
+                              className="signin-header-button book-login"
+                              onClick={customerSignup}
+                            >
+                              SIGNUP
+                            </Button>
+                          </>
+                        )}
+                        {!selectHost ? (
+                          <Button
+                            className="signin-header-button host-login"
+                            onClick={selectHostButtons}
+                          >
+                            HOST
+                          </Button>
+                        ) : (
+                          <>
+                            <Button
+                              className="login-header-button host-login"
+                              onClick={hostLogin}
+                            >
+                              LOGIN
+                            </Button>
+                            <Button
+                              className="signin-header-button host-login"
+                              onClick={hostSignup}
+                            >
+                              SIGNUP
+                            </Button>
+                          </>
+                        )}
+                        <Button
+                          className="signin-header-button guestLogin"
+                          onClick={guestLogin}
+                        >
+                          GUEST
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                </Nav>
+                <Navbar.Toggle
+                  className="d-md-none toggle-hamburger"
+                  aria-controls="offcanvasNavbar"
+                >
+                  <span className="toggle-arrow">&rarr;</span>
+                </Navbar.Toggle>
+                <Navbar.Offcanvas
+                  id="offcanvasNavbar"
+                  aria-labelledby="offcanvasNavbarLabel"
+                  placement="end"
+                  className="right-panel d-md-none"
+                >
+                  <Offcanvas.Header className="right-panel-top" closeButton>
+                    <Offcanvas.Title id="offcanvasNavbarLabel">
+                      Work@tion
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Nav className="justify-content-end flex-grow-1 pe-3">
+                      <Link className="navbar-links" to="/">
+                        Home
+                      </Link>
+                      <Link className="navbar-links" to="/customer/login">
+                        Cities
+                      </Link>
+                      <Link className="navbar-links" to="/host/login">
+                        Hotels
+                      </Link>
+                      <Link className="navbar-links" to="/admin/login">
+                        About us
+                      </Link>
+                      <Link className="navbar-links" to="/admin/login">
+                        Contact us
+                      </Link>
+                      {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
                                 <NavDropdown.Item to="#action3">Action</NavDropdown.Item>
                                 <NavDropdown.Item to="#action4">Another action</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -146,42 +219,42 @@ function HeaderBar(props){
                                 Something else here
                                 </NavDropdown.Item>
                             </NavDropdown> */}
-                            </Nav>
-                        </Offcanvas.Body>
-                        </Navbar.Offcanvas>
-                        </Container>
-                        </Navbar>
-
-                </Col>
-                <Col className="right-div" xs={1}>
-                    
-                </Col>
-            </Row>
-        </Container>
-  </div>
-    )
+                    </Nav>
+                  </Offcanvas.Body>
+                </Navbar.Offcanvas>
+              </Container>
+            </Navbar>
+          </Col>
+          <Col className="right-div" xs={1}></Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
+const mapStatesToProps = (states, props) => {
+  return {
+    authorized_user_login: states.app.user,
+  };
+};
 
-const mapStatesToProps = (states,props)=>{
-    return {
-        authorized_user_login: states.app.user
-    }
-  }
-  
-  const mapDispatchToProps = (dispatch)=>{
-    return {
-        authorize_user_logout : () => dispatch({
-            type: 'LOGOUT_AUTHORIZE'
-        }),
-        registerGuest : () => dispatch({
-            type: 'LOAD_CUSTOMER_LOGIN',
-            payload: {
-                email: 'Rishabhv47@gmail.com',
-                password: '1234'
-            }
-        })
-    }
-  }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authorize_user_logout: () =>
+      dispatch({
+        type: "LOGOUT_AUTHORIZE",
+      }),
+    registerGuest: () =>
+      dispatch({
+        type: "LOAD_CUSTOMER_LOGIN",
+        payload: {
+          email: "Rishabhv47@gmail.com",
+          password: "1234",
+        },
+      }),
+  };
+};
 
-export default withRouter(connect(mapStatesToProps,mapDispatchToProps)(HeaderBar));
+export default withRouter(
+  connect(mapStatesToProps, mapDispatchToProps)(HeaderBar)
+);
