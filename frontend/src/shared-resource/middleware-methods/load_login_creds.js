@@ -1,7 +1,7 @@
 // https://redux.js.org/tutorials/fundamentals/part-6-async-logic
 import axios from "axios";
 import { toast } from "react-toastify";
-import * as types from "../Actions/action";
+import * as ACTIONS from "../Actions/action";
 toast.configure();
 
 const notify = async (data) => {
@@ -21,7 +21,7 @@ const isAuthenticated = async () => {
 
 export const load_login_creds = (storeAPI) => (next) => async (action) => {
   switch (action.type) {
-    case types.loadCustomerLogin:
+    case ACTIONS.loadCustomerLogin:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOGIN_USER_REDUCER",
@@ -62,7 +62,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
-    case "LOAD_HOST_LOGIN":
+    case ACTIONS.LOAD_HOST_LOGIN:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOGIN_HOST_REDUCER",
@@ -102,7 +102,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
-    case "LOAD_CUSTOMER_SIGNUP":
+    case ACTIONS.LOAD_CUSTOMER_SIGNUP:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOAD_CUSTOMER_SIGNUP_REDUCER",
@@ -143,7 +143,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
-    case types.updateUser:
+    case ACTIONS.updateUser:
       storeAPI.dispatch({
         status: "Initiated",
         type: "UPDATE_USER_REDUCER",
@@ -188,7 +188,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case types.logoutAuthorize:
+    case ACTIONS.logoutAuthorize:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOGOUT_USER_REDUCER",
@@ -216,7 +216,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case types.isLandingSearchAvailable:
+    case ACTIONS.isLandingSearchAvailable:
       await axios
         .post("/place/isPlaceAvailable", { ...action.payload })
         .then((res) => {
@@ -250,8 +250,12 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case types.landingSearchOnBudget:
+    case ACTIONS.landingSearchOnBudget:
       //success failure is pending
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LANDING_SEARCH_BUDGET",
+      });
       await axios
         .post("/place/getSearchPlace", { ...action.payload })
         .then((res) => {
@@ -263,6 +267,11 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         })
         .catch((err) => {
           notify(err.response.data.error);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LANDING_SEARCH_BUDGET",
+            error: err?.response?.data?.message || "Some internal error",
+          });
         });
       next(action);
       break;
@@ -292,7 +301,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
       next(action);
       break;
-    case "LOAD_LANDING_PAGE_DATA":
+    case ACTIONS.LOAD_LANDING_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOAD_LANDING_PAGE_DATA_REDUCER",
@@ -319,7 +328,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case "LOAD_CITIES_PAGE_DATA":
+    case ACTIONS.LOAD_CITIES_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOAD_CITIES_PAGE_DATA_REDUCER",
@@ -346,7 +355,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
       next(action);
       break;
-    case "LOAD_HOTELS_PAGE_DATA":
+    case ACTIONS.LOAD_HOTELS_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOAD_HOTELS_PAGE_DATA_REDUCER",
@@ -372,7 +381,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
       next(action);
       break;
-    case "LOAD_HOST_LANDING_PAGE_DATA":
+    case ACTIONS.LOAD_HOST_LANDING_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
         type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
@@ -398,7 +407,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
       next(action);
       break;
-    case "LOAD_HOST_HOTEL_PAGE_DATA":
+    case ACTIONS.LOAD_HOST_HOTEL_PAGE_DATA:
       //  console.log(action.payload);
       // storeAPI.dispatch({
       //     status: 'Initiated',
