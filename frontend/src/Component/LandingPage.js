@@ -234,7 +234,7 @@ function LandingPage(props) {
                           )
                         )
                       ) : (
-                        <> Loading...spinner</>
+                        <>Loading...</>
                       )}
                     </Row>
                   </Col>
