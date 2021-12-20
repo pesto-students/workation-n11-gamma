@@ -67,7 +67,6 @@ function LandingPage(props) {
   }
 
   useEffect(() => {}, [budget, location, fromDate, toDate]);
-  console.log(props);
   return (
     <div className=" app-background main-landing-page">
       <Container className="landing-page-top-container" fluid>

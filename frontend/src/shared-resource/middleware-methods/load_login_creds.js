@@ -390,7 +390,6 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       await axios
         .post("/place/loadHostLandingPageData", { userId: action.payload })
         .then((res) => {
-          console.log(res);
           storeAPI.dispatch({
             status: "Success",
             type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
@@ -435,6 +434,115 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
+    case "LOAD_ADMIN_USERS":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LOAD_ADMIN_USERS_REDUCER",
+      });
+
+      await axios
+        .get("/v1/loadAdminUsers")
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "LOAD_ADMIN_USERS_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LOAD_ADMIN_USERS_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
+    case "LOAD_ADMIN_HOTELS":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LOAD_ADMIN_HOTELS_REDUCER",
+      });
+
+      await axios
+        .get("/v1/loadAdminHotels")
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "LOAD_ADMIN_HOTELS_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LOAD_ADMIN_HOTELS_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
+    case "LOAD_ADMIN_CITIES":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LOAD_ADMIN_CITIES_REDUCER",
+      });
+
+      await axios
+        .get("/v1/loadAdminCities")
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "LOAD_ADMIN_CITIES_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LOAD_ADMIN_CITIES_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
+    case "LOAD_ADMIN_BOOKINGS":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+      });
+
+      await axios
+        .get("/v1/loadAdminBookings")
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
+
     default:
       next(action);
   }
