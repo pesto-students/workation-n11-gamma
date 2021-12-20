@@ -5,7 +5,7 @@ import { NotFound } from "./NotFound";
 import CustomerLogin from "../Customer/Pages/Login";
 import CustomerSignUp from "../Customer/Pages/SignUp";
 import HostLogin from "../Host/Pages/Login";
-import { SignUp as HostSignUp } from "../Host/Pages/SignUp";
+import HostSignUp from "../Host/Pages/SignUp";
 import { Login as AdminLogin } from "../Admin/Pages/Login";
 import { SignUp as AdminSignUp } from "../Admin/Pages/SignUp";
 import { withRouter } from "../shared-resource/store/withRouter";

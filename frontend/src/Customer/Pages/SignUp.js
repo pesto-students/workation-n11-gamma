@@ -171,7 +171,7 @@ function SignUp(props) {
 
                       <Form.Group
                         className="reenterpassword-group mb-3"
-                        controlId="formBasicResetPassword"
+                        controlId="formBasicRenterPassword"
                       >
                         <Form.Control
                           className="reenterpassword-input"
