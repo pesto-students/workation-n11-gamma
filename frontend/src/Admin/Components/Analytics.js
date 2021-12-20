@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { withRouter } from "../../shared-resource/store/withRouter";
 import { connect } from "react-redux";
