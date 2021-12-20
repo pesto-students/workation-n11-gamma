@@ -245,8 +245,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({
         type: "LOAD_CUSTOMER_LOGIN",
         payload: {
-          email: "Rishabhv47@gmail.com",
-          password: "1234",
+          email: "guest@gmail.com",
+          password: "12345",
+          usertype: "CUSTOMER",
         },
       }),
   };

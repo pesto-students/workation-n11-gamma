@@ -16,7 +16,7 @@ function SignUp(props) {
   const [userReEnterPassword, changeUserReEnterPassword] = useState("");
   const [isPasswordSame, changeIsPasswordSame] = useState(true);
 
-  //   const userType = "Customer";
+  const userType = "CUSTOMER";
   const notifyEmail = async () => {
     toast.error("Required Email!", { theme: "dark" });
   };
@@ -104,7 +104,12 @@ function SignUp(props) {
       notifyPasswordSame();
     } else {
       // console.log('loading props');
-      props.load_signup_user({ emailAddress, userPassword, username });
+      props.load_signup_user({
+        emailAddress,
+        userPassword,
+        username,
+        userType,
+      });
     }
   }
 
@@ -166,7 +171,7 @@ function SignUp(props) {
 
                       <Form.Group
                         className="reenterpassword-group mb-3"
-                        controlId="formBasicResetPassword"
+                        controlId="formBasicRenterPassword"
                       >
                         <Form.Control
                           className="reenterpassword-input"
