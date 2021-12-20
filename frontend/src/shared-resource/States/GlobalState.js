@@ -64,6 +64,11 @@ const initialState = {
     data: [],
     error: "",
   },
+  hostHotelsPageData: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
 };
 
 export { initialState };

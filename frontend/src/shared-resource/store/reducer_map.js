@@ -11,6 +11,7 @@ import { load_host_login_reducer } from "../reducers/load_host_login_reducer";
 import { load_cities_page_data_reducer } from "../reducers/load_cities_page_data_reducer";
 import { load_hotels_page_data_reducer } from "../reducers/load_hotels_page_data_reducer";
 import { load_host_landing_page_data_reducer } from "../reducers/load_host_landing_page_data_reducer";
+import { load_host_hotels_page_data_reducer } from "../reducers/load_host_hotel_page_data_reducer";
 
 const reducerMap = Object.freeze({
   CUSTOMER_USER_REDUCER: customer_user_reducer,
@@ -26,6 +27,7 @@ const reducerMap = Object.freeze({
   LOAD_CITIES_PAGE_DATA_REDUCER: load_cities_page_data_reducer,
   LOAD_HOTELS_PAGE_DATA_REDUCER: load_hotels_page_data_reducer,
   LOAD_HOST_LANDING_PAGE_DATA_REDUCER: load_host_landing_page_data_reducer,
+  LOAD_HOST_HOTEL_PAGE_DATA_REDUCER: load_host_hotels_page_data_reducer,
 });
 
 export { reducerMap };

@@ -390,6 +390,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       await axios
         .post("/place/loadHostLandingPageData", { userId: action.payload })
         .then((res) => {
+          console.log(res);
           storeAPI.dispatch({
             status: "Success",
             type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
@@ -409,29 +410,28 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       break;
     case ACTIONS.LOAD_HOST_HOTEL_PAGE_DATA:
       //  console.log(action.payload);
-      // storeAPI.dispatch({
-      //     status: 'Initiated',
-      //     type: 'LOAD_HOST_HOTEL_PAGE_DATA_REDUCER',
-      // })
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+      });
 
       await axios
         .post("/place/loadHostHotelsPageData", { ...action.payload })
         .then((res) => {
-          // console.log(res,"res");
-          // storeAPI.dispatch({
-          //                     status: 'Success',
-          //                     type: 'LOAD_HOST_HOTEL_PAGE_DATA_REDUCER',
-          //                     payload: res.data
-          //                 })
+          storeAPI.dispatch({
+            status: "Success",
+            type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+            payload: res.data,
+          });
         })
         .catch((err) => {
           console.log(err.response.data);
           notify(err?.response?.data?.message);
-          // storeAPI.dispatch({
-          //     status: 'Failure',
-          //     type: 'LOAD_HOST_HOTEL_PAGE_DATA_REDUCER',
-          //     error: (err?.response?.data?.message || 'Some internal error')
-          // })
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
         });
       next(action);
       break;

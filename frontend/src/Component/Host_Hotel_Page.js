@@ -13,11 +13,12 @@ function HostHotelPage(props) {
     props.loadHostHotelPageData(urlParams.hotelId);
   }, []);
 
+  // console.log(props.hotel_page_data);
   return (
     <div className=" app-hLanding-background main-hLanding-page">
       <Container className="hLanding-page-top-container" fluid>
         <Row>
-          <Col sm={12}>Help us to make a better world!</Col>
+          <Col sm={12}>All hotel Details will come here!</Col>
         </Row>
       </Container>
       <div className="hLanding-first-div">
@@ -30,57 +31,50 @@ function HostHotelPage(props) {
                     sm={12}
                     className="hLanding-main-container-first-row-col"
                   >
-                    Your Booking
+                    Your Bookings
                   </Col>
                 </Row>
-                <Row className="gx-0">
-                  <Col
-                    sm={12}
-                    className="location-main-container-third-row-col"
-                  >
-                    <Button className="explore-location-link">
-                      {" "}
-                      Include More&nbsp;&#x2B;
-                    </Button>
-                  </Col>
-                </Row>
+
                 <Row className="gx-0">
                   <Col
                     sm={12}
                     className="hLanding-main-container-second-row-col"
                   >
+                    <Row className="gx-0">
+                      <Col
+                        sm={12}
+                        className="location-main-container-third-row-col"
+                      >
+                        <Button className="explore-location-link">
+                          {" "}
+                          Include More&nbsp;&#x2B;
+                        </Button>
+                      </Col>
+                    </Row>
                     <Row xs={1} sm={2} md={4} className="g-5">
-                      {props.landing_page_data?.data &&
-                      props.landing_page_data.data?.ownerResult &&
-                      props.landing_page_data.data?.ownerResult?.length ? (
-                        props.landing_page_data.data.ownerResult.map(
-                          (_, idx) => (
-                            <Col key={idx}>
-                              <Link
-                                to={`/host/hotel/${_.id}`}
-                                className="text-white"
-                              >
-                                <Card className="location-cards p-0">
-                                  <Card.Img
-                                    variant="top"
-                                    src={_.hotel_image}
-                                    className="location-card-image m-0"
-                                  />
-                                  <Card.Body className="location-card-body">
-                                    <Card.Title className="location-card-title">
-                                      {" "}
-                                      {_.hotel_name}
-                                    </Card.Title>
-                                    <Card.Title className="location-card-title">
-                                      {" "}
-                                      {_.city}
-                                    </Card.Title>
-                                  </Card.Body>
-                                </Card>
-                              </Link>
-                            </Col>
-                          )
-                        )
+                      {props.hotel_page_data?.bookings?.length ? (
+                        props.hotel_page_data.bookings.map((_, idx) => (
+                          <Col key={idx}>
+                            <Link to={`/${_.id}`} className="text-white">
+                              <Card className="location-cards p-0">
+                                <Card.Body className="location-card-body">
+                                  <Card.Title className="location-card-title">
+                                    {" "}
+                                    {_?.data?.amount}
+                                  </Card.Title>
+                                  <Card.Title className="location-card-title">
+                                    {" "}
+                                    {_?.data?.checkin?._seconds}
+                                  </Card.Title>
+                                  <Card.Title className="location-card-title">
+                                    {" "}
+                                    {_?.data?.checkout?._seconds}
+                                  </Card.Title>
+                                </Card.Body>
+                              </Card>
+                            </Link>
+                          </Col>
+                        ))
                       ) : (
                         <> Loading...spinner</>
                       )}
@@ -98,7 +92,7 @@ function HostHotelPage(props) {
 
 const mapStatesToProps = (states, props) => {
   return {
-    landing_page_data: states.app.hostLandingPageData,
+    hotel_page_data: states.app.hostHotelsPageData?.data?.hotel,
   };
 };
 

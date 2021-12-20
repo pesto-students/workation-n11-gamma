@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const Route = require("express").Router();
 const Cities = require("../database/config").cities;
 const places = require("../database/config").places;
 const owners = require("../database/config").hotelOwners;
+const booking = require("../database/config").bookings;
 const landingvideo = require("../database/config").landingvideo;
 const authorize = require("../auth_routes/authorize");
 const async = require("async");
@@ -67,7 +69,7 @@ Route.post("/getSearchPlace", (req, res) => {
   );
 });
 
-Route.post("/isPlaceAvailable", (req, res) => {
+Route.post("/isPlaceAvailable", (_req, res) => {
   res.status(200).json({
     isAvailable: true,
   });
@@ -132,7 +134,7 @@ Route.post("/searchonfilter", (req, res) => {
   );
 });
 
-Route.post("/loadLandingPageData", (req, res) => {
+Route.post("/loadLandingPageData", (_req, res) => {
   let cityResult = [];
   let landinVideoDataList = [];
 
@@ -188,11 +190,20 @@ Route.post("/loadLandingPageData", (req, res) => {
   );
 });
 
+async function returnHotels(_req, res, data) {
+  let tempArray = [];
+  await async.eachSeries(data, async (id, cb) => {
+    const placeHotel = await places.doc(id).get();
+    tempArray.push({ data: placeHotel.data(), id });
+  });
+  await res.status(200).send(tempArray);
+}
+
 Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   if (req.id === req.body.userId) {
     let owenrsHotelResult = [];
     let ownersDataList = [];
-
+    let hotelsList = [];
     async.series(
       [
         async () => {
@@ -200,14 +211,14 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
           if (ownersData._size) {
             await ownersData.forEach(async (doc) => {
               const internalAddition = { ...doc.data(), id: doc.id };
-              ownersDataList = [...ownersDataList, internalAddition];
+              ownersDataList.push(internalAddition);
             });
             return;
           } else {
             return;
           }
         },
-        async (cb) => {
+        async () => {
           if (ownersDataList.length) {
             await ownersDataList.forEach(async (doc) => {
               if (
@@ -216,28 +227,39 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
               ) {
                 const localUserId = doc.userId._path.segments[1];
                 if (req.body.userId === localUserId) {
-                  owenrsHotelResult = [...owenrsHotelResult, doc];
+                  owenrsHotelResult.push(doc);
                 }
               }
             });
             return;
           } else {
-            return cb;
+            return;
+          }
+        },
+        async () => {
+          if (owenrsHotelResult.length) {
+            await owenrsHotelResult.forEach(async (doc) => {
+              if (doc?.hotels?.length) {
+                await doc?.hotels.forEach(async (hotel) => {
+                  if (hotel?._path?.segments?.length) {
+                    hotelsList.push(hotel?._path?.segments[1]);
+                  }
+                });
+              }
+            });
+            return;
+          } else {
+            return;
           }
         },
       ],
-      (err) => {
+      async (err) => {
         if (err) {
           console.log(err);
           return res.status(402).send({ message: "error" });
         }
-        const finalList = {};
-        if (owenrsHotelResult?.length) {
-          finalList["ownerResult"] = owenrsHotelResult;
-          res.status(200).send(finalList);
-        } else {
-          finalList["ownerResult"] = [];
-          res.status(200).send(finalList);
+        if (hotelsList?.length) {
+          return await returnHotels(req, res, hotelsList);
         }
       }
     );
@@ -248,65 +270,47 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   }
 });
 
-Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
-  console.log(req.body, "loading");
+async function returnBookings(_req, res, hotelObj, bookingIds) {
+  let tempArray = [];
+  await async.eachSeries(bookingIds, async (id, cb) => {
+    const bookingData = await booking.doc(id).get();
+    tempArray.push({ data: bookingData.data(), id });
+  });
+  hotelObj.hotel.bookings = tempArray;
+  await res.status(200).send(hotelObj);
+}
 
+Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   let owenrsHotelResult = [];
-  let ownersDataObj = {};
-  let hotelIds = [];
+  let hotelDataObj = {};
+  let bookingIds = [];
+  let bookings = [];
   async.series(
     [
       async () => {
-        const ownersData = await owners.doc(req.body.hotelId).get();
-        if (ownersData) {
-          ownersDataObj["hotel"] = ownersData.data();
-          return;
-        } else {
-          return;
-        }
+        const hotelData = await places.doc(req.body.hotelId).get();
+        hotelDataObj["hotel"] = hotelData.data();
+        return;
       },
-      async (cb) => {
-        if (
-          ownersDataObj &&
-          ownersDataObj.hotel &&
-          ownersDataObj.hotel?.hotels?.length
-        ) {
-          await ownersDataObj.hotel.hotels.forEach(async (doc) => {
+      async () => {
+        if (hotelDataObj?.hotel?.bookings?.length) {
+          await hotelDataObj.hotel.bookings.forEach(async (doc) => {
             if (doc?._path?.segments && doc?._path?.segments?.length) {
-              hotelIds = [...hotelIds, doc._path.segments[1]];
+              bookingIds.push(doc._path.segments[1]);
             }
           });
           return;
-        } else {
-          return cb;
-        }
-      },
-      async () => {
-        if (hotelIds?.length) {
-          await hotelIds.forEach(async (docid) => {
-            let booking = await places.doc(docid).get();
-            console.log(booking?._ref?._path);
-          });
-          return;
-          // } else {
-          //    return  }
         } else {
           return;
         }
       },
     ],
-    (err) => {
+    async (err) => {
       if (err) {
         return res.status(402).send({ message: "error" });
       }
-      const finalList = {};
-      if (owenrsHotelResult?.length) {
-        finalList["ownerResult"] = owenrsHotelResult;
-        res.status(200).send(finalList);
-      } else {
-        finalList["ownerResult"] = [];
-        res.status(200).send(finalList);
-      }
+
+      return await returnBookings(req, res, hotelDataObj, bookingIds);
     }
   );
 });

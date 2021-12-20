@@ -52,36 +52,33 @@ function HostLandingPage(props) {
                   >
                     <Row xs={1} sm={2} md={4} className="g-5">
                       {props.landing_page_data?.data &&
-                      props.landing_page_data.data?.ownerResult &&
-                      props.landing_page_data.data?.ownerResult?.length ? (
-                        props.landing_page_data.data.ownerResult.map(
-                          (_, idx) => (
-                            <Col key={idx}>
-                              <Link
-                                to={`/host/hotel/${_.id}`}
-                                className="text-white"
-                              >
-                                <Card className="location-cards p-0">
-                                  <Card.Img
-                                    variant="top"
-                                    src={_.hotel_image}
-                                    className="location-card-image m-0"
-                                  />
-                                  <Card.Body className="location-card-body">
-                                    <Card.Title className="location-card-title">
-                                      {" "}
-                                      {_.hotel_name}
-                                    </Card.Title>
-                                    <Card.Title className="location-card-title">
-                                      {" "}
-                                      {_.city}
-                                    </Card.Title>
-                                  </Card.Body>
-                                </Card>
-                              </Link>
-                            </Col>
-                          )
-                        )
+                      props.landing_page_data.data?.length ? (
+                        props.landing_page_data.data.map((_, idx) => (
+                          <Col key={idx}>
+                            <Link
+                              to={`/host/hotel/${_.id}`}
+                              className="text-white"
+                            >
+                              <Card className="location-cards p-0">
+                                <Card.Img
+                                  variant="top"
+                                  src={_.data.hotel_image}
+                                  className="location-card-image m-0"
+                                />
+                                <Card.Body className="location-card-body">
+                                  <Card.Title className="location-card-title">
+                                    {" "}
+                                    {_.data.name}
+                                  </Card.Title>
+                                  <Card.Title className="location-card-title">
+                                    {" "}
+                                    {_.data.city}
+                                  </Card.Title>
+                                </Card.Body>
+                              </Card>
+                            </Link>
+                          </Col>
+                        ))
                       ) : (
                         <> Loading...spinner</>
                       )}
