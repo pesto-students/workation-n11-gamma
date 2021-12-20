@@ -53,7 +53,7 @@ function Hotels(props) {
                       props.hotelsPageData?.data?.hotels.map((_, idx) => (
                         <Col key={idx}>
                           <Link
-                            to={`/customer/city/${_.name}`}
+                            to={`/customer/hotel/${_.id}`}
                             className="text-white"
                           >
                             <Card className="location-cards p-0">

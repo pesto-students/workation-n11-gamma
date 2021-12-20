@@ -84,6 +84,14 @@ function CitiesList(props) {
     setLongitude(value);
   }
 
+  function resetAll() {
+    changecityname("");
+    changecitydescription("");
+    setLatitude();
+    setFile();
+    setLongitude();
+  }
+
   function callDataRepeat() {
     props.load_admin_cities();
   }
@@ -104,6 +112,7 @@ function CitiesList(props) {
     if (result) {
       setLoading(false);
       changeAddCity(false);
+      resetAll();
       callDataRepeat();
     }
   }

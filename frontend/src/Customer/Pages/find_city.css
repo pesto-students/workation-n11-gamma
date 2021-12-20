@@ -47,6 +47,7 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+  width: fit-content;
 }
 
 .filter-container {
@@ -178,4 +179,30 @@
   color: black;
   filter: brightness(70%);
   font-weight: 500;
+}
+
+.city-name {
+  padding-top: 1.5em;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.city-description {
+  padding-top: 3em;
+  font-size: 0.7em;
+  line-height: 1.2em;
+  color: rgb(144, 248, 241);
+}
+
+.minimum-budget-row {
+  padding-top: 6em;
+}
+.minimum-budget-line {
+  font-size: 1.2em;
+  font-weight: 500;
+  padding-bottom: 2em;
+}
+
+.place-map {
+  padding-top: 3em;
 }

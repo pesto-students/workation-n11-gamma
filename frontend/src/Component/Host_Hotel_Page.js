@@ -13,7 +13,17 @@ function HostHotelPage(props) {
     props.loadHostHotelPageData(urlParams.hotelId);
   }, []);
 
-  // console.log(props.hotel_page_data);
+  function secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor((d % 3600) / 60);
+    var s = Math.floor((d % 3600) % 60);
+
+    var hDisplay = h > 0 ? h + (h === 1 ? " hour, " : " hours, ") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes, ") : "";
+    var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
+    return hDisplay + mDisplay + sDisplay;
+  }
   return (
     <div className=" app-hLanding-background main-hLanding-page">
       <Container className="hLanding-page-top-container" fluid>
@@ -40,7 +50,7 @@ function HostHotelPage(props) {
                     sm={12}
                     className="hLanding-main-container-second-row-col"
                   >
-                    <Row className="gx-0">
+                    <Row className="gx-0 d-none">
                       <Col
                         sm={12}
                         className="location-main-container-third-row-col"
@@ -56,19 +66,19 @@ function HostHotelPage(props) {
                         props.hotel_page_data.bookings.map((_, idx) => (
                           <Col key={idx}>
                             <Link to={`/${_.id}`} className="text-white">
-                              <Card className="location-cards p-0">
+                              <Card className="host-hotel-cards p-0">
                                 <Card.Body className="location-card-body">
                                   <Card.Title className="location-card-title">
-                                    {" "}
+                                    {"Price: "}
                                     {_?.data?.amount}
                                   </Card.Title>
                                   <Card.Title className="location-card-title">
-                                    {" "}
-                                    {_?.data?.checkin?._seconds}
+                                    {"Checking: "}
+                                    {secondsToHms(_?.data?.checkin?._seconds)}
                                   </Card.Title>
                                   <Card.Title className="location-card-title">
-                                    {" "}
-                                    {_?.data?.checkout?._seconds}
+                                    {"Checkout: "}
+                                    {secondsToHms(_?.data?.checkout?._seconds)}
                                   </Card.Title>
                                 </Card.Body>
                               </Card>
