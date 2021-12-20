@@ -13,6 +13,7 @@ let cities = db.collection("cities");
 let places = db.collection("places");
 let hotelOwners = db.collection("owners");
 let landingvideo = db.collection("landingVideos");
+let bookings = db.collection("booking");
 
 const dBase = {
   Users,
@@ -20,5 +21,6 @@ const dBase = {
   places,
   hotelOwners,
   landingvideo,
+  bookings,
 };
 module.exports = dBase;

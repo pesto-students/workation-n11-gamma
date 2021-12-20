@@ -23,7 +23,7 @@ function ContactUs(props) {
 
   const notifySuccessfulSent = async () => {
     toast.error(
-      "If your mail is coreect, we have successfully received your query, our executive will contact you soon !",
+      "If your mail is correct, we have successfully received your query, our executive will contact you soon !",
       { theme: "light" }
     );
   };

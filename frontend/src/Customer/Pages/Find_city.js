@@ -15,7 +15,6 @@ import {
 } from "react-bootstrap";
 import queryString from "query-string";
 import "./find_city.css";
-import samplePic from "../../shared-resource/images/alessio-furlan-Vw3a0HgE7AM-unsplash.jpg";
 
 function FindCity(props) {
   const city = useParams();
@@ -31,7 +30,15 @@ function FindCity(props) {
 
   useEffect(() => {
     props.getPlaceDetails(searchParams);
-  }, [subArea, budgetPrice, requiredBeds, requiredRooms, requiredBaths]);
+  }, []);
+
+  useEffect(() => {}, [
+    subArea,
+    budgetPrice,
+    requiredBeds,
+    requiredRooms,
+    requiredBaths,
+  ]);
 
   useEffect(() => {}, [props.customer_searched_place]);
 
@@ -159,13 +166,13 @@ function FindCity(props) {
                               <Card className="location-cards p-0">
                                 <Card.Img
                                   variant="top"
-                                  src={samplePic}
+                                  src={_.hotel_image}
                                   className="location-card-image m-0"
                                 />
                                 <Card.Body className="location-card-body">
                                   <Card.Title className="location-card-title">
                                     {" "}
-                                    {_.hotel_name}
+                                    {_.name}
                                   </Card.Title>
                                 </Card.Body>
                               </Card>
