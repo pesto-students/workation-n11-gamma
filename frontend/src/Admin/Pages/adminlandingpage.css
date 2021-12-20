@@ -53,3 +53,38 @@
   font-weight: 500;
   margin-top: 5em;
 }
+
+.add-city-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.add-city-button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9em;
+  margin-bottom: 3px;
+}
+.add-city-button:hover,
+.add-city-button:active,
+.add-city-button:focus {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.add-city-form-div {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3em 6em;
+}
+
+.city-loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
