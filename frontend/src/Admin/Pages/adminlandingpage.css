@@ -28,6 +28,28 @@
 
 .tab-contant-main {
   width: 100% !important;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.marqee-top {
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.clear-bttn {
+  height: 10px;
+  vertical-align: top;
+  color: white;
+  cursor: pointer;
+}
+
+.analytics-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-weight: 500;
+  margin-top: 5em;
 }

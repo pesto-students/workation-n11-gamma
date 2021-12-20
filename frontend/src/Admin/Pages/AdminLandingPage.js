@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable jsx-a11y/no-distracting-elements */
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Tab, ListGroup } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
 import { withRouter } from "../../shared-resource/store/withRouter";
@@ -11,13 +12,37 @@ import { connect } from "react-redux";
 import "./adminlandingpage.css";
 
 function AdminLandingPage(props) {
+  const [marqTop, crossMarqTop] = useState(false);
+
+  useEffect(() => {}, [marqTop]);
+
+  function changethemarq(e) {
+    crossMarqTop(true);
+  }
   return (
     <>
       <div className="admin-main-top">
         <Container className="admin-main-container" fluid>
           <Row className="g-0">
+            {!marqTop ? (
+              <Col sm={12} className="d-flex flex-row admin-sub-first-col">
+                <marquee
+                  behavior="scroll"
+                  direction="left"
+                  width="99%"
+                  height="30px"
+                  scrollamount="8"
+                  className="marqee-top"
+                >
+                  Download csv, analytical charts will be available soon!
+                </marquee>
+                <span className="py-0 my-0 clear-bttn" onClick={changethemarq}>
+                  &#10006;
+                </span>
+              </Col>
+            ) : null}
             <Col sm={12} className="admin-first-col">
-              ADMIN PANEL ! WELCOME ADMIN
+              ADMIN PANEL | WELCOME ADMIN
             </Col>
             <Col sm={12} className="admin-second-col">
               <Tab.Container
@@ -28,20 +53,20 @@ function AdminLandingPage(props) {
                 <Row>
                   <Col sm={2}>
                     <ListGroup>
-                      <ListGroup.Item action href="#link1">
+                      <ListGroup.Item action variant="dark" href="#link1">
                         USERS
                       </ListGroup.Item>
-                      <ListGroup.Item action href="#link2">
+                      <ListGroup.Item action variant="dark" href="#link2">
                         HOTELS
                       </ListGroup.Item>
-                      <ListGroup.Item action href="#link3">
+                      <ListGroup.Item action variant="dark" href="#link3">
                         CITIES
                       </ListGroup.Item>
-                      <ListGroup.Item action href="#link4">
+                      <ListGroup.Item action variant="dark" href="#link4">
                         BOOKINGS
                       </ListGroup.Item>
-                      <ListGroup.Item action href="#link5">
-                        Analytics
+                      <ListGroup.Item action variant="dark" href="#link5">
+                        ANALYTICS
                       </ListGroup.Item>
                     </ListGroup>
                   </Col>
