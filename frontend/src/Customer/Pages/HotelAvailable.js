@@ -1,3 +1,4 @@
+
 import React,{useState,useEffect} from 'react'
 import {connect} from "react-redux";
 import {withRouter} from '../../shared-resource/store/withRouter';
@@ -14,9 +15,9 @@ function HotelAvailable(props){
       console.log(props);
       const [searchParams] = useState({...queries, city:city?.cityName})
  
-      useEffect(()=>{
-            props.getPlaceDetails(searchParams)
-      },[])
+      // useEffect(()=>{
+      //       props.getPlaceDetails(searchParams)
+      // },[])
 
     return (
         
@@ -68,7 +69,7 @@ Goa is a state on the southwestern coast of India within the Konkan region, geog
 <h3>Amount:</h3><h5>RS 0000</h5>
 </div>
 <div className="mb-2">
-    <Button variant="primary" size="lg">
+    <Button variant="primary" size="lg" onClick={params.bookPlace}>
       Book Hotel
     </Button>
     
@@ -86,24 +87,30 @@ Goa is a state on the southwestern coast of India within the Konkan region, geog
         </div>
         </>
     )
-}
-
-
-const mapStatesToProps = (states,props)=>{
-    return {
-        customer_searched_place: states.app.customerPlaceSearch
     }
-  }
-  
-  const mapDispatchToProps = (dispatch)=>{
-    return {
-        getPlaceDetails : (data) => dispatch({
-            type: 'LANDING_SEARCH_ON_BUDGET',
-            payload: data
-        })
-    }
-  }
 
-export default withRouter(connect(mapStatesToProps,mapDispatchToProps)(HotelAvailable));
+const mapStatesToProps = (states, props) => {
+  return {
+    customer_searched_place: states.app.customerPlaceSearch,
+  };
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    bookPlace: (data) =>
+      dispatch({
+        type: "BOOK_HOTEL",
+        payload: {
+          userId:"b53245c7-2bec-45c7-b2a2-c7b1be80792",
+          placeId:"zWWUi1ScnzU14y356KhD",
+          checkInDate: "",
+          checkOutDate: "",
+          amount: "10000",
+        },
+      }),
+  };
+};
 
+export default withRouter(
+  connect(mapStatesToProps, mapDispatchToProps)(HotelAvailable)
+);
