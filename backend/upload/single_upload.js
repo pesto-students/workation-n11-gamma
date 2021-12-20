@@ -21,7 +21,6 @@ Route.post("/upload_single", upload.single("image"), async (req, res) => {
   // console.log(req.file);
   const file = req.file;
   // console.log(file);
-
   // // apply filter
   // // resize
 

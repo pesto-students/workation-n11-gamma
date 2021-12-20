@@ -40,6 +40,13 @@ function CitiesList(props) {
     toast.error("Something missing !", { theme: "dark" });
   };
 
+  const notifyAlreadyExists = async () => {
+    toast.error(
+      "Please don't add city again if already in the list. Currently we are not having validation for already present. !",
+      { theme: "dark" }
+    );
+  };
+
   useEffect(() => {
     props.load_admin_cities();
   }, []);
@@ -86,6 +93,7 @@ function CitiesList(props) {
       notify();
       return;
     }
+    notifyAlreadyExists();
     const result = await postImage({
       image: file,
       description: citydescription,
