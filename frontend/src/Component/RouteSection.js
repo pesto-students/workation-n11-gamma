@@ -6,7 +6,7 @@ import CustomerLogin from "../Customer/Pages/Login";
 import CustomerSignUp from "../Customer/Pages/SignUp";
 import HostLogin from "../Host/Pages/Login";
 import HostSignUp from "../Host/Pages/SignUp";
-import { Login as AdminLogin } from "../Admin/Pages/Login";
+import AdminLogin from "../Admin/Pages/Login";
 import { SignUp as AdminSignUp } from "../Admin/Pages/SignUp";
 import { withRouter } from "../shared-resource/store/withRouter";
 import HotelAvailable from "../Customer/Pages/HotelAvailable";
