@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.admin-main-top {
+  height: max-content;
+}
+
+.admin-main-container {
+  min-height: 800px;
+  max-height: max-content;
+  backdrop-filter: brightness(60%);
+}
+
+.admin-first-col {
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-decoration: underline;
+}
+
+.admin-second-col {
+  width: 100%;
+}
+
+.tab-contant-main {
+  width: 100% !important;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}

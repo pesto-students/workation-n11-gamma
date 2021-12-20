@@ -8,12 +8,13 @@ import CitiesList from "../Components/CitiesList";
 import BookingsList from "../Components/BookingsList";
 import Analytics from "../Components/Analytics";
 import { connect } from "react-redux";
+import "./adminlandingpage.css";
 
 function AdminLandingPage(props) {
   return (
     <>
       <div className="admin-main-top">
-        <Container className="admin-main-container">
+        <Container className="admin-main-container" fluid>
           <Row className="g-0">
             <Col sm={12} className="admin-first-col">
               ADMIN PANEL ! WELCOME ADMIN
@@ -22,6 +23,7 @@ function AdminLandingPage(props) {
               <Tab.Container
                 id="list-group-tabs-example"
                 defaultActiveKey="#link1"
+                className="tab-container"
               >
                 <Row>
                   <Col sm={2}>
@@ -43,8 +45,8 @@ function AdminLandingPage(props) {
                       </ListGroup.Item>
                     </ListGroup>
                   </Col>
-                  <Col sm={4}>
-                    <Tab.Content>
+                  <Col sm={10}>
+                    <Tab.Content className="tab-contant-main">
                       <Tab.Pane eventKey="#link1">
                         <UsersList />
                       </Tab.Pane>
