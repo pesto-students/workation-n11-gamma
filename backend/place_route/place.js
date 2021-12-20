@@ -18,11 +18,11 @@ Route.post("/getSearchPlace", (req, res) => {
   async.series(
     [
       async () => {
-        const ownersInCity = await owners
+        const hotelsInCity = await places
           .where("city", "==", req.body.city)
           .get();
-        if (ownersInCity._size) {
-          await ownersInCity.forEach(async (doc) => {
+        if (hotelsInCity._size) {
+          await hotelsInCity.forEach(async (doc) => {
             const internalAddition = { ...doc.data(), id: doc.id };
             hotelsList = [...hotelsList, internalAddition];
           });
@@ -82,11 +82,11 @@ Route.post("/searchonfilter", (req, res) => {
   async.series(
     [
       async () => {
-        const ownersInCity = await owners
+        const hotelsInCity = await places
           .where("subarea", "==", req.body.subarea)
           .get();
-        if (ownersInCity._size) {
-          await ownersInCity.forEach(async (doc) => {
+        if (hotelsInCity._size) {
+          await hotelsInCity.forEach(async (doc) => {
             const internalAddition = { ...doc.data(), id: doc.id };
             hotelsList = [...hotelsList, internalAddition];
           });
@@ -360,20 +360,20 @@ Route.post("/loadcitiesPageData", (req, res) => {
 });
 
 Route.post("/loadHotelsPageData", (req, res) => {
-  let ownersResult = [];
+  let placesResult = [];
   async.series(
     [
       async () => {
-        const ownersDetails = await owners.get();
-        if (ownersDetails._size) {
-          await ownersDetails.forEach(async (doc) => {
+        const placesDetails = await places.get();
+        if (placesDetails._size) {
+          await placesDetails.forEach(async (doc) => {
             const internalAddition = {
               city: doc.data().city,
               id: doc.id,
               hotel_image: doc.data().hotel_image,
-              hotel_name: doc.data().hotel_name,
+              hotel_name: doc.data().name,
             };
-            ownersResult = [...ownersResult, internalAddition];
+            placesResult = [...placesResult, internalAddition];
           });
           return;
         } else {
@@ -387,11 +387,11 @@ Route.post("/loadHotelsPageData", (req, res) => {
       }
       const finalList = {};
 
-      if (ownersResult?.length) {
-        finalList["hotels"] = ownersResult.splice(req.body.from, req.body.to);
+      if (placesResult?.length) {
+        finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
         finalList["from"] = req.body.from;
         finalList["to"] = req.body.to;
-        if (req.body.from > ownersResult.length) {
+        if (req.body.from > placesResult.length) {
           return res.status(403).send({ message: " no more data" });
         }
         res.status(200).send(finalList);
