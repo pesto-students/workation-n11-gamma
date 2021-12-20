@@ -13,7 +13,7 @@ function Login(props) {
   const [emailAddress, changeEmailAddress] = useState("");
   const [userPassword, changeUserPassword] = useState("");
 
-  const userType = "Customer";
+  const userType = "CUSTOMER";
   const notify = async () => {
     toast.error("Required email and password !", { theme: "dark" });
   };

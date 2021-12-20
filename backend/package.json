@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "@sendgrid/mail": "^7.6.0",
     "async": "^3.2.2",
     "aws-sdk": "^2.1046.0",
     "bcrypt": "^5.0.1",
@@ -20,9 +19,7 @@
     "mongoose": "^6.1.0",
     "multer": "^1.4.4",
     "nodemailer": "^6.7.2",
-    "sendgrid": "^5.2.3",
-    "url-parser": "0.0.1",
-    "uuid": "^8.3.2"
+    "url-parser": "0.0.1"
   },
   "devDependencies": {
     "eslint": "^8.5.0",

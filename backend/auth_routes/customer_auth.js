@@ -4,22 +4,25 @@ const bcrypt = require("bcrypt");
 const modifyPassword = require("./modify_password");
 const Users = require("../database/config").Users;
 const jwt = require("jsonwebtoken");
-const { v4: uuidv4 } = require("uuid");
 const dotenv = require("dotenv");
 dotenv.config();
 const secret = process.env.COOKIE_SECRET;
 
 Route.post("/signup", modifyPassword, async (req, res) => {
-  const { emailAddress: email, password, username } = req.body;
+  const {
+    emailAddress: email,
+    password,
+    username,
+    userType: usertype,
+  } = req.body;
   const alreaydExists = await Users.where("email", "=", email).get();
   if (alreaydExists._size) {
     res.status(401).json({
       error: "User already exists !",
     });
   } else {
-    const userId = uuidv4();
     try {
-      await Users.doc(userId).set({ email, password, username });
+      await Users.add({ email, password, username, usertype });
       const currentUser = await Users.where("email", "=", email).get();
       if (!currentUser._size) {
         res.status(401).json({
@@ -34,7 +37,7 @@ Route.post("/signup", modifyPassword, async (req, res) => {
           return userDetail;
         })[0];
 
-        const payload = { email, id: user?.id };
+        const payload = { email, id: user?.id, username, usertype };
         const token = jwt.sign(payload, secret, {
           expiresIn: "1h",
         });
@@ -46,6 +49,9 @@ Route.post("/signup", modifyPassword, async (req, res) => {
         res.status(201).send({
           token,
           id: user?.id,
+          username,
+          usertype,
+          email,
         });
       }
     } catch (err) {
