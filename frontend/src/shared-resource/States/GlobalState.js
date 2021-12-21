@@ -89,6 +89,11 @@ const initialState = {
     data: [],
     error: "",
   },
+  customerHotelDetails: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
 };
 
 export { initialState };

@@ -487,6 +487,30 @@ Route.post("/form-submit-url", (req, res) => {
     }
   );
 });
+
+Route.post("/loadHotelDetails", async (req, res) => {
+  let getHotelDetails = [];
+  await async.series(
+    [
+      async () => {
+        const getHotel = await places.doc(req.body.hotelId).get();
+        if (getHotel.exists) {
+          let additionalStep = { ...getHotel.data(), id: req.body.hotelId };
+          getHotelDetails.push(additionalStep);
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    (err) => {
+      if (err) {
+        return res.status(501).send({ message: "internal error" });
+      }
+      res.status(200).send(getHotelDetails);
+    }
+  );
+});
 /**
  * Description: Sample for authorization working on both side,
  * Author: Rishabh Verma

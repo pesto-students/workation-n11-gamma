@@ -542,7 +542,32 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
-
+    case "GET_HOTEL_DETAILS_CUSTOMER":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+      });
+      await axios
+        .post("/place/loadHotelDetails", { hotelId: action.payload })
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
     default:
       next(action);
   }

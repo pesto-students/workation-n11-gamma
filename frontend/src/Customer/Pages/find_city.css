@@ -187,6 +187,18 @@
   font-weight: 700;
 }
 
+.hotel-city {
+  font-weight: 300;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hotel-type {
+  font-weight: 300;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.8em;
+}
 .city-description {
   padding-top: 3em;
   font-size: 0.7em;
@@ -205,4 +217,23 @@
 
 .place-map {
   padding-top: 3em;
+}
+
+.booking-fileds-label {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.total-days-booking,
+.total-days-booking:focus,
+.total-days-booking:active,
+.total-days-booking:disabled {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 2em;
 }

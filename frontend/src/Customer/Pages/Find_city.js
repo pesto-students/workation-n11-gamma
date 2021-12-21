@@ -123,7 +123,6 @@ function FindCity(props) {
   const info =
     props?.customer_searched_place?.data &&
     props?.customer_searched_place?.data[0];
-  console.log(info);
   return (
     <div className="place-main-div">
       <Container className="top-container" fluid>

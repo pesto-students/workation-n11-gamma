@@ -104,6 +104,7 @@ Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
               Longitude: req.body.longitude,
             },
             placeAddress: req.body.fullAdress,
+            placeType: req.body.placetype,
             amaneties,
           });
         },
