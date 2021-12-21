@@ -1,6 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Pagination } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Pagination,
+  Spinner,
+} from "react-bootstrap";
 import "./cities.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -74,7 +81,10 @@ function Cities(props) {
                         </Col>
                       ))
                     ) : (
-                      <> Loading...spinner</>
+                      <h5 className="text-white">
+                        {`Please wait...`}
+                        <Spinner animation="border" size="sm" />
+                      </h5>
                     )}
                   </Row>
                 </Col>

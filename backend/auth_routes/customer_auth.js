@@ -1,9 +1,15 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const Route = require("express").Router();
 const bcrypt = require("bcrypt");
 const modifyPassword = require("./modify_password");
 const Users = require("../database/config").Users;
+const places = require("../database/config").places;
+const cities = require("../database/config").cities;
+const bookings = require("../database/config").bookings;
 const jwt = require("jsonwebtoken");
+const authorize = require("./authorize");
+const async = require("async");
 const dotenv = require("dotenv");
 dotenv.config();
 const secret = process.env.COOKIE_SECRET;
@@ -133,7 +139,7 @@ Route.get("/isAuth", async (req, res) => {
   let auth = false;
   if (!req_token) {
     res.clearCookie("token");
-    return res.status(200).send({
+    return res.status(401).send({
       message: "Please login",
     });
   }
@@ -146,21 +152,21 @@ Route.get("/isAuth", async (req, res) => {
     }
   } catch (err) {
     res.clearCookie("token");
-    return res.status(200).send({
+    return res.status(401).send({
       message: "Invalide token",
     });
   }
 
   if (!auth) {
     res.clearCookie("token");
-    return res.status(200).send({
+    return res.status(401).send({
       message: "token verification failed",
     });
   } else {
     const data = jwt.verify(req_token, process.env.COOKIE_SECRET);
     const dbUser = await Users.doc(`${data.id}`).get();
     if (!dbUser.exists) {
-      return res.status(200).json({
+      return res.status(401).json({
         message: "token verification failed",
       });
     } else {
@@ -181,6 +187,139 @@ Route.post("/logout", (req, res) => {
   res.status(200).send({
     logout: true,
   });
+});
+
+Route.get("/loadAdminUsers", authorize, async (req, res) => {
+  let usersList = [];
+  await async.series(
+    [
+      async () => {
+        const usersListObj = await Users.get();
+        if (usersListObj._size) {
+          await usersListObj.forEach(async (doc) => {
+            const internalAddition = { ...doc.data(), id: doc.id };
+            delete internalAddition.password;
+            usersList = [...usersList, internalAddition];
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    async (err) => {
+      if (err) {
+        return res.status(402).send({ message: "Server Error" });
+      }
+
+      res.status(200).send(usersList);
+    }
+  );
+});
+
+Route.get("/loadAdminHotels", authorize, async (req, res) => {
+  let hotelsList = [];
+  await async.series(
+    [
+      async () => {
+        const hotelsListObj = await places.get();
+        if (hotelsListObj._size) {
+          await hotelsListObj.forEach(async (doc) => {
+            const internalAddition = { ...doc.data(), id: doc.id };
+            delete internalAddition.password;
+            hotelsList = [...hotelsList, internalAddition];
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    async (err) => {
+      if (err) {
+        return res.status(402).send({ message: "Server Error" });
+      }
+      res.status(200).send(hotelsList);
+    }
+  );
+});
+
+Route.get("/loadAdminCities", authorize, async (req, res) => {
+  let citiesList = [];
+  await async.series(
+    [
+      async () => {
+        const citiesListObj = await cities.get();
+        if (citiesListObj._size) {
+          await citiesListObj.forEach(async (doc) => {
+            const internalAddition = { ...doc.data(), id: doc.id };
+            delete internalAddition.password;
+            citiesList = [...citiesList, internalAddition];
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    async (err) => {
+      if (err) {
+        return res.status(402).send({ message: "Server Error" });
+      }
+      res.status(200).send(citiesList);
+    }
+  );
+});
+
+Route.get("/loadAdminBookings", authorize, async (req, res) => {
+  let bookingsList = [];
+  await async.series(
+    [
+      async () => {
+        const bookingsListObj = await bookings.get();
+        if (bookingsListObj._size) {
+          await bookingsListObj.forEach(async (doc) => {
+            const internalAddition = { ...doc.data(), id: doc.id };
+            delete internalAddition.password;
+            bookingsList = [...bookingsList, internalAddition];
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+      async () => {
+        if (bookingsList.length) {
+          await bookingsList.forEach(async (doc) => {
+            if (doc?.placeId?._path?.segments?.length) {
+              doc.placeId = doc?.placeId?._path?.segments[1].trim();
+            }
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+      async () => {
+        if (bookingsList.length) {
+          await bookingsList.forEach(async (doc) => {
+            if (doc?.userId?._path?.segments?.length) {
+              doc.userId = doc?.userId?._path?.segments[1].trim();
+            }
+          });
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    async (err) => {
+      if (err) {
+        return res.status(402).send({ message: "Server Error" });
+      }
+      return await res.status(200).send(bookingsList);
+    }
+  );
 });
 
 module.exports = Route;

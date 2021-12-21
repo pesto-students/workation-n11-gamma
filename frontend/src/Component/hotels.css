@@ -81,6 +81,7 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+  width: fit-content;
 }
 
 .location-card-title-location {
@@ -89,6 +90,7 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+  width: fit-content;
 }
 
 .location-main-container-third-row-col {

@@ -103,7 +103,6 @@ function SignUp(props) {
     } else if (userPassword !== userReEnterPassword) {
       notifyPasswordSame();
     } else {
-      // console.log('loading props');
       props.load_signup_host({
         emailAddress,
         userPassword,

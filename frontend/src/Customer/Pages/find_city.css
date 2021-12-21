@@ -47,6 +47,7 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+  width: fit-content;
 }
 
 .filter-container {
@@ -178,4 +179,61 @@
   color: black;
   filter: brightness(70%);
   font-weight: 500;
+}
+
+.city-name {
+  padding-top: 1.5em;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.hotel-city {
+  font-weight: 300;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.hotel-type {
+  font-weight: 300;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.8em;
+}
+.city-description {
+  padding-top: 3em;
+  font-size: 0.7em;
+  line-height: 1.2em;
+  color: rgb(144, 248, 241);
+}
+
+.minimum-budget-row {
+  padding-top: 6em;
+}
+.minimum-budget-line {
+  font-size: 1.2em;
+  font-weight: 500;
+  padding-bottom: 2em;
+}
+
+.place-map {
+  padding-top: 3em;
+}
+
+.booking-fileds-label {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.total-days-booking,
+.total-days-booking:focus,
+.total-days-booking:active,
+.total-days-booking:disabled {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 2em;
 }

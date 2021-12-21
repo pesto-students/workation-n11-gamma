@@ -123,36 +123,46 @@ function FindCity(props) {
   const info =
     props?.customer_searched_place?.data &&
     props?.customer_searched_place?.data[0];
-
   return (
     <div className="place-main-div">
       <Container className="top-container" fluid>
         <Row className="gx-0">
           <Col className="top-div">
             <Container className="second-container" fluid>
-              <Row className="gx-0">
-                <Col sm={6}>
+              <Row className="gx-5">
+                <Col sm={4}>
                   <div className="city-name">{info?.name}</div>
                   <div className="city-description">{info?.description}</div>
                 </Col>
-                <Col sm={6}>
-                  <div className="place-map">
-                    {info?.placeLocation?._latitude +
+                <Col sm={4}></Col>
+                <Col sm={4}>
+                  <div className="place-map d-none">
+                    <h6>Map Coordinates</h6>
+                    {info?.placeLocation?.Latitude +
                       "/" +
-                      info?.placeLocation?._longitude}
+                      info?.placeLocation?.Longitude}
                   </div>
                   <div className="nomads-uploads">
-                    {info?.nomadsUpload?.map((images) => {
+                    {/* {info?.nomadsUpload?.map((images) => {
                       return <div className="">{images.toString()}</div>;
-                    })}
+                    })} */}
+                    <Card className="location-cards p-0">
+                      <Card.Img
+                        variant="top"
+                        src={info?.city_image}
+                        className="location-card-image m-0"
+                      />
+                    </Card>
                   </div>
                 </Col>
               </Row>
 
-              <Row className="gx-0">
+              <Row className="gx-0 minimum-budget-row">
                 <Container>
                   <Row>
-                    <Col>1 of 2 check the padding and margin</Col>
+                    <Col sm={12} className="minimum-budget-line">
+                      {`Find the best stay in ${info?.name} in minimum budget`}
+                    </Col>
                   </Row>
                   <Row>
                     <Col sm={9}>

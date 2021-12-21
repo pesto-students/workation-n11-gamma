@@ -7,7 +7,7 @@ admin.initializeApp({
 });
 
 let db = admin.firestore();
-
+const fieldValue = admin.firestore.FieldValue;
 let Users = db.collection("Users");
 let cities = db.collection("cities");
 let places = db.collection("places");
@@ -22,5 +22,6 @@ const dBase = {
   hotelOwners,
   landingvideo,
   bookings,
+  fieldValue,
 };
 module.exports = dBase;

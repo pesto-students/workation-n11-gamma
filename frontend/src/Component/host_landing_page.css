@@ -56,6 +56,13 @@
   border-radius: 0.7em;
 }
 
+.host-hotel-cards {
+  height: 15em;
+  position: relative;
+  border: none !important;
+  border-radius: 0.7em;
+}
+
 .location-card-image {
   position: absolute;
   height: 100%;
@@ -81,6 +88,21 @@
   padding: 0.1em 0.5em;
   border-radius: 0.6em;
   word-wrap: break-word;
+  width: fit-content;
+}
+
+.location-card-title-city {
+  font-size: 0.9em;
+  background-color: rgba(0, 10, 10, 1);
+  padding: 0.1em 0.5em;
+  border-radius: 0.6em;
+  word-wrap: break-word;
+  width: fit-content;
+}
+
+.add-hotel-form-div {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3em 6em;
 }
 
 .location-main-container-third-row-col {

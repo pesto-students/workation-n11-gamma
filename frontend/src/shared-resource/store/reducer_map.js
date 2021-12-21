@@ -12,6 +12,11 @@ import { load_cities_page_data_reducer } from "../reducers/load_cities_page_data
 import { load_hotels_page_data_reducer } from "../reducers/load_hotels_page_data_reducer";
 import { load_host_landing_page_data_reducer } from "../reducers/load_host_landing_page_data_reducer";
 import { load_host_hotels_page_data_reducer } from "../reducers/load_host_hotel_page_data_reducer";
+import { load_admin_users_list_reducer } from "../reducers/admin_users_list_reducer";
+import { load_admin_hotels_list_reducer } from "../reducers/admin_hotels_list_reducer";
+import { load_admin_cities_list_reducer } from "../reducers/admin_cities_list_reducer";
+import { load_admin_booking_list_reducer } from "../reducers/admin_booking_list_reducer";
+import { load_customer_hotel_details_reducer } from "../reducers/load_customer_hotel_details_reducer";
 
 const reducerMap = Object.freeze({
   CUSTOMER_USER_REDUCER: customer_user_reducer,
@@ -28,6 +33,11 @@ const reducerMap = Object.freeze({
   LOAD_HOTELS_PAGE_DATA_REDUCER: load_hotels_page_data_reducer,
   LOAD_HOST_LANDING_PAGE_DATA_REDUCER: load_host_landing_page_data_reducer,
   LOAD_HOST_HOTEL_PAGE_DATA_REDUCER: load_host_hotels_page_data_reducer,
+  LOAD_ADMIN_USERS_REDUCER: load_admin_users_list_reducer,
+  LOAD_ADMIN_HOTELS_REDUCER: load_admin_hotels_list_reducer,
+  LOAD_ADMIN_CITIES_REDUCER: load_admin_cities_list_reducer,
+  LOAD_ADMIN_BOOKINGS_REDUCER: load_admin_booking_list_reducer,
+  GET_HOTEL_DETAILS_CUSTOMER_REDUCER: load_customer_hotel_details_reducer,
 });
 
 export { reducerMap };

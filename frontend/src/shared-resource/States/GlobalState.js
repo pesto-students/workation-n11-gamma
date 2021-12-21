@@ -69,6 +69,31 @@ const initialState = {
     data: [],
     error: "",
   },
+  adminUsersListData: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
+  adminHotelsListData: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
+  adminCitiesListData: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
+  adminBookingsListData: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
+  customerHotelDetails: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
 };
 
 export { initialState };

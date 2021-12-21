@@ -1,6 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Pagination } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Pagination,
+  Spinner,
+} from "react-bootstrap";
 import "./hotels.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -53,7 +60,7 @@ function Hotels(props) {
                       props.hotelsPageData?.data?.hotels.map((_, idx) => (
                         <Col key={idx}>
                           <Link
-                            to={`/customer/city/${_.name}`}
+                            to={`/customer/hotel/${_.id}`}
                             className="text-white"
                           >
                             <Card className="location-cards p-0">
@@ -77,7 +84,10 @@ function Hotels(props) {
                         </Col>
                       ))
                     ) : (
-                      <> Loading...spinner</>
+                      <h5 className="text-white">
+                        {`Please wait...`}
+                        <Spinner animation="border" size="sm" />
+                      </h5>
                     )}
                   </Row>
                 </Col>

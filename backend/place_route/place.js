@@ -258,8 +258,12 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
           console.log(err);
           return res.status(402).send({ message: "error" });
         }
+
+        // please check once
         if (hotelsList?.length) {
           return await returnHotels(req, res, hotelsList);
+        } else {
+          res.status(200).send(hotelsList);
         }
       }
     );
@@ -464,7 +468,6 @@ Route.post("/form-submit-url", (req, res) => {
         });
       },
       async () => {
-        console.log("comming here to");
         await smtpTransport.sendMail(mailOptions2, function(error) {
           if (error) {
             console.log(error);
@@ -481,6 +484,30 @@ Route.post("/form-submit-url", (req, res) => {
       } else {
         res.status(200).send({ message: "successfully sent" });
       }
+    }
+  );
+});
+
+Route.post("/loadHotelDetails", async (req, res) => {
+  let getHotelDetails = [];
+  await async.series(
+    [
+      async () => {
+        const getHotel = await places.doc(req.body.hotelId).get();
+        if (getHotel.exists) {
+          let additionalStep = { ...getHotel.data(), id: req.body.hotelId };
+          getHotelDetails.push(additionalStep);
+          return;
+        } else {
+          return;
+        }
+      },
+    ],
+    (err) => {
+      if (err) {
+        return res.status(501).send({ message: "internal error" });
+      }
+      res.status(200).send(getHotelDetails);
     }
   );
 });

@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+.admin-main-top {
+  height: max-content;
+}
+
+.admin-main-container {
+  min-height: 800px;
+  max-height: max-content;
+  backdrop-filter: brightness(60%);
+}
+
+.admin-first-col {
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  text-decoration: underline;
+}
+
+.admin-second-col {
+  width: 100%;
+}
+
+.tab-contant-main {
+  width: 100% !important;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.marqee-top {
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.clear-bttn {
+  height: 10px;
+  vertical-align: top;
+  color: white;
+  cursor: pointer;
+}
+
+.analytics-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  font-weight: 500;
+  margin-top: 5em;
+}
+
+.add-city-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.add-city-button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9em;
+  margin-bottom: 3px;
+}
+.add-city-button:hover,
+.add-city-button:active,
+.add-city-button:focus {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.add-city-form-div {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3em 6em;
+}
+
+.city-loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}

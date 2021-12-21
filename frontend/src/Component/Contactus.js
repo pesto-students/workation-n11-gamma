@@ -74,7 +74,6 @@ function ContactUs(props) {
           email: emailAddress,
           message: query,
         };
-        console.log(data);
         await axios
           .post("/place/form-submit-url", data)
           .then((data) => {
