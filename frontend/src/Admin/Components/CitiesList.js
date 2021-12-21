@@ -34,6 +34,7 @@ function CitiesList(props) {
     latitude,
     longitude,
     loading,
+    addCity,
   ]);
 
   const notify = async () => {
@@ -251,6 +252,8 @@ function CitiesList(props) {
                             type="text"
                             placeholder="Enter latitude"
                             value={latitude}
+                            max={99}
+                            min={0}
                             onChange={changeTheLatitude}
                           />
                         </Form.Group>
@@ -263,6 +266,8 @@ function CitiesList(props) {
                             type="text"
                             placeholder="Enter longitude"
                             value={longitude}
+                            max={99}
+                            min={0}
                             onChange={changeTheLongitude}
                           />
                         </Form.Group>
