@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 // import {userContext} from "../shared-resource/Contexts/User_Context"
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import "./host_landing_page.css";
 import { useParams, Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -86,7 +86,10 @@ function HostHotelPage(props) {
                           </Col>
                         ))
                       ) : (
-                        <> Loading...spinner</>
+                        <h5 className="text-white">
+                          {`Please wait...`}
+                          <Spinner animation="border" size="sm" />
+                        </h5>
                       )}
                     </Row>
                   </Col>

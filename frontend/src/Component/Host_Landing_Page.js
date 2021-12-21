@@ -2,7 +2,7 @@
 import React, { useEffect, useContext } from "react";
 import { userContext } from "../shared-resource/Contexts/User_Context";
 // import {userContext} from "../shared-resource/Contexts/User_Context"
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import "./host_landing_page.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -80,7 +80,10 @@ function HostLandingPage(props) {
                           </Col>
                         ))
                       ) : (
-                        <> Loading...spinner</>
+                        <h5 className="text-white">
+                          {`Please wait...`}
+                          <Spinner animation="border" size="sm" />
+                        </h5>
                       )}
                     </Row>
                   </Col>
