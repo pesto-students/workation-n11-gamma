@@ -54,31 +54,10 @@
   text-decoration: none;
 }
 
-/* .navbar-links-panel {
-  text-decoration: line-through;
-} */
-
-/* .navbar-links:active {
-  color: white !important;
-  text-decoration: line-through;
-} */
-
-/* .navbar-links:link {
-  color: white;
-}
-
-.navbar-links:visited {
-  color: blue;
-}
-
-.navbar-links:active {
-  color: red !important;
-} */
-
 .navbar-links:hover,
+.navbar-links:active,
 .navbar-links-panel:hover {
   color: white !important;
-  text-decoration: line-through;
 }
 
 .right-panel {
@@ -162,4 +141,8 @@
   .navbar-main-top {
     border: none;
   }
+}
+
+.top-links:hover {
+  color: white;
 }

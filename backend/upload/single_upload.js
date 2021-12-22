@@ -78,7 +78,6 @@ Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
   // console.log(result);
 
   let userId = req.body.userId;
-
   if (result) {
     let response;
     let placeId;
@@ -141,12 +140,17 @@ Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
           }
         },
         async () => {
+          if (typeof ownerId === "object") {
+            ownerId = ownerId?._path?.segments[1];
+          }
           if (ownerId) {
             await places.doc(placeId).set(
               {
                 owner: owners.doc(ownerId),
               },
-              { merge: true }
+              {
+                merge: true,
+              }
             );
           } else {
             return;

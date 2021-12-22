@@ -140,7 +140,9 @@
   text-align: center;
 }
 
-.link-text {
+.link-text,
+.link-text:link,
+.link-text:hover {
   color: white;
   text-decoration: none;
   font-weight: bold;

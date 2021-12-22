@@ -40,7 +40,7 @@
 }
 
 .location-main-container-first-row-col {
-  padding-left: 0.4em;
+  padding-left: 0em !important;
   font-size: 2em;
   font-weight: 300;
 }

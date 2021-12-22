@@ -48,11 +48,31 @@ function Cities(props) {
           <Col sm={12} className="explore-top-location-col">
             <Container className="explore-top-location-main-container" fluid>
               <Row className="gx-0">
-                <Col sm={12} className="location-main-container-first-row-col">
+                <Col sm={12} className="location-main-container-first-row-col ">
                   Our Locations
                 </Col>
               </Row>
               <Row className="gx-0">
+                <Row className="gx-0">
+                  <Col
+                    sm={6}
+                    className="location-main-container-third-row-col d-flex flex-row justify-content-start"
+                  >
+                    Showing {from} to{" "}
+                    {props.citiesPageData?.data?.totalCount < to
+                      ? props.citiesPageData?.data?.totalCount
+                      : to}{" "}
+                    of {props.citiesPageData?.data?.totalCount}
+                  </Col>
+                  <Col sm={6} className="location-main-container-third-row-col">
+                    <Pagination>
+                      {from < 10 ? null : (
+                        <Pagination.Prev onClick={moveBack} />
+                      )}
+                      <Pagination.Next onClick={moveForward} />
+                    </Pagination>
+                  </Col>
+                </Row>
                 <Col sm={12} className="location-main-container-second-row-col">
                   <Row xs={1} sm={2} md={4} className="g-5">
                     {props.citiesPageData?.data &&
@@ -87,14 +107,6 @@ function Cities(props) {
                       </h5>
                     )}
                   </Row>
-                </Col>
-              </Row>
-              <Row className="gx-0">
-                <Col sm={12} className="location-main-container-third-row-col">
-                  <Pagination>
-                    {from < 10 ? null : <Pagination.Prev onClick={moveBack} />}
-                    <Pagination.Next onClick={moveForward} />
-                  </Pagination>
                 </Col>
               </Row>
             </Container>

@@ -51,7 +51,7 @@ function FooterBar() {
         </Row>
         <Row>
           <Col sm={12} className="copyright-text">
-            copyright@2021. PESTO . Thanks to Unsplash.
+            copyright&copy;2021. PESTO . Thanks to Unsplash.
           </Col>
         </Row>
       </Container>

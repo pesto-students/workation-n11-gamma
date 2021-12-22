@@ -179,7 +179,7 @@ Route.post("/loadLandingPageData", (_req, res) => {
       }
 
       if (cityResult?.length) {
-        finalList["cityResult"] = cityResult.splice(0, 4);
+        finalList["cityResult"] = cityResult;
         res.status(200).send(finalList);
       } else {
         res.status(403).send({
@@ -321,11 +321,13 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
 
 Route.post("/loadcitiesPageData", (req, res) => {
   let cityResult = [];
+  let citiesCount = 0;
   async.series(
     [
       async () => {
         const cityDetails = await Cities.get();
         if (cityDetails._size) {
+          citiesCount = cityDetails._size;
           await cityDetails.forEach(async (doc) => {
             const internalAddition = {
               name: doc.data().name,
@@ -353,6 +355,7 @@ Route.post("/loadcitiesPageData", (req, res) => {
         if (req.body.from > cityResult.length) {
           return res.status(403).send({ message: " no more data" });
         }
+        finalList["totalCount"] = citiesCount;
         res.status(200).send(finalList);
       } else {
         res.status(403).send({
@@ -365,11 +368,13 @@ Route.post("/loadcitiesPageData", (req, res) => {
 
 Route.post("/loadHotelsPageData", (req, res) => {
   let placesResult = [];
+  let totalCount = 0;
   async.series(
     [
       async () => {
         const placesDetails = await places.get();
         if (placesDetails._size) {
+          totalCount = placesDetails._size;
           await placesDetails.forEach(async (doc) => {
             const internalAddition = {
               city: doc.data().city,
@@ -395,6 +400,7 @@ Route.post("/loadHotelsPageData", (req, res) => {
         finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
         finalList["from"] = req.body.from;
         finalList["to"] = req.body.to;
+        finalList["totalCount"] = totalCount;
         if (req.body.from > placesResult.length) {
           return res.status(403).send({ message: " no more data" });
         }

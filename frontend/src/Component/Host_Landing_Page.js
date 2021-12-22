@@ -25,8 +25,8 @@ function HostLandingPage(props) {
   const [cityname, changecityname] = useState("");
   const [hotelDescription, changehotelDescription] = useState("");
   const [file, setFile] = useState();
-  const [longitude, setLongitude] = useState("");
-  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("54.23");
+  const [latitude, setLatitude] = useState("23.23");
   const [loading, setLoading] = useState(false);
   const [hotelname, setHotelName] = useState("");
   const [subarea, setSubarea] = useState("");
@@ -318,7 +318,7 @@ function HostLandingPage(props) {
                         onClick={addTheHotel}
                       >
                         {" "}
-                        Include More&nbsp;&#x2B;
+                        Include hotel&nbsp;&#x2B;
                       </Button>
                     ) : (
                       <Button
@@ -366,7 +366,8 @@ function HostLandingPage(props) {
                               </Link>
                             </Col>
                           ))
-                        ) : (
+                        ) : props.landing_page_data.data?.length ===
+                          0 ? null : (
                           <h5 className="text-white">
                             {`Please wait...`}
                             <Spinner animation="border" size="sm" />
@@ -510,6 +511,7 @@ function HostLandingPage(props) {
                                       value={latitude}
                                       max={99}
                                       min={0}
+                                      disabled
                                       onChange={changeTheLatitude}
                                     />
                                   </Form.Group>
@@ -527,6 +529,7 @@ function HostLandingPage(props) {
                                       value={longitude}
                                       max={99}
                                       min={0}
+                                      disabled
                                       onChange={changeTheLongitude}
                                     />
                                   </Form.Group>

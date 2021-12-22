@@ -85,7 +85,8 @@ function HostHotelPage(props) {
                             </Link>
                           </Col>
                         ))
-                      ) : (
+                      ) : props.hotel_page_data?.bookings?.length ===
+                        0 ? null : (
                         <h5 className="text-white">
                           {`Please wait...`}
                           <Spinner animation="border" size="sm" />

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -18,39 +18,12 @@ import "./headerbar.css";
 function HeaderBar(props) {
   const usersAuth = useContext(userContext);
 
-  const [selectCustomer, ChangeSelectCustomer] = useState(false);
-  const [selectHost, ChangeSelectHost] = useState(false);
-
-  useEffect(() => {}, [selectCustomer, selectHost]);
-
   function pleaseLogout() {
     props.authorize_user_logout();
   }
 
-  function selectCustomerButtons() {
-    ChangeSelectCustomer(true);
-    ChangeSelectHost(false);
-  }
-
   function customerLogin() {
     props.router.navigate("/customer/login");
-  }
-
-  function hostLogin() {
-    props.router.navigate("/host/login");
-  }
-
-  function customerSignup() {
-    props.router.navigate("/customer/signup");
-  }
-
-  function hostSignup() {
-    props.router.navigate("/host/signup");
-  }
-
-  function selectHostButtons() {
-    ChangeSelectCustomer(false);
-    ChangeSelectHost(true);
   }
 
   function guestLogin() {
@@ -71,23 +44,29 @@ function HeaderBar(props) {
             <Navbar className="navbar-main-top" expand={false}>
               <Container className="justify-content-center" fluid>
                 <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2 ">
-                  <Link className="navbar-links" to="/">
+                  <Link className="navbar-links top-links" to="/">
                     Home
                   </Link>
                   {usersAuth?.isHost ? null : (
-                    <Link className="navbar-links" to="/customer/findcities">
+                    <Link
+                      className="navbar-links top-links"
+                      to="/customer/findcities"
+                    >
                       Cities
                     </Link>
                   )}
                   {usersAuth?.isHost ? null : (
-                    <Link className="navbar-links" to="/customer/findHotels">
+                    <Link
+                      className="navbar-links top-links"
+                      to="/customer/findHotels"
+                    >
                       Hotels
                     </Link>
                   )}
-                  <Link className="navbar-links" to="/about-us">
+                  <Link className="navbar-links top-links" to="/about-us">
                     About us
                   </Link>
-                  <Link className="navbar-links" to="/contact-us">
+                  <Link className="navbar-links top-links" to="/contact-us">
                     Contact us
                   </Link>
                   <div className=" login-signup-button flex-grow-1">
@@ -118,58 +97,18 @@ function HeaderBar(props) {
                     ) : null}
                     {usersAuth?.isLogin ? null : (
                       <>
-                        {!selectCustomer ? (
-                          <Button
-                            className="login-header-button book-login"
-                            onClick={selectCustomerButtons}
-                          >
-                            BOOK
-                          </Button>
-                        ) : (
-                          <>
-                            <Button
-                              className="login-header-button book-login"
-                              onClick={customerLogin}
-                            >
-                              LOGIN
-                            </Button>
-                            <Button
-                              className="signin-header-button book-login"
-                              onClick={customerSignup}
-                            >
-                              SIGNUP
-                            </Button>
-                          </>
-                        )}
-                        {!selectHost ? (
-                          <Button
-                            className="signin-header-button host-login"
-                            onClick={selectHostButtons}
-                          >
-                            HOST
-                          </Button>
-                        ) : (
-                          <>
-                            <Button
-                              className="login-header-button host-login"
-                              onClick={hostLogin}
-                            >
-                              LOGIN
-                            </Button>
-                            <Button
-                              className="signin-header-button host-login"
-                              onClick={hostSignup}
-                            >
-                              SIGNUP
-                            </Button>
-                          </>
-                        )}
                         <Button
+                          className="login-header-button book-login"
+                          onClick={customerLogin}
+                        >
+                          LOGIN
+                        </Button>
+                        {/* <Button
                           className="signin-header-button guestLogin"
                           onClick={guestLogin}
                         >
                           GUEST
-                        </Button>
+                        </Button> */}
                       </>
                     )}
                   </div>
