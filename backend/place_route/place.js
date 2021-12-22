@@ -179,18 +179,9 @@ Route.post("/loadLandingPageData", (_req, res) => {
         return res.status(402).send({ message: "error" });
       }
       const finalList = {};
-      if (landinVideoDataList?.length) {
-        finalList["video_data"] = landinVideoDataList;
-      }
-
-      if (cityResult?.length) {
-        finalList["cityResult"] = cityResult;
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
-      }
+      finalList["video_data"] = landinVideoDataList;
+      finalList["cityResult"] = cityResult;
+      res.status(200).send(finalList);
     }
   );
 });
@@ -358,20 +349,14 @@ Route.post("/loadcitiesPageData", (req, res) => {
       }
       const finalList = {};
 
-      if (cityResult?.length) {
-        finalList["cities"] = cityResult.splice(req.body.from, req.body.to);
-        finalList["from"] = req.body.from;
-        finalList["to"] = req.body.to;
-        if (req.body.from > cityResult.length) {
-          return res.status(403).send({ message: " no more data" });
-        }
-        finalList["totalCount"] = citiesCount;
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
+      finalList["cities"] = cityResult.splice(req.body.from, req.body.to);
+      finalList["from"] = req.body.from;
+      finalList["to"] = req.body.to;
+      if (req.body.from > cityResult.length) {
+        return res.status(403).send({ message: " no more data" });
       }
+      finalList["totalCount"] = citiesCount;
+      res.status(200).send(finalList);
     }
   );
 });
@@ -407,20 +392,14 @@ Route.post("/loadHotelsPageData", (req, res) => {
       }
       const finalList = {};
 
-      if (placesResult?.length) {
-        finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
-        finalList["from"] = req.body.from;
-        finalList["to"] = req.body.to;
-        finalList["totalCount"] = totalCount;
-        if (req.body.from > placesResult.length) {
-          return res.status(403).send({ message: " no more data" });
-        }
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
+      finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
+      finalList["from"] = req.body.from;
+      finalList["to"] = req.body.to;
+      finalList["totalCount"] = totalCount;
+      if (req.body.from > placesResult.length) {
+        return res.status(403).send({ message: " no more data" });
       }
+      res.status(200).send(finalList);
     }
   );
 });

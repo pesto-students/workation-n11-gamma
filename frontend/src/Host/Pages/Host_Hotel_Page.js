@@ -12,18 +12,6 @@ function HostHotelPage(props) {
     props.loadHostHotelPageData(urlParams.hotelId);
   }, []);
 
-  function secondsToHms(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor((d % 3600) / 60);
-    var s = Math.floor((d % 3600) % 60);
-
-    var hDisplay = h > 0 ? h + (h === 1 ? " hour, " : " hours, ") : "";
-    var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes, ") : "";
-    var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
-    return hDisplay + mDisplay + sDisplay;
-  }
-
   return (
     <div className=" app-hLanding-background main-hLanding-page">
       <Container className="hLanding-page-top-container" fluid>
@@ -63,22 +51,41 @@ function HostHotelPage(props) {
                     </Row>
                     <Row xs={1} sm={2} md={4} className="g-5">
                       {props.hotel_page_data?.bookings?.length ? (
-                        props.hotel_page_data.bookings.map((_, idx) => (
+                        props?.hotel_page_data?.bookings?.map((_, idx) => (
                           <Col key={idx}>
-                            <Link to={`/${_.id}`} className="text-white">
-                              <Card className="host-hotel-cards p-0">
-                                <Card.Body className="location-card-body">
-                                  <Card.Title className="location-card-title">
+                            <Link
+                              to={`/${_.id}`}
+                              className="text-white border-0"
+                            >
+                              <Card className=" border-0">
+                                <Card.Body className="bg-dark">
+                                  <Card.Title className="booking-card-lines">
                                     {"Price: "}
                                     {_?.data?.amount}
                                   </Card.Title>
-                                  <Card.Title className="location-card-title">
-                                    {"Checking: "}
-                                    {secondsToHms(_?.data?.checkin?._seconds)}
+                                  <Card.Title className="booking-card-lines">
+                                    {"Checkin: "}
+                                    {_?.data?.checkin}
                                   </Card.Title>
-                                  <Card.Title className="location-card-title">
+                                  <Card.Title className="booking-card-lines">
                                     {"Checkout: "}
-                                    {secondsToHms(_?.data?.checkout?._seconds)}
+                                    {_?.data?.checkout}
+                                  </Card.Title>
+                                  <Card.Title className="booking-card-lines">
+                                    {"Days: "}
+                                    {_?.data?.numberOfDays}
+                                  </Card.Title>
+                                  <Card.Title className="booking-card-lines">
+                                    {"Booking Amount: "}
+                                    {_?.data?.amount}
+                                  </Card.Title>
+                                  <Card.Title className="booking-card-lines">
+                                    {"Booking OrderId: "}
+                                    {_?.data?.razorpayOrderId}
+                                  </Card.Title>
+                                  <Card.Title className="booking-card-lines">
+                                    {"Booking PaymentId: "}
+                                    {_?.data?.razorpayPaymentId}
                                   </Card.Title>
                                 </Card.Body>
                               </Card>

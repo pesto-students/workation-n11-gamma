@@ -58,7 +58,11 @@ function Cities(props) {
                     sm={6}
                     className="location-main-container-third-row-col d-flex flex-row justify-content-start"
                   >
-                    Showing {from + 1} to{" "}
+                    Showing{" "}
+                    {props.citiesPageData?.data?.totalCount === 0
+                      ? 0
+                      : from + 1}{" "}
+                    to{" "}
                     {props.citiesPageData?.data?.totalCount < to
                       ? props.citiesPageData?.data?.totalCount
                       : to}{" "}
@@ -102,7 +106,8 @@ function Cities(props) {
                           </Link>
                         </Col>
                       ))
-                    ) : (
+                    ) : props.citiesPageData?.data?.cities?.length ===
+                      0 ? null : (
                       <h5 className="text-white">
                         {`Please wait...`}
                         <Spinner animation="border" size="sm" />

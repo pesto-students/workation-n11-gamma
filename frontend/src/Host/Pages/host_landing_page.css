@@ -299,3 +299,13 @@
   background: none;
   border: none;
 }
+
+.booking-host-card {
+  height: max-content;
+}
+
+.booking-card-lines {
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+}

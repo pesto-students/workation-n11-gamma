@@ -94,6 +94,7 @@ Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
             placeAddress: req.body.fullAdress,
             placeType: req.body.placetype,
             amaneties,
+            availability: req.body.availability,
           });
         },
         async () => {

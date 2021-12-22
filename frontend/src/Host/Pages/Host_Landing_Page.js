@@ -39,6 +39,7 @@ function HostLandingPage(props) {
   const [tvSelcted, setTvselected] = useState(true);
   const [tubSelcted, setTubselected] = useState(true);
   const [fullAdress, setFullAdress] = useState("");
+  const [availablity, setAvailablity] = useState(5);
 
   toast.configure();
 
@@ -65,6 +66,7 @@ function HostLandingPage(props) {
     tvSelcted,
     tubSelcted,
     fullAdress,
+    availablity,
   ]);
 
   const notify = async () => {
@@ -111,6 +113,10 @@ function HostLandingPage(props) {
     setLongitude(value);
   }
 
+  function changeAvailablity(e) {
+    const value = e.target.value;
+    setAvailablity(value);
+  }
   function resetAll() {
     changecityname("");
     changehotelDescription("");
@@ -128,6 +134,7 @@ function HostLandingPage(props) {
     setTvselected(true);
     setTubselected(true);
     setFullAdress("");
+    setAvailablity(5);
   }
 
   function changeHotelName(e) {
@@ -205,7 +212,8 @@ function HostLandingPage(props) {
       !placetype ||
       !fromDate ||
       !toDate ||
-      !fullAdress
+      !fullAdress ||
+      !availablity
     ) {
       notify();
       return;
@@ -242,6 +250,7 @@ function HostLandingPage(props) {
       amaneties,
       user: userData.userId,
       fullAdress,
+      availablity,
     });
 
     if (result) {
@@ -267,6 +276,7 @@ function HostLandingPage(props) {
     amaneties,
     user,
     fullAdress,
+    availablity,
   }) {
     const formData = new FormData();
     formData.append("image", image);
@@ -283,6 +293,7 @@ function HostLandingPage(props) {
     formData.append("amaneties", amaneties);
     formData.append("userId", user);
     formData.append("fullAdress", fullAdress);
+    formData.append("availability", availablity);
     setLoading(true);
     const result = await axios.post("/upload/upload_hotel", formData, {
       headers: { "Content-Type": "multipart/form-data" },
@@ -573,6 +584,21 @@ function HostLandingPage(props) {
                                     are not validating currently.
                                   </Form.Text>
                                 </Row>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="formBasicNoOfAvailablity"
+                                >
+                                  <Form.Label className="text-white">
+                                    No of Availabililty
+                                  </Form.Label>
+                                  <Form.Control
+                                    type="number"
+                                    placeholder="Enter place type"
+                                    value={availablity}
+                                    onChange={changeAvailablity}
+                                  />
+                                </Form.Group>
                                 <Form.Group
                                   as={Col}
                                   controlId="formGridAmenities"
@@ -621,7 +647,7 @@ function HostLandingPage(props) {
                                 onClick={handleSubmit}
                                 className="mt-3"
                               >
-                                ADD HOTEL
+                                ADD
                               </Button>
                               {loading ? (
                                 <h5 className="text-white mt-3">

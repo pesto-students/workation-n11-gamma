@@ -58,7 +58,11 @@ function Hotels(props) {
                     sm={6}
                     className="location-main-container-third-row-col d-flex flex-row justify-content-start"
                   >
-                    Showing {from + 1} to{" "}
+                    Showing{" "}
+                    {props.hotelsPageData?.data?.totalCount === 0
+                      ? 0
+                      : from + 1}{" "}
+                    to{" "}
                     {props.hotelsPageData?.data?.totalCount < to
                       ? props.hotelsPageData?.data?.totalCount
                       : to}{" "}
@@ -104,7 +108,8 @@ function Hotels(props) {
                           </Link>
                         </Col>
                       ))
-                    ) : (
+                    ) : props.hotelsPageData?.data?.hotels?.length ===
+                      0 ? null : (
                       <h5 className="text-white">
                         {`Please wait...`}
                         <Spinner animation="border" size="sm" />
