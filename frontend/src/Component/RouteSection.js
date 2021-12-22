@@ -4,8 +4,6 @@ import LandingPage from "./LandingPage";
 import { NotFound } from "./NotFound";
 import CustomerLogin from "../Customer/Pages/Login";
 import CustomerSignUp from "../Customer/Pages/SignUp";
-import HostLogin from "../Host/Pages/Login";
-import HostSignUp from "../Host/Pages/SignUp";
 import AdminLogin from "../Admin/Pages/Login";
 import AdminLanding from "../Admin/Pages/AdminLandingPage";
 import { withRouter } from "../shared-resource/store/withRouter";
@@ -17,8 +15,8 @@ import FindCity from "../Customer/Pages/Find_city";
 import Aboutus from "./Aboutus";
 import Contactus from "./Contactus";
 import { userContext } from "../shared-resource/Contexts/User_Context";
-import HostLandingPage from "./Host_Landing_Page";
-import HostHotelPage from "./Host_Hotel_Page";
+import HostLandingPage from "../Host/Pages/Host_Landing_Page";
+import HostHotelPage from "../Host/Pages/Host_Hotel_Page";
 import { connect } from "react-redux";
 
 function RouteSection(props) {
@@ -40,10 +38,7 @@ function RouteSection(props) {
         <Route path="/customer/login" element={<CustomerLogin />} />
         <Route path="/customer/signup" element={<CustomerSignUp />} />
         <Route path="/host/hotel/:hotelId" element={<HostHotelPage />} />
-        <Route path="/host/login" element={<HostLogin />} />
-        <Route path="/host/signup" element={<HostSignUp />} />
         <Route path="/admin/login" element={<AdminLogin />} />
-        {/* <Route path="/admin/signup" element={<AdminSignUp />} /> */}
         <Route path="/customer/city/:cityName" element={<FindCity />} exact />
         <Route path="/customer/findcities" element={<Cities />} />
         <Route path="/customer/findHotels" element={<Hotels />} />

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import HeaderBar from "./Component/HeaderBar";
 import { FooterBar } from "./Component/FooterBar";
 import RouteSection from "./Component/RouteSection";
@@ -9,8 +8,7 @@ import { userContext } from "./shared-resource/Contexts/User_Context";
 import { withRouter } from "./shared-resource/store/withRouter.js";
 import { useLocation } from "react-router";
 import Loader from "./Component/Loader";
-
-// import { ToastContainer } from 'react-toastify';
+import "./App.css";
 
 function App(props) {
   const contextValue = {
@@ -62,6 +60,7 @@ function App(props) {
 
   const isUrlChange = useLocation().pathname === "/";
   const changeClassUrlChange = isUrlChange ? null : "url-change";
+
   return (
     <div className={`main-app ${changeClassUrlChange} p-0 m-0`}>
       <userContext.Provider value={userObj}>

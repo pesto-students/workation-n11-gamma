@@ -15,8 +15,19 @@ function SignUp(props) {
   const [username, changeUsername] = useState("");
   const [userReEnterPassword, changeUserReEnterPassword] = useState("");
   const [isPasswordSame, changeIsPasswordSame] = useState(true);
+  const [usertype, setUsertype] = useState("CUSTOMER");
 
-  const userType = "CUSTOMER";
+  useEffect(() => {
+    document.title = "Work@tion-Signup-Customer";
+  }, [
+    emailAddress,
+    userPassword,
+    userReEnterPassword,
+    username,
+    isPasswordSame,
+    usertype,
+  ]);
+
   const notifyEmail = async () => {
     toast.error("Required Email!", { theme: "dark" });
   };
@@ -37,22 +48,17 @@ function SignUp(props) {
     toast.error("Password must be same!", { theme: "dark" });
   };
 
-  useEffect(() => {
-    document.title = "Work@tion-Signup-Customer";
-  }, [
-    emailAddress,
-    userPassword,
-    userReEnterPassword,
-    username,
-    isPasswordSame,
-  ]);
-
   function changeEmailFieldValue(e) {
     changeEmailAddress(e.target.value);
   }
 
   function changePasswordFieldValue(e) {
     changeUserPassword(e.target.value);
+  }
+
+  function changeTheType(e) {
+    const value = e.target.value;
+    setUsertype(value);
   }
 
   function changeNameFieldValue(e) {
@@ -64,7 +70,6 @@ function SignUp(props) {
   }
 
   function reEnterFocused(e) {
-    // console.log('focused');
     if (userPassword === userReEnterPassword) {
       changeIsPasswordSame(true);
     } else {
@@ -103,6 +108,7 @@ function SignUp(props) {
     } else if (userPassword !== userReEnterPassword) {
       notifyPasswordSame();
     } else {
+      let userType = usertype;
       props.load_signup_user({
         emailAddress,
         userPassword,
@@ -154,6 +160,21 @@ function SignUp(props) {
 
                       <Form.Group
                         className="password-group mb-3"
+                        controlId="formBasicUserType"
+                      >
+                        {/* <Form.Label className="password-label">Password</Form.Label> */}
+                        <Form.Select
+                          aria-label="Default select example"
+                          className="email-input"
+                          onChange={changeTheType}
+                        >
+                          <option value="CUSTOMER">Booking</option>
+                          <option value="HOST">Hosting</option>
+                        </Form.Select>
+                      </Form.Group>
+
+                      <Form.Group
+                        className="password-group mb-3"
                         controlId="formBasicPassword"
                       >
                         <Form.Control
@@ -184,12 +205,12 @@ function SignUp(props) {
                         />
                       </Form.Group>
                       {isPasswordSame ? null : (
-                        <Form.Text className="text-white font-bold">
+                        <Form.Text className="text-white font-bold p-0 m-0">
                           ! Both the password must be same.
                         </Form.Text>
                       )}
 
-                      <Form.Text className=" sign-up-text">
+                      <Form.Text className=" login-up-text">
                         Already have an account ?
                         <Link to="/customer/login" className="link-text">
                           &nbsp;Log in

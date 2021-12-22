@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-require("dotenv").config();
 const fs = require("fs");
 const S3 = require("aws-sdk/clients/s3");
+require("dotenv").config();
 
 const bucketName = process.env.AWS_BUCKET_NAME;
 const region = process.env.AWS_BUCKET_REGION;

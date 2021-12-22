@@ -1,13 +1,7 @@
 import { initialState } from "../States/GlobalState";
 import { reducerMap } from "./reducer_map";
 
-function createAsyncReducer(
-  initialState,
-  init,
-  success,
-  failure,
-  reset = null
-) {
+function createAsyncReducer(initialState, init, success, failure) {
   return (state = initialState, action) => {
     switch (action?.status) {
       case "Initiated":

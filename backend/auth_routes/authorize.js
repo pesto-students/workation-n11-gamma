@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const secret = process.env.COOKIE_SECRET;
 
+// middleware for authentication
 const authorize = (req, res, next) => {
   /**
    * Description: authorization: Bearer token is pending,

@@ -8,10 +8,10 @@ import {
   Pagination,
   Spinner,
 } from "react-bootstrap";
-import "./hotels.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./hotels.css";
 
 function Hotels(props) {
   const [from, ChangeFrom] = useState(0);
@@ -42,6 +42,7 @@ function Hotels(props) {
           <Col sm={12}>Live the life better way, Explore with us</Col>
         </Row>
       </Container>
+
       <Container className="hotels-page-second-container" fluid>
         <Row className="gx-0 explore-top-location-hotels">
           <Col sm={12} className="explore-top-location-col">
@@ -52,6 +53,30 @@ function Hotels(props) {
                 </Col>
               </Row>
               <Row className="gx-0">
+                <Row className="gx-0">
+                  <Col
+                    sm={6}
+                    className="location-main-container-third-row-col d-flex flex-row justify-content-start"
+                  >
+                    Showing{" "}
+                    {props.hotelsPageData?.data?.totalCount === 0
+                      ? 0
+                      : from + 1}{" "}
+                    to{" "}
+                    {props.hotelsPageData?.data?.totalCount < to
+                      ? props.hotelsPageData?.data?.totalCount
+                      : to}{" "}
+                    of {props.hotelsPageData?.data?.totalCount}
+                  </Col>
+                  <Col sm={6} className="location-main-container-third-row-col">
+                    <Pagination>
+                      {from < 10 ? null : (
+                        <Pagination.Prev onClick={moveBack} />
+                      )}
+                      <Pagination.Next onClick={moveForward} />
+                    </Pagination>
+                  </Col>
+                </Row>
                 <Col sm={12} className="location-main-container-second-row-col">
                   <Row xs={1} sm={2} md={4} className="g-5">
                     {props.hotelsPageData?.data &&
@@ -83,21 +108,14 @@ function Hotels(props) {
                           </Link>
                         </Col>
                       ))
-                    ) : (
+                    ) : props.hotelsPageData?.data?.hotels?.length ===
+                      0 ? null : (
                       <h5 className="text-white">
                         {`Please wait...`}
                         <Spinner animation="border" size="sm" />
                       </h5>
                     )}
                   </Row>
-                </Col>
-              </Row>
-              <Row className="gx-0">
-                <Col sm={12} className="location-main-container-third-row-col">
-                  <Pagination>
-                    {from < 10 ? null : <Pagination.Prev onClick={moveBack} />}
-                    <Pagination.Next onClick={moveForward} />
-                  </Pagination>
                 </Col>
               </Row>
             </Container>

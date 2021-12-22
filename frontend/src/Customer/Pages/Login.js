@@ -12,8 +12,8 @@ function Login(props) {
   toast.configure();
   const [emailAddress, changeEmailAddress] = useState("");
   const [userPassword, changeUserPassword] = useState("");
+  const [usertype, setUsertype] = useState("CUSTOMER");
 
-  const userType = "CUSTOMER";
   const notify = async () => {
     toast.error("Required email and password !", { theme: "dark" });
   };
@@ -24,7 +24,7 @@ function Login(props) {
 
   useEffect(() => {
     document.title = "Work@tion-Login-Customer";
-  }, [emailAddress, userPassword]);
+  }, [emailAddress, userPassword, usertype]);
 
   function changeEmailFieldValue(e) {
     changeEmailAddress(e.target.value);
@@ -34,9 +34,14 @@ function Login(props) {
     changeUserPassword(e.target.value);
   }
 
+  function changeTheType(e) {
+    const value = e.target.value;
+    setUsertype(value);
+  }
+
   function submitLogin(e) {
     e.preventDefault();
-    if (!emailAddress || !userPassword) {
+    if (!emailAddress || !userPassword || !usertype) {
       notify();
     } else {
       let lastAtPos = emailAddress.lastIndexOf("@");
@@ -53,6 +58,7 @@ function Login(props) {
       ) {
         notifyEmailError();
       } else {
+        let userType = usertype;
         props.load_login_user(emailAddress, userPassword, userType);
       }
     }
@@ -98,6 +104,21 @@ function Login(props) {
                           onChange={changePasswordFieldValue}
                           required
                         />
+                      </Form.Group>
+
+                      <Form.Group
+                        className="password-group mb-3"
+                        controlId="formBasicUserType"
+                      >
+                        {/* <Form.Label className="password-label">Password</Form.Label> */}
+                        <Form.Select
+                          aria-label="Default select example"
+                          className="email-input"
+                          onChange={changeTheType}
+                        >
+                          <option value="CUSTOMER">Booking</option>
+                          <option value="HOST">Hosting</option>
+                        </Form.Select>
                       </Form.Group>
 
                       <Form.Text className=" forget-password-text text-muted">

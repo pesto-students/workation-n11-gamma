@@ -1,7 +1,7 @@
 // https://redux.js.org/tutorials/fundamentals/part-6-async-logic
 import axios from "axios";
 import { toast } from "react-toastify";
-import * as ACTIONS from "../Actions/action";
+import * as actiontype from "../Actions/action";
 toast.configure();
 
 const notify = async (data) => {
@@ -21,10 +21,10 @@ const isAuthenticated = async () => {
 
 export const load_login_creds = (storeAPI) => (next) => async (action) => {
   switch (action.type) {
-    case ACTIONS.loadCustomerLogin:
+    case actiontype.loadCustomerLogin:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOGIN_USER_REDUCER",
+        type: actiontype.LOGIN_USER_REDUCER,
       });
       await axios
         .post("/v1/login", { ...action.payload })
@@ -46,7 +46,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
           storeAPI.dispatch({
             status: "Success",
-            type: "LOGIN_USER_REDUCER",
+            type: actiontype.LOGIN_USER_REDUCER,
             payload: output.data,
           });
 
@@ -56,16 +56,16 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err.response.data.error);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOGIN_USER_REDUCER",
+            type: actiontype.LOGIN_USER_REDUCER,
             error: (err && err.response.data.error) || "Some internal error",
           });
         });
       next(action);
       break;
-    case ACTIONS.LOAD_HOST_LOGIN:
+    case actiontype.LOAD_HOST_LOGIN:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOGIN_HOST_REDUCER",
+        type: actiontype.LOGIN_HOST_REDUCER,
       });
       await axios
         .post("/v1/login", { ...action.payload })
@@ -86,7 +86,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           };
           storeAPI.dispatch({
             status: "Success",
-            type: "LOGIN_HOST_REDUCER",
+            type: actiontype.LOGIN_HOST_REDUCER,
             payload: output.data,
           });
 
@@ -96,16 +96,16 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err.response.data.error);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOGIN_HOST_REDUCER",
+            type: actiontype.LOGIN_HOST_REDUCER,
             error: (err && err.response.data.error) || "Some internal error",
           });
         });
       next(action);
       break;
-    case ACTIONS.LOAD_CUSTOMER_SIGNUP:
+    case actiontype.LOAD_CUSTOMER_SIGNUP:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_CUSTOMER_SIGNUP_REDUCER",
+        type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
       });
       await axios
         .post("/v1/signup", { ...action.payload })
@@ -127,7 +127,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_CUSTOMER_SIGNUP_REDUCER",
+            type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
             payload: output.data,
           });
 
@@ -137,23 +137,23 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err.response.data.error);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_CUSTOMER_SIGNUP_REDUCER",
+            type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
             error: (err && err.response.data.error) || "Some internal error",
           });
         });
       next(action);
       break;
-    case ACTIONS.updateUser:
+    case actiontype.updateUser:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "UPDATE_USER_REDUCER",
+        type: actiontype.UPDATE_USER_REDUCER,
       });
       isAuthenticated()
         .then((data) => {
           if (data && data.data && data.data.message) {
             storeAPI.dispatch({
               status: "Failure",
-              type: "UPDATE_USER_REDUCER",
+              type: actiontype.UPDATE_USER_REDUCER,
               error: "Some internal error",
             });
           } else {
@@ -173,7 +173,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             };
             storeAPI.dispatch({
               status: "Success",
-              type: "UPDATE_USER_REDUCER",
+              type: actiontype.UPDATE_USER_REDUCER,
               payload: output.data,
             });
           }
@@ -181,24 +181,24 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .catch((error) => {
           storeAPI.dispatch({
             status: "Failure",
-            type: "UPDATE_USER_REDUCER",
+            type: actiontype.UPDATE_USER_REDUCER,
             error: "Some internal error",
           });
         });
       next(action);
       break;
 
-    case ACTIONS.logoutAuthorize:
+    case actiontype.logoutAuthorize:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOGOUT_USER_REDUCER",
+        type: actiontype.LOGOUT_USER_REDUCER,
       });
       await axios
         .post("/v1/logout", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOGOUT_USER_REDUCER",
+            type: actiontype.LOGOUT_USER_REDUCER,
             payload: null,
           });
 
@@ -209,14 +209,14 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOGOUT_USER_REDUCER",
+            type: actiontype.LOGOUT_USER_REDUCER,
             error: (err && err.response.data.error) || "Some internal error",
           });
         });
       next(action);
       break;
 
-    case ACTIONS.isLandingSearchAvailable:
+    case actiontype.isLandingSearchAvailable:
       await axios
         .post("/place/isPlaceAvailable", { ...action.payload })
         .then((res) => {
@@ -241,7 +241,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       //                     storeAPI.dispatch({
       //                         status: 'Success',
       //                         payload: res.data,
-      //                         type: 'LANDING_SEARCH_BUDGET'
+      //                         type: actiontype.LANDING_SEARCH_BUDGET
       //                     })
       //                 })
       //                 .catch(err=>{
@@ -250,11 +250,11 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case ACTIONS.landingSearchOnBudget:
+    case actiontype.landingSearchOnBudget:
       //success failure is pending
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LANDING_SEARCH_BUDGET",
+        type: actiontype.LANDING_SEARCH_BUDGET,
       });
       await axios
         .post("/place/getSearchPlace", { ...action.payload })
@@ -262,23 +262,23 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           storeAPI.dispatch({
             status: "Success",
             payload: res.data,
-            type: "LANDING_SEARCH_BUDGET",
+            type: actiontype.LANDING_SEARCH_BUDGET,
           });
         })
         .catch((err) => {
           notify(err.response.data.error);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LANDING_SEARCH_BUDGET",
+            type: actiontype.LANDING_SEARCH_BUDGET,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "SEARCH_ON_FILTER":
+    case actiontype.SEARCH_ON_FILTER:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "SEARCH_ON_FILTER_REDUCER",
+        type: actiontype.SEARCH_ON_FILTER_REDUCER,
       });
 
       await axios
@@ -286,7 +286,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "SEARCH_ON_FILTER_REDUCER",
+            type: actiontype.SEARCH_ON_FILTER_REDUCER,
             payload: res.data,
           });
         })
@@ -294,17 +294,17 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "SEARCH_ON_FILTER_REDUCER",
+            type: actiontype.SEARCH_ON_FILTER_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
 
       next(action);
       break;
-    case ACTIONS.LOAD_LANDING_PAGE_DATA:
+    case actiontype.LOAD_LANDING_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_LANDING_PAGE_DATA_REDUCER",
+        type: actiontype.LOAD_LANDING_PAGE_DATA_REDUCER,
       });
 
       await axios
@@ -312,7 +312,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_LANDING_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_LANDING_PAGE_DATA_REDUCER,
             payload: res.data,
           });
         })
@@ -320,7 +320,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_LANDING_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_LANDING_PAGE_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
@@ -328,10 +328,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       next(action);
       break;
 
-    case ACTIONS.LOAD_CITIES_PAGE_DATA:
+    case actiontype.LOAD_CITIES_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_CITIES_PAGE_DATA_REDUCER",
+        type: actiontype.LOAD_CITIES_PAGE_DATA_REDUCER,
       });
 
       await axios
@@ -339,26 +339,25 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_CITIES_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_CITIES_PAGE_DATA_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_CITIES_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_CITIES_PAGE_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
 
       next(action);
       break;
-    case ACTIONS.LOAD_HOTELS_PAGE_DATA:
+    case actiontype.LOAD_HOTELS_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_HOTELS_PAGE_DATA_REDUCER",
+        type: actiontype.LOAD_HOTELS_PAGE_DATA_REDUCER,
       });
 
       await axios
@@ -366,7 +365,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_HOTELS_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOTELS_PAGE_DATA_REDUCER,
             payload: res.data,
           });
         })
@@ -374,17 +373,17 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_HOTELS_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOTELS_PAGE_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
 
       next(action);
       break;
-    case ACTIONS.LOAD_HOST_LANDING_PAGE_DATA:
+    case actiontype.LOAD_HOST_LANDING_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
+        type: actiontype.LOAD_HOST_LANDING_PAGE_DATA_REDUCER,
       });
 
       await axios
@@ -392,7 +391,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOST_LANDING_PAGE_DATA_REDUCER,
             payload: res.data,
           });
         })
@@ -400,18 +399,17 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_HOST_LANDING_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOST_LANDING_PAGE_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
 
       next(action);
       break;
-    case ACTIONS.LOAD_HOST_HOTEL_PAGE_DATA:
-      //  console.log(action.payload);
+    case actiontype.LOAD_HOST_HOTEL_PAGE_DATA:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+        type: actiontype.LOAD_HOST_HOTEL_PAGE_DATA_REDUCER,
       });
 
       await axios
@@ -419,26 +417,24 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOST_HOTEL_PAGE_DATA_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_HOST_HOTEL_PAGE_DATA_REDUCER",
+            type: actiontype.LOAD_HOST_HOTEL_PAGE_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "LOAD_ADMIN_USERS":
-      //  console.log(action.payload);
+    case actiontype.LOAD_ADMIN_USERS:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_ADMIN_USERS_REDUCER",
+        type: actiontype.LOAD_ADMIN_USERS_REDUCER,
       });
 
       await axios
@@ -446,26 +442,24 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_ADMIN_USERS_REDUCER",
+            type: actiontype.LOAD_ADMIN_USERS_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_ADMIN_USERS_REDUCER",
+            type: actiontype.LOAD_ADMIN_USERS_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "LOAD_ADMIN_HOTELS":
-      //  console.log(action.payload);
+    case actiontype.LOAD_ADMIN_HOTELS:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_ADMIN_HOTELS_REDUCER",
+        type: actiontype.LOAD_ADMIN_HOTELS_REDUCER,
       });
 
       await axios
@@ -473,26 +467,24 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_ADMIN_HOTELS_REDUCER",
+            type: actiontype.LOAD_ADMIN_HOTELS_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_ADMIN_HOTELS_REDUCER",
+            type: actiontype.LOAD_ADMIN_HOTELS_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "LOAD_ADMIN_CITIES":
-      //  console.log(action.payload);
+    case actiontype.LOAD_ADMIN_CITIES:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_ADMIN_CITIES_REDUCER",
+        type: actiontype.LOAD_ADMIN_CITIES_REDUCER,
       });
 
       await axios
@@ -500,26 +492,24 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_ADMIN_CITIES_REDUCER",
+            type: actiontype.LOAD_ADMIN_CITIES_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_ADMIN_CITIES_REDUCER",
+            type: actiontype.LOAD_ADMIN_CITIES_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "LOAD_ADMIN_BOOKINGS":
-      //  console.log(action.payload);
+    case actiontype.LOAD_ADMIN_BOOKINGS:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+        type: actiontype.LOAD_ADMIN_BOOKINGS_REDUCER,
       });
 
       await axios
@@ -527,42 +517,63 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+            type: actiontype.LOAD_ADMIN_BOOKINGS_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "LOAD_ADMIN_BOOKINGS_REDUCER",
+            type: actiontype.LOAD_ADMIN_BOOKINGS_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });
       next(action);
       break;
-    case "GET_HOTEL_DETAILS_CUSTOMER":
-      //  console.log(action.payload);
+    case actiontype.GET_HOTEL_DETAILS_CUSTOMER:
       storeAPI.dispatch({
         status: "Initiated",
-        type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+        type: actiontype.GET_HOTEL_DETAILS_CUSTOMER_REDUCER,
       });
       await axios
         .post("/place/loadHotelDetails", { hotelId: action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
-            type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+            type: actiontype.GET_HOTEL_DETAILS_CUSTOMER_REDUCER,
             payload: res.data,
           });
         })
         .catch((err) => {
-          console.log(err.response.data);
           notify(err?.response?.data?.message);
           storeAPI.dispatch({
             status: "Failure",
-            type: "GET_HOTEL_DETAILS_CUSTOMER_REDUCER",
+            type: actiontype.GET_HOTEL_DETAILS_CUSTOMER_REDUCER,
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
+    case actiontype.BOOKING_SUMMARY_DATA:
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: actiontype.BOOKING_SUMMARY_DATA_REDUCER,
+      });
+      await axios
+        .post("/place/getbookingsummary", { bookingId: action.payload })
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: actiontype.BOOKING_SUMMARY_DATA_REDUCER,
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: actiontype.BOOKING_SUMMARY_DATA_REDUCER,
             error: err?.response?.data?.message || "Some internal error",
           });
         });

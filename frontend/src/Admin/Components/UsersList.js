@@ -24,7 +24,6 @@ function UsersList(props) {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Usertype</th>
-                    <th>Reference</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -37,7 +36,6 @@ function UsersList(props) {
                             <td>{_?.username}</td>
                             <td>{_?.email}</td>
                             <td>{_?.usertype}</td>
-                            <td>{_?.id}</td>
                             <td>
                               <a>{"Remove+"}</a>
                               <a>{"Block+"}</a>

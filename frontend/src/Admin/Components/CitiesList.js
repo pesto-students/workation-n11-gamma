@@ -164,7 +164,6 @@ function CitiesList(props) {
                       <th>#</th>
                       <th>Name</th>
                       <th>Desciption</th>
-                      <th>Reference</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -184,7 +183,6 @@ function CitiesList(props) {
                                     : _?.description.substring(0, 35)
                                   : null}
                               </td>
-                              <td>{_?.id}</td>
                               <td>
                                 <a>{"Remove+"}</a>
                                 <a>{"Block+"}</a>

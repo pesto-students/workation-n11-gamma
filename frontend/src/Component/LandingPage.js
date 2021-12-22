@@ -9,13 +9,14 @@ import {
   InputGroup,
   Button,
   FormControl,
+  Spinner,
 } from "react-bootstrap";
-import "./landing.css";
 import { Link } from "react-router-dom";
 import firstvideo from "../shared-resource/videos/firstLandingVideo.mp4";
 import secondVideo from "../shared-resource/videos/secondLandingVideo.mp4";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./landing.css";
 
 function LandingPage(props) {
   const todayDate = new Date();
@@ -42,6 +43,8 @@ function LandingPage(props) {
     props.loadLandingPageData();
   }, []);
 
+  useEffect(() => {}, [budget, location, fromDate, toDate]);
+
   function searchPlaceOnBudget() {
     props.searchPlace({
       name: location,
@@ -66,7 +69,6 @@ function LandingPage(props) {
     changeToDate(e.target.value);
   }
 
-  useEffect(() => {}, [budget, location, fromDate, toDate]);
   return (
     <div className=" app-background main-landing-page">
       <Container className="landing-page-top-container" fluid>
@@ -94,13 +96,29 @@ function LandingPage(props) {
                             <InputGroup.Text className="location-input-text">
                               <i className="fa fa-map-pin"></i>
                             </InputGroup.Text>
-                            <Form.Control
-                              id="inlineFormInputName"
-                              className="input-location-box"
-                              value={location}
-                              placeholder=""
+                            <Form.Select
+                              aria-label="Default select example"
+                              className="input-location-box form-select dropdown"
                               onChange={getLocation}
-                            />
+                            >
+                              <option value="" className="bg-dark">
+                                Select location
+                              </option>
+                              {props.landing_page_data.data?.cityResult
+                                ?.length &&
+                                props.landing_page_data.data?.cityResult?.map(
+                                  (_, idx) => {
+                                    return (
+                                      <option
+                                        value={_.name}
+                                        className="bg-dark"
+                                      >
+                                        {_.name}
+                                      </option>
+                                    );
+                                  }
+                                )}
+                            </Form.Select>
                           </InputGroup>
                         </Col>
 
@@ -166,7 +184,9 @@ function LandingPage(props) {
                             type="button"
                             id="inlineFormInputButton"
                             className="search-button-location"
+                            variant="dark"
                             onClick={searchPlaceOnBudget}
+                            title="Search"
                           >
                             Search
                           </Button>
@@ -189,6 +209,9 @@ function LandingPage(props) {
             </Col>
           </Row>
           <Row className="gx-0 explore-top-location">
+            <Col sm={12} className="mandates">
+              Aman need to add mendates!
+            </Col>
             <Col sm={12} className="explore-top-location-col">
               <Container className="explore-top-location-main-container" fluid>
                 <Row className="gx-0">
@@ -208,8 +231,9 @@ function LandingPage(props) {
                       {props.landing_page_data?.data &&
                       props.landing_page_data.data?.cityResult &&
                       props.landing_page_data.data?.cityResult?.length ? (
-                        props.landing_page_data.data.cityResult.map(
-                          (_, idx) => (
+                        props?.landing_page_data?.data?.cityResult
+                          ?.slice(0, 4)
+                          ?.map((_, idx) => (
                             <Col key={idx}>
                               <Link
                                 to={`/customer/city/${_.name}`}
@@ -230,10 +254,13 @@ function LandingPage(props) {
                                 </Card>
                               </Link>
                             </Col>
-                          )
-                        )
-                      ) : (
-                        <>Loading...</>
+                          ))
+                      ) : props?.landing_page_data?.data?.cityResult?.length ===
+                        0 ? null : (
+                        <h5 className="text-white">
+                          {`Please wait...`}
+                          <Spinner animation="border" size="sm" />
+                        </h5>
                       )}
                     </Row>
                   </Col>
@@ -304,7 +331,6 @@ function LandingPage(props) {
   );
 }
 
-// export {LandingPage};
 const mapStatesToProps = (states, props) => {
   return {
     authorized_user_login: states.app.user,

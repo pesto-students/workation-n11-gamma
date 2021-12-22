@@ -94,6 +94,11 @@ const initialState = {
     data: [],
     error: "",
   },
+  bookingSummary: {
+    status: "NotStarted",
+    data: [],
+    error: "",
+  },
 };
 
 export { initialState };

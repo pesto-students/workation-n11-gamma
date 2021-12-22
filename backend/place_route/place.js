@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const Route = require("express").Router();
+const async = require("async");
+var nodemailer = require("nodemailer");
 const Cities = require("../database/config").cities;
 const places = require("../database/config").places;
 const owners = require("../database/config").hotelOwners;
 const booking = require("../database/config").bookings;
 const landingvideo = require("../database/config").landingvideo;
 const authorize = require("../auth_routes/authorize");
-const async = require("async");
-var nodemailer = require("nodemailer");
 require("dotenv").config();
 
+const Route = require("express").Router();
+
+// To Search Places
 Route.post("/getSearchPlace", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
@@ -69,12 +71,14 @@ Route.post("/getSearchPlace", (req, res) => {
   );
 });
 
+// To Check whether place is available
 Route.post("/isPlaceAvailable", (_req, res) => {
   res.status(200).json({
     isAvailable: true,
   });
 });
 
+// To search on filter
 Route.post("/searchonfilter", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
@@ -134,6 +138,7 @@ Route.post("/searchonfilter", (req, res) => {
   );
 });
 
+// To load landing page data
 Route.post("/loadLandingPageData", (_req, res) => {
   let cityResult = [];
   let landinVideoDataList = [];
@@ -174,22 +179,14 @@ Route.post("/loadLandingPageData", (_req, res) => {
         return res.status(402).send({ message: "error" });
       }
       const finalList = {};
-      if (landinVideoDataList?.length) {
-        finalList["video_data"] = landinVideoDataList;
-      }
-
-      if (cityResult?.length) {
-        finalList["cityResult"] = cityResult.splice(0, 4);
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
-      }
+      finalList["video_data"] = landinVideoDataList;
+      finalList["cityResult"] = cityResult;
+      res.status(200).send(finalList);
     }
   );
 });
 
+// function to return hotels list for host
 async function returnHotels(_req, res, data) {
   let tempArray = [];
   await async.eachSeries(data, async (id, cb) => {
@@ -199,6 +196,7 @@ async function returnHotels(_req, res, data) {
   await res.status(200).send(tempArray);
 }
 
+// To load host landing page data
 Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   if (req.id === req.body.userId) {
     let owenrsHotelResult = [];
@@ -274,6 +272,7 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   }
 });
 
+// function to return the host hotel/boking details
 async function returnBookings(_req, res, hotelObj, bookingIds) {
   let tempArray = [];
   await async.eachSeries(bookingIds, async (id, cb) => {
@@ -284,6 +283,7 @@ async function returnBookings(_req, res, hotelObj, bookingIds) {
   await res.status(200).send(hotelObj);
 }
 
+// To load host hotel page data
 Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   let owenrsHotelResult = [];
   let hotelDataObj = {};
@@ -319,13 +319,16 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   );
 });
 
+// Load city page
 Route.post("/loadcitiesPageData", (req, res) => {
   let cityResult = [];
+  let citiesCount = 0;
   async.series(
     [
       async () => {
         const cityDetails = await Cities.get();
         if (cityDetails._size) {
+          citiesCount = cityDetails._size;
           await cityDetails.forEach(async (doc) => {
             const internalAddition = {
               name: doc.data().name,
@@ -346,30 +349,28 @@ Route.post("/loadcitiesPageData", (req, res) => {
       }
       const finalList = {};
 
-      if (cityResult?.length) {
-        finalList["cities"] = cityResult.splice(req.body.from, req.body.to);
-        finalList["from"] = req.body.from;
-        finalList["to"] = req.body.to;
-        if (req.body.from > cityResult.length) {
-          return res.status(403).send({ message: " no more data" });
-        }
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
+      finalList["cities"] = cityResult.splice(req.body.from, req.body.to);
+      finalList["from"] = req.body.from;
+      finalList["to"] = req.body.to;
+      if (req.body.from > cityResult.length) {
+        return res.status(403).send({ message: " no more data" });
       }
+      finalList["totalCount"] = citiesCount;
+      res.status(200).send(finalList);
     }
   );
 });
 
+// Load hotels page
 Route.post("/loadHotelsPageData", (req, res) => {
   let placesResult = [];
+  let totalCount = 0;
   async.series(
     [
       async () => {
         const placesDetails = await places.get();
         if (placesDetails._size) {
+          totalCount = placesDetails._size;
           await placesDetails.forEach(async (doc) => {
             const internalAddition = {
               city: doc.data().city,
@@ -391,23 +392,19 @@ Route.post("/loadHotelsPageData", (req, res) => {
       }
       const finalList = {};
 
-      if (placesResult?.length) {
-        finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
-        finalList["from"] = req.body.from;
-        finalList["to"] = req.body.to;
-        if (req.body.from > placesResult.length) {
-          return res.status(403).send({ message: " no more data" });
-        }
-        res.status(200).send(finalList);
-      } else {
-        res.status(403).send({
-          message: "no data found",
-        });
+      finalList["hotels"] = placesResult.splice(req.body.from, req.body.to);
+      finalList["from"] = req.body.from;
+      finalList["to"] = req.body.to;
+      finalList["totalCount"] = totalCount;
+      if (req.body.from > placesResult.length) {
+        return res.status(403).send({ message: " no more data" });
       }
+      res.status(200).send(finalList);
     }
   );
 });
 
+// To submit the Enquiry
 Route.post("/form-submit-url", (req, res) => {
   var smtpTransport = nodemailer.createTransport({
     service: "gmail",
@@ -488,6 +485,7 @@ Route.post("/form-submit-url", (req, res) => {
   );
 });
 
+// Load details pre booking page
 Route.post("/loadHotelDetails", async (req, res) => {
   let getHotelDetails = [];
   await async.series(
@@ -511,6 +509,44 @@ Route.post("/loadHotelDetails", async (req, res) => {
     }
   );
 });
+
+// Load summary post booking
+Route.post("/getbookingsummary", async (req, res) => {
+  let bookingDetails = [];
+  let finalResult = {};
+  await async.series(
+    [
+      async () => {
+        const getBooking = await booking.doc(req.body.bookingId).get();
+        if (getBooking.exists) {
+          let additionalStep = { ...getBooking.data(), id: req.body.bookingId };
+          bookingDetails.push(additionalStep);
+          finalResult.bookingDetails = bookingDetails;
+          return;
+        } else {
+          return;
+        }
+      },
+      async () => {
+        if (bookingDetails) {
+          const hotelDetails = await places
+            .doc(bookingDetails[0]?.placeId?._path?.segments[1])
+            .get();
+          finalResult.hotelDetails = hotelDetails?.data();
+        } else {
+          return;
+        }
+      },
+    ],
+    (err) => {
+      if (err) {
+        return res.status(501).send({ message: "internal error" });
+      }
+      res.status(200).send(finalResult);
+    }
+  );
+});
+
 /**
  * Description: Sample for authorization working on both side,
  * Author: Rishabh Verma

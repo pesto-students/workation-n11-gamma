@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
-import "./aboutus.css";
 import { connect } from "react-redux";
 import imagefirst from "../shared-resource/images/alessio-furlan-Vw3a0HgE7AM-unsplash.jpg";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./aboutus.css";
 
 function AboutUs(props) {
   return (
@@ -13,6 +13,7 @@ function AboutUs(props) {
           <Col sm={12}>Live the life better way, Explore with us</Col>
         </Row>
       </Container>
+
       <Container className="aboutus-page-second-container" fluid>
         <Row className="gx-0 explore-top-location-aboutus">
           <Col sm={12} className="explore-top-location-col">
@@ -22,6 +23,7 @@ function AboutUs(props) {
                   Our Team
                 </Col>
               </Row>
+
               <Row className="gx-0">
                 <Col
                   sm={12}
@@ -178,7 +180,6 @@ function AboutUs(props) {
   );
 }
 
-// export {LandingPage};
 const mapStatesToProps = (states, props) => {
   return {};
 };
