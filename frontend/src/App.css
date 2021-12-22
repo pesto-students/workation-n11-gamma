@@ -1,0 +1,20 @@
+.main-app {
+  position: absolute;
+  height: max-content;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: brightness(45%);
+  background-image: url("./shared-resource/images/app-background.jpg");
+  /* background-color: (0,0,0,0.2); */
+  background-position: 70% 30%;
+  background-repeat: no-repeat;
+}
+
+.main-app.url-change {
+  background-image: url("./shared-resource/images/place-background.png");
+  background-size: 100% 100%;
+  height: fit-content;
+}

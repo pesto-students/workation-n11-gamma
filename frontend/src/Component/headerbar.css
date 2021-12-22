@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+.app-background {
+  backdrop-filter: brightness(50%);
+}
+.main-header-top {
+  position: relative;
+}
+
+.header-top-container {
+  height: 70px;
+  padding: 0 !important;
+}
+
+.logo-div {
+  position: relative;
+  height: 70px;
+}
+
+.logo-iamge {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.navbar-main-top {
+  height: 50px;
+  background: transparent;
+  border-bottom: 2px solid white;
+  color: white;
+  width: 100%;
+  padding-bottom: 0;
+  /* height: calc(70px - 30%); */
+}
+
+.toggle-hamburger {
+  outline: none;
+  border: none;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.toggle-arrow {
+  color: white;
+  font-weight: 500;
+}
+
+.navbar-links,
+.navbar-links-panel {
+  color: rgb(248, 202, 202) !important;
+  padding-bottom: 2px;
+  margin-right: 8rem;
+  text-decoration: none;
+}
+
+.navbar-links:hover,
+.navbar-links:active,
+.navbar-links-panel:hover {
+  color: white !important;
+}
+
+.right-panel {
+  background-color: rgba(32, 61, 64, 0.6);
+  filter: blur(40%);
+}
+
+.right-panel-top {
+  background-color: rgba(250, 240, 240, 0.4);
+  height: 2.7em;
+  color: white;
+}
+
+.signout-header-button,
+.signin-header-button,
+.login-header-button {
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(0, 206, 192)
+  );
+  color: black;
+  font-weight: 700;
+  font-size: 10px;
+  margin: 0;
+  margin-left: 5px;
+  padding: 3px 6px;
+  box-shadow: 1.5px 1.5px 2px black;
+}
+
+.signin-header-button {
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(5, 70, 65)
+  );
+}
+
+.signout-header-button:focus,
+.signout-header-button:active,
+.signin-header-button:focus,
+.signin-header-button:active,
+.login-header-button:focus,
+.login-header-button:active {
+  color: black;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.signout-header-button:hover,
+.signin-header-button:hover,
+.login-header-button:hover {
+  color: black;
+  box-shadow: 3px 3px 3px black;
+}
+
+.book-login {
+  background-image: linear-gradient(
+    to right,
+    rgb(241, 217, 217),
+    rgb(7, 102, 94)
+  );
+}
+
+.host-login {
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 219, 219),
+    rgb(83, 201, 191)
+  );
+}
+
+.guestLogin {
+  background-image: linear-gradient(
+    to right,
+    rgb(122, 233, 177),
+    rgb(83, 201, 191)
+  );
+}
+@media screen and (max-width: 767px) {
+  .navbar-main-top {
+    border: none;
+  }
+}
+
+.top-links:hover {
+  color: white;
+}

@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+.contactus-background {
+  backdrop-filter: brightness(50%);
+}
+
+.main-contactus-page {
+  width: 100%;
+}
+
+.contactus-page-top-container {
+  font-size: 2em;
+  font-weight: 700;
+  color: white;
+  height: 8em;
+  display: flex;
+  flex-direction: row;
+  padding-top: 3em;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contactus-page-second-container {
+  border-radius: 4em 4em 0 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 2em 7em;
+  height: fit-content;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.explore-top-location-contactus {
+  padding: 2em 4em 2em 4em;
+}
+
+.location-main-container-first-row-col {
+  padding-left: 0.4em;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.location-main-container-second-row-col {
+  padding-top: 2em;
+}
