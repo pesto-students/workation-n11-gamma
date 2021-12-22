@@ -1,32 +1,29 @@
-const Route = require("express").Router();
 const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
 const multer = require("multer");
+const async = require("async");
+
 const upload = multer({ dest: "uploads/" });
 const cities = require("../database/config").cities;
 const places = require("../database/config").places;
 const owners = require("../database/config").hotelOwners;
-const async = require("async");
 
 const { uploadFile, getFileStream } = require("./s3");
 const { Users, fieldValue } = require("../database/config");
 
+const Route = require("express").Router();
+
+// Not using for now use for downloading image/document
 Route.get("/images/:key", (req, res) => {
-  console.log(req.params);
   const key = req.params.key;
   const readStream = getFileStream(key);
-
   readStream.pipe(res);
 });
 
+// To upload from Admin side cities
 Route.post("/upload_single", upload.single("image"), async (req, res) => {
-  // console.log(req.file);
   const file = req.file;
-  // console.log(file);
-  // // apply filter
-  // // resize
-
   const result = await uploadFile(file);
   await unlinkFile(file.path);
   if (result) {
@@ -60,22 +57,14 @@ Route.post("/upload_single", upload.single("image"), async (req, res) => {
   } else {
     await res.status(200).send({ message: "something bad on upload!" });
   }
-  // const description = req.body.description;
-  // res.send({ imagePath: `/images/${result.Key}` });
-  // res.send("ok");
 });
 
+// upload hotels from host
 Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
-  // console.log(req.file);
   const file = req.file;
-  // console.log(file);
-  // // apply filter
-  // // resize
   const amaneties = req.body?.amaneties?.split(",");
-
   const result = await uploadFile(file);
   await unlinkFile(file.path);
-  // console.log(result);
 
   let userId = req.body.userId;
   if (result) {
@@ -172,19 +161,6 @@ Route.post("/upload_hotel", upload.single("image"), async (req, res) => {
   } else {
     return res.status(200).send({ message: "InternalServer Error" });
   }
-  // const description = req.body.description;
-  // res.send({ imagePath: `/images/${result.Key}` });
-  // res.send("ok");
 });
-/**
- * Description: Sample for authorization working on both side,
- * Author: Rishabh Verma
- * Warning: Please dont remove the below code
- */
-// Route.post("/register",authorize, (req,res,next)=>{
-//     res.status(200).json({
-//         isAvailable : true
-//     })
-// })
 
 module.exports = Route;

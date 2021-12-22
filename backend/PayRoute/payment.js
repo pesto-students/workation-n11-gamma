@@ -2,10 +2,12 @@
 require("dotenv").config();
 const express = require("express");
 const Razorpay = require("razorpay");
-const { bookings, places, fieldValue, Users } = require("../database/config");
 const crypto = require("crypto");
+const { bookings, places, fieldValue, Users } = require("../database/config");
+
 const router = express.Router();
 
+// Path for payment creation
 router.post("/orders", async (req, res) => {
   try {
     const instance = new Razorpay({
@@ -29,6 +31,7 @@ router.post("/orders", async (req, res) => {
   }
 });
 
+// Path for payment verification
 router.post("/success", async (req, res) => {
   try {
     // getting the details back from our font-end

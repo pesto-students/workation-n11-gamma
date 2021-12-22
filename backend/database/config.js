@@ -1,19 +1,22 @@
 var admin = require("firebase-admin");
-
 var serviceAccount = require("../service_firebase.json");
 
+// initialise firebase app creds
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-let db = admin.firestore();
+// initialise database
+const db = admin.firestore();
+
+// creating the variables for database use
 const fieldValue = admin.firestore.FieldValue;
-let Users = db.collection("Users");
-let cities = db.collection("cities");
-let places = db.collection("places");
-let hotelOwners = db.collection("owners");
-let landingvideo = db.collection("landingVideos");
-let bookings = db.collection("booking");
+const Users = db.collection("Users");
+const cities = db.collection("cities");
+const places = db.collection("places");
+const hotelOwners = db.collection("owners");
+const landingvideo = db.collection("landingVideos");
+const bookings = db.collection("booking");
 
 const dBase = {
   Users,
@@ -24,4 +27,5 @@ const dBase = {
   bookings,
   fieldValue,
 };
+
 module.exports = dBase;

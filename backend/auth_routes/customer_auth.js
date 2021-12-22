@@ -1,19 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const Route = require("express").Router();
 const bcrypt = require("bcrypt");
-const modifyPassword = require("./modify_password");
+const async = require("async");
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
+
 const Users = require("../database/config").Users;
 const places = require("../database/config").places;
 const cities = require("../database/config").cities;
 const bookings = require("../database/config").bookings;
-const jwt = require("jsonwebtoken");
+
+const modifyPassword = require("./modify_password");
 const authorize = require("./authorize");
-const async = require("async");
-const dotenv = require("dotenv");
+
 dotenv.config();
 const secret = process.env.COOKIE_SECRET;
 
+const Route = require("express").Router();
+// Path to Signup
 Route.post("/signup", modifyPassword, async (req, res) => {
   const {
     emailAddress: email,
@@ -22,6 +26,7 @@ Route.post("/signup", modifyPassword, async (req, res) => {
     userType: usertype,
   } = req.body;
   const alreaydExists = await Users.where("email", "=", email).get();
+
   if (alreaydExists._size) {
     res.status(401).json({
       error: "User already exists !",
@@ -69,6 +74,7 @@ Route.post("/signup", modifyPassword, async (req, res) => {
   }
 });
 
+// Path to Login
 Route.post("/login", async (req, res) => {
   const isCorrectPassword = function(password, thisPassword, callback) {
     bcrypt.compare(password, thisPassword, function(err, same) {
@@ -134,6 +140,7 @@ Route.post("/login", async (req, res) => {
   }
 });
 
+// Path to check user on every refresh
 Route.get("/isAuth", async (req, res) => {
   const req_token = req.cookies.token;
   let auth = false;
@@ -181,6 +188,7 @@ Route.get("/isAuth", async (req, res) => {
   }
 });
 
+// Path to Logout user
 Route.post("/logout", (req, res) => {
   res.cookie("token", undefined);
   res.clearCookie("token");
@@ -189,6 +197,7 @@ Route.post("/logout", (req, res) => {
   });
 });
 
+// To list all the users for admin
 Route.get("/loadAdminUsers", authorize, async (req, res) => {
   let usersList = [];
   await async.series(
@@ -217,6 +226,7 @@ Route.get("/loadAdminUsers", authorize, async (req, res) => {
   );
 });
 
+// To list all the hotels for admin
 Route.get("/loadAdminHotels", authorize, async (req, res) => {
   let hotelsList = [];
   await async.series(
@@ -244,6 +254,7 @@ Route.get("/loadAdminHotels", authorize, async (req, res) => {
   );
 });
 
+// To load all the cities for admin
 Route.get("/loadAdminCities", authorize, async (req, res) => {
   let citiesList = [];
   await async.series(
@@ -271,6 +282,7 @@ Route.get("/loadAdminCities", authorize, async (req, res) => {
   );
 });
 
+// To load all the bookings for the admin
 Route.get("/loadAdminBookings", authorize, async (req, res) => {
   let bookingsList = [];
   await async.series(

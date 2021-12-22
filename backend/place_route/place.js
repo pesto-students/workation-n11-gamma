@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const Route = require("express").Router();
+const async = require("async");
+var nodemailer = require("nodemailer");
 const Cities = require("../database/config").cities;
 const places = require("../database/config").places;
 const owners = require("../database/config").hotelOwners;
 const booking = require("../database/config").bookings;
 const landingvideo = require("../database/config").landingvideo;
 const authorize = require("../auth_routes/authorize");
-const async = require("async");
-var nodemailer = require("nodemailer");
 require("dotenv").config();
 
+const Route = require("express").Router();
+
+// To Search Places
 Route.post("/getSearchPlace", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
@@ -69,12 +71,14 @@ Route.post("/getSearchPlace", (req, res) => {
   );
 });
 
+// To Check whether place is available
 Route.post("/isPlaceAvailable", (_req, res) => {
   res.status(200).json({
     isAvailable: true,
   });
 });
 
+// To search on filter
 Route.post("/searchonfilter", (req, res) => {
   let hotelsList = [];
   let cityResult = [];
@@ -134,6 +138,7 @@ Route.post("/searchonfilter", (req, res) => {
   );
 });
 
+// To load landing page data
 Route.post("/loadLandingPageData", (_req, res) => {
   let cityResult = [];
   let landinVideoDataList = [];
@@ -190,6 +195,7 @@ Route.post("/loadLandingPageData", (_req, res) => {
   );
 });
 
+// function to return hotels list for host
 async function returnHotels(_req, res, data) {
   let tempArray = [];
   await async.eachSeries(data, async (id, cb) => {
@@ -199,6 +205,7 @@ async function returnHotels(_req, res, data) {
   await res.status(200).send(tempArray);
 }
 
+// To load host landing page data
 Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   if (req.id === req.body.userId) {
     let owenrsHotelResult = [];
@@ -274,6 +281,7 @@ Route.post("/loadHostLandingPageData", authorize, (req, res) => {
   }
 });
 
+// function to return the host hotel/boking details
 async function returnBookings(_req, res, hotelObj, bookingIds) {
   let tempArray = [];
   await async.eachSeries(bookingIds, async (id, cb) => {
@@ -284,6 +292,7 @@ async function returnBookings(_req, res, hotelObj, bookingIds) {
   await res.status(200).send(hotelObj);
 }
 
+// To load host hotel page data
 Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   let owenrsHotelResult = [];
   let hotelDataObj = {};
@@ -319,6 +328,7 @@ Route.post("/loadHostHotelsPageData", authorize, (req, res) => {
   );
 });
 
+// Load city page
 Route.post("/loadcitiesPageData", (req, res) => {
   let cityResult = [];
   let citiesCount = 0;
@@ -366,6 +376,7 @@ Route.post("/loadcitiesPageData", (req, res) => {
   );
 });
 
+// Load hotels page
 Route.post("/loadHotelsPageData", (req, res) => {
   let placesResult = [];
   let totalCount = 0;
@@ -414,6 +425,7 @@ Route.post("/loadHotelsPageData", (req, res) => {
   );
 });
 
+// To submit the Enquiry
 Route.post("/form-submit-url", (req, res) => {
   var smtpTransport = nodemailer.createTransport({
     service: "gmail",
@@ -494,6 +506,7 @@ Route.post("/form-submit-url", (req, res) => {
   );
 });
 
+// Load details pre booking page
 Route.post("/loadHotelDetails", async (req, res) => {
   let getHotelDetails = [];
   await async.series(
@@ -518,8 +531,8 @@ Route.post("/loadHotelDetails", async (req, res) => {
   );
 });
 
+// Load summary post booking
 Route.post("/getbookingsummary", async (req, res) => {
-  // console.log(req.body);
   let bookingDetails = [];
   let finalResult = {};
   await async.series(
