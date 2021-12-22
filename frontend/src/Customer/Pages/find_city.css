@@ -201,9 +201,10 @@
 }
 .city-description {
   padding-top: 3em;
-  font-size: 0.7em;
+  font-size: 0.8em;
   line-height: 1.2em;
   color: rgb(144, 248, 241);
+  text-shadow: 0.2em 0.2em 0.3em black;
 }
 
 .minimum-budget-row {
@@ -236,4 +237,82 @@
   font-size: 1em;
   font-weight: bold;
   padding-left: 2em;
+}
+
+.hotel-from-date,
+.hotel-from-date:focus,
+.hotel-from-date:active,
+.hotel-from-date:disabled {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 0em;
+}
+
+.hotel-to-date,
+.hotel-to-date:focus,
+.hotel-to-date:active,
+.hotel-to-date:disabled {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 0em;
+}
+
+.amount-booking,
+.amount-booking:focus,
+.amount-booking:active,
+.amount-booking:disabled {
+  background: transparent;
+  border: none;
+  outline: none !important;
+  box-shadow: none !important;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 0em;
+}
+
+.small-text-room {
+  font-size: 0.7em;
+}
+
+.booking-fileds-button,
+.booking-fileds-button:focus,
+.booking-fileds-button:hover,
+.booking-fileds-button:active {
+  width: max-content;
+  padding: 1em 2em;
+  background-image: linear-gradient(
+    to right,
+    rgb(245, 238, 238),
+    rgb(0, 206, 192)
+  );
+  color: black;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.room-booking,
+.room-booking:focus,
+.room-booking:active,
+.room-booking:hover {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  outline: none !important;
+  box-shadow: none;
+  color: white;
+  font-weight: bold;
+  padding-left: 0;
+  width: 2.5em;
 }

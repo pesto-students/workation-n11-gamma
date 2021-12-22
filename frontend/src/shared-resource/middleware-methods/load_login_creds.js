@@ -568,6 +568,32 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         });
       next(action);
       break;
+    case "BOOKING_SUMMARY_DATA":
+      //  console.log(action.payload);
+      storeAPI.dispatch({
+        status: "Initiated",
+        type: "BOOKING_SUMMARY_DATA_REDUCER",
+      });
+      await axios
+        .post("/place/getbookingsummary", { bookingId: action.payload })
+        .then((res) => {
+          storeAPI.dispatch({
+            status: "Success",
+            type: "BOOKING_SUMMARY_DATA_REDUCER",
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          notify(err?.response?.data?.message);
+          storeAPI.dispatch({
+            status: "Failure",
+            type: "BOOKING_SUMMARY_DATA_REDUCER",
+            error: err?.response?.data?.message || "Some internal error",
+          });
+        });
+      next(action);
+      break;
     default:
       next(action);
   }

@@ -21,12 +21,9 @@ function BookingsList(props) {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>User_Reference</th>
-                    <th>Place_reference</th>
                     <th>Checkin time</th>
                     <th>Checkout time</th>
                     <th>Booking price</th>
-                    <th>Reference</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -36,12 +33,9 @@ function BookingsList(props) {
                         return (
                           <tr key={idx}>
                             <td>{idx + 1}</td>
-                            <td>{_?.userId}</td>
-                            <td>{_?.placeId}</td>
                             <td>{_?.checkin?._seconds}</td>
                             <td>{_?.checkout?._seconds}</td>
                             <td>{_?.amount}</td>
-                            <td>{_?.id}</td>
                             <td>
                               <a>{"Remove+"}</a>
                               <a>{"Block+"}</a>

@@ -517,6 +517,44 @@ Route.post("/loadHotelDetails", async (req, res) => {
     }
   );
 });
+
+Route.post("/getbookingsummary", async (req, res) => {
+  // console.log(req.body);
+  let bookingDetails = [];
+  let finalResult = {};
+  await async.series(
+    [
+      async () => {
+        const getBooking = await booking.doc(req.body.bookingId).get();
+        if (getBooking.exists) {
+          let additionalStep = { ...getBooking.data(), id: req.body.bookingId };
+          bookingDetails.push(additionalStep);
+          finalResult.bookingDetails = bookingDetails;
+          return;
+        } else {
+          return;
+        }
+      },
+      async () => {
+        if (bookingDetails) {
+          const hotelDetails = await places
+            .doc(bookingDetails[0]?.placeId?._path?.segments[1])
+            .get();
+          finalResult.hotelDetails = hotelDetails?.data();
+        } else {
+          return;
+        }
+      },
+    ],
+    (err) => {
+      if (err) {
+        return res.status(501).send({ message: "internal error" });
+      }
+      res.status(200).send(finalResult);
+    }
+  );
+});
+
 /**
  * Description: Sample for authorization working on both side,
  * Author: Rishabh Verma

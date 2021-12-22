@@ -25,7 +25,6 @@ function HotelsList(props) {
                     <th>City</th>
                     <th>Subarea</th>
                     <th>Price/Service</th>
-                    <th>Reference</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -39,7 +38,6 @@ function HotelsList(props) {
                             <td>{_?.city}</td>
                             <td>{_?.subarea}</td>
                             <td>{_?.price}</td>
-                            <td>{_?.id}</td>
                             <td>
                               <a>{"Remove+"}</a>
                               <a>{"Block+"}</a>

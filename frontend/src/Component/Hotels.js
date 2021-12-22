@@ -57,7 +57,7 @@ function Hotels(props) {
                     sm={6}
                     className="location-main-container-third-row-col d-flex flex-row justify-content-start"
                   >
-                    Showing {from} to{" "}
+                    Showing {from + 1} to{" "}
                     {props.hotelsPageData?.data?.totalCount < to
                       ? props.hotelsPageData?.data?.totalCount
                       : to}{" "}

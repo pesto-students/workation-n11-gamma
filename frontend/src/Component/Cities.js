@@ -58,7 +58,7 @@ function Cities(props) {
                     sm={6}
                     className="location-main-container-third-row-col d-flex flex-row justify-content-start"
                   >
-                    Showing {from} to{" "}
+                    Showing {from + 1} to{" "}
                     {props.citiesPageData?.data?.totalCount < to
                       ? props.citiesPageData?.data?.totalCount
                       : to}{" "}

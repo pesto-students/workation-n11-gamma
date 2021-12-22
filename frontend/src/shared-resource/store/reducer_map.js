@@ -17,6 +17,7 @@ import { load_admin_hotels_list_reducer } from "../reducers/admin_hotels_list_re
 import { load_admin_cities_list_reducer } from "../reducers/admin_cities_list_reducer";
 import { load_admin_booking_list_reducer } from "../reducers/admin_booking_list_reducer";
 import { load_customer_hotel_details_reducer } from "../reducers/load_customer_hotel_details_reducer";
+import { booking_summary_reducer } from "../reducers/booking_summary_reducer";
 
 const reducerMap = Object.freeze({
   CUSTOMER_USER_REDUCER: customer_user_reducer,
@@ -38,6 +39,7 @@ const reducerMap = Object.freeze({
   LOAD_ADMIN_CITIES_REDUCER: load_admin_cities_list_reducer,
   LOAD_ADMIN_BOOKINGS_REDUCER: load_admin_booking_list_reducer,
   GET_HOTEL_DETAILS_CUSTOMER_REDUCER: load_customer_hotel_details_reducer,
+  BOOKING_SUMMARY_DATA_REDUCER: booking_summary_reducer,
 });
 
 export { reducerMap };
