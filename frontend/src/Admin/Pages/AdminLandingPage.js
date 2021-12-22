@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/no-distracting-elements */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Tab, ListGroup } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";

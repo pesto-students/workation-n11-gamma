@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
@@ -104,7 +105,7 @@ function HostHotelPage(props) {
   );
 }
 
-const mapStatesToProps = (states, props) => {
+const mapStatesToProps = (states, _props) => {
   return {
     hotel_page_data: states.app.hostHotelsPageData?.data?.hotel,
   };

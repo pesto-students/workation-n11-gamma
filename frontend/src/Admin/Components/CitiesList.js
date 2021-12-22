@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -104,7 +104,7 @@ function CitiesList(props) {
     }
     notifyAlreadyExists();
     const result = await postImage({
-      image: file,
+      file: file,
       description: citydescription,
       name: cityname,
       longitude,
@@ -118,7 +118,7 @@ function CitiesList(props) {
     }
   }
 
-  async function postImage({ image, description, name, longitude, latitude }) {
+  async function postImage({ file, description, name, longitude, latitude }) {
     const formData = new FormData();
     formData.append("image", file);
     formData.append("name", name);
@@ -168,8 +168,8 @@ function CitiesList(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {props.citiesList?.data?.length
-                      ? props.citiesList.data.map((_, idx) => {
+                    {props?.citiesList?.data?.length
+                      ? props?.citiesList?.data?.map((_, idx) => {
                           return (
                             <tr key={idx}>
                               <td>{idx + 1}</td>

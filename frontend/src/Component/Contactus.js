@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -7,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./contactus.css";
 
+// eslint-disable-next-line no-unused-vars
 function ContactUs(props) {
   toast.configure();
 
@@ -126,7 +128,7 @@ function ContactUs(props) {
                           onChange={changeTheEmail}
                         />
                         <Form.Text className="text-muted">
-                          We'll never share your email with anyone else.
+                          We will never share your email with anyone else.
                         </Form.Text>
                       </Form.Group>
 

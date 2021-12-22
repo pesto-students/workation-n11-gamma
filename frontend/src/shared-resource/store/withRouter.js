@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function withRouter(Component) {

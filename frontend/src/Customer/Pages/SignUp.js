@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -69,7 +70,7 @@ function SignUp(props) {
     changeUserReEnterPassword(e.target.value);
   }
 
-  function reEnterFocused(e) {
+  function reEnterFocused() {
     if (userPassword === userReEnterPassword) {
       changeIsPasswordSame(true);
     } else {
@@ -77,7 +78,7 @@ function SignUp(props) {
     }
   }
 
-  function reEnterMouseLeave(e) {
+  function reEnterMouseLeave() {
     if (userPassword === userReEnterPassword) {
       changeIsPasswordSame(true);
     } else {
@@ -238,6 +239,7 @@ function SignUp(props) {
   );
 }
 
+// eslint-disable-next-line no-unused-vars
 const mapStatesToProps = (states, props) => {
   return {
     authorized_user_login: states.app.user,

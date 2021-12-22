@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -59,10 +60,10 @@ function Hotels(props) {
                     className="location-main-container-third-row-col d-flex flex-row justify-content-start"
                   >
                     Showing {from + 1} to{" "}
-                    {props.hotelsPageData?.data?.totalCount < to
-                      ? props.hotelsPageData?.data?.totalCount
+                    {props?.hotelsPageData?.data?.totalCount < to
+                      ? props?.hotelsPageData?.data?.totalCount
                       : to}{" "}
-                    of {props.hotelsPageData?.data?.totalCount}
+                    of {props?.hotelsPageData?.data?.totalCount}
                   </Col>
                   <Col sm={6} className="location-main-container-third-row-col">
                     <Pagination>
@@ -75,10 +76,10 @@ function Hotels(props) {
                 </Row>
                 <Col sm={12} className="location-main-container-second-row-col">
                   <Row xs={1} sm={2} md={4} className="g-5">
-                    {props.hotelsPageData?.data &&
-                    props.hotelsPageData?.data?.hotels &&
-                    props.hotelsPageData?.data?.hotels?.length ? (
-                      props.hotelsPageData?.data?.hotels.map((_, idx) => (
+                    {props?.hotelsPageData?.data &&
+                    props?.hotelsPageData?.data?.hotels &&
+                    props?.hotelsPageData?.data?.hotels?.length ? (
+                      props?.hotelsPageData?.data?.hotels?.map((_, idx) => (
                         <Col key={idx}>
                           <Link
                             to={`/customer/hotel/${_.id}`}

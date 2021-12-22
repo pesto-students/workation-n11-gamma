@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -23,7 +24,6 @@ function Cities(props) {
 
   useEffect(() => {
     props.loadCitiesPageData(from, to);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [from, to]);
 
   function moveBack() {
@@ -77,25 +77,25 @@ function Cities(props) {
 
                 <Col sm={12} className="location-main-container-second-row-col">
                   <Row xs={1} sm={2} md={4} className="g-5">
-                    {props.citiesPageData?.data &&
-                    props.citiesPageData?.data?.cities &&
-                    props.citiesPageData?.data?.cities?.length ? (
-                      props.citiesPageData?.data?.cities.map((_, idx) => (
+                    {props?.citiesPageData?.data &&
+                    props?.citiesPageData?.data?.cities &&
+                    props?.citiesPageData?.data?.cities?.length ? (
+                      props?.citiesPageData?.data?.cities?.map((_, idx) => (
                         <Col key={idx}>
                           <Link
-                            to={`/customer/city/${_.name}`}
+                            to={`/customer/city/${_?.name}`}
                             className="text-white"
                           >
                             <Card className="location-cards p-0">
                               <Card.Img
                                 variant="top"
-                                src={_.image_url}
+                                src={_?.image_url}
                                 className="location-card-image m-0"
                               />
                               <Card.Body className="location-card-body">
                                 <Card.Title className="location-card-title">
                                   {" "}
-                                  {_.name}
+                                  {_?.name}
                                 </Card.Title>
                               </Card.Body>
                             </Card>

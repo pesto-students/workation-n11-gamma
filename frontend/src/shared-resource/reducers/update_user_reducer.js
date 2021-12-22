@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { initialState } from "../States/GlobalState";
 import { createAsyncReducer } from "../store/async_reducer_store";
 

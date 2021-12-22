@@ -1,7 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useContext, useState } from "react";
 import { userContext } from "../../shared-resource/Contexts/User_Context";
-// import {userContext} from "../shared-resource/Contexts/User_Context"
 import {
   Container,
   Row,

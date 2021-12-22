@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -138,7 +140,7 @@ function Login(props) {
                       </Button>
 
                       <Form.Text className=" sign-up-text ">
-                        Don't have an account ?
+                        Don{`'`}t have an account ?
                         <Link to="/customer/signup" className="link-text">
                           &nbsp;Sign Up
                         </Link>

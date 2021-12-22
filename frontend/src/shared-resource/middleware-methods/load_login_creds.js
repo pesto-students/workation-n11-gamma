@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // https://redux.js.org/tutorials/fundamentals/part-6-async-logic
 import axios from "axios";
 import { toast } from "react-toastify";

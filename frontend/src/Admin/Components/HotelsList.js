@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
@@ -29,8 +29,8 @@ function HotelsList(props) {
                   </tr>
                 </thead>
                 <tbody>
-                  {props.hotelsList?.data?.length
-                    ? props.hotelsList.data.map((_, idx) => {
+                  {props?.hotelsList?.data?.length
+                    ? props?.hotelsList?.data?.map((_, idx) => {
                         return (
                           <tr key={idx}>
                             <td>{idx + 1}</td>

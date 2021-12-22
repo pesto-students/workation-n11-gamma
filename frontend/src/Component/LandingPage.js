@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -104,14 +105,15 @@ function LandingPage(props) {
                               <option value="" className="bg-dark">
                                 Select location
                               </option>
-                              {props.landing_page_data.data?.cityResult
+                              {props?.landing_page_data.data?.cityResult
                                 ?.length &&
-                                props.landing_page_data.data?.cityResult?.map(
+                                props?.landing_page_data.data?.cityResult?.map(
                                   (_, idx) => {
                                     return (
                                       <option
                                         value={_.name}
                                         className="bg-dark"
+                                        key={idx}
                                       >
                                         {_.name}
                                       </option>
@@ -306,9 +308,9 @@ function LandingPage(props) {
           </Row>
           <Row className="landing-video-text-third g-0">
             <Col sm={5} className="landing-video-text-third-col-A">
-              "Attachment to things and comfort is the main obstacle to the
+              {`"`}Attachment to things and comfort is the main obstacle to the
               interesting life. People, as a rule, do not realize that at any
-              time they can throw anything out of their lives. Anytime."
+              time they can throw anything out of their lives. Anytime.{`"`}
             </Col>
             <Col sm={7} className="landing-video-text-third-col-B">
               <Card className="landing-video-card">

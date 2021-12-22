@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -30,25 +31,25 @@ function AboutUs(props) {
                   className="location-main-container-second-row-col pt-5"
                 >
                   <Row sm={12} className="g-0 w-100 ">
-                    <div class="card mb-3 card-backgeound">
-                      <div class="row g-0 border-none">
-                        <div class="col-md-2">
+                    <div className="card mb-3 card-backgeound">
+                      <div className="row g-0 border-none">
+                        <div className="col-md-2">
                           <img
                             src={imagefirst}
-                            class="img-fluid rounded-start first-image-class"
+                            className="img-fluid rounded-start first-image-class"
                             alt="..."
                           />
                         </div>
-                        <div class="col-md-10">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
+                        <div className="col-md-10">
+                          <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">
                               This is a wider card with supporting text below as
                               a natural lead-in to additional content. This
                               content is a little bit longer.
                             </p>
-                            <p class="card-text">
-                              <small class="text-muted">
+                            <p className="card-text">
+                              <small className="text-muted">
                                 Last updated 3 mins ago
                               </small>
                             </p>
@@ -58,25 +59,25 @@ function AboutUs(props) {
                     </div>
                   </Row>
                   <Row sm={12} className="g-0 w-100 ">
-                    <div class="card mb-3 card-backgeound">
-                      <div class="row g-0 border-none">
-                        <div class="col-md-2">
+                    <div className="card mb-3 card-backgeound">
+                      <div className="row g-0 border-none">
+                        <div className="col-md-2">
                           <img
                             src={imagefirst}
-                            class="img-fluid rounded-start first-image-class"
+                            className="img-fluid rounded-start first-image-class"
                             alt="..."
                           />
                         </div>
-                        <div class="col-md-10">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
+                        <div className="col-md-10">
+                          <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">
                               This is a wider card with supporting text below as
                               a natural lead-in to additional content. This
                               content is a little bit longer.
                             </p>
-                            <p class="card-text">
-                              <small class="text-muted">
+                            <p className="card-text">
+                              <small className="text-muted">
                                 Last updated 3 mins ago
                               </small>
                             </p>
@@ -86,25 +87,25 @@ function AboutUs(props) {
                     </div>
                   </Row>
                   <Row sm={12} className="g-0 w-100 ">
-                    <div class="card mb-3 card-backgeound">
-                      <div class="row g-0 border-none">
-                        <div class="col-md-2">
+                    <div className="card mb-3 card-backgeound">
+                      <div className="row g-0 border-none">
+                        <div className="col-md-2">
                           <img
                             src={imagefirst}
-                            class="img-fluid rounded-start first-image-class"
+                            className="img-fluid rounded-start first-image-class"
                             alt="..."
                           />
                         </div>
-                        <div class="col-md-10">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
+                        <div className="col-md-10">
+                          <div className="card-body">
+                            <h5 className="card-title">Card title</h5>
+                            <p className="card-text">
                               This is a wider card with supporting text below as
                               a natural lead-in to additional content. This
                               content is a little bit longer.
                             </p>
-                            <p class="card-text">
-                              <small class="text-muted">
+                            <p className="card-text">
+                              <small className="text-muted">
                                 Last updated 3 mins ago
                               </small>
                             </p>
