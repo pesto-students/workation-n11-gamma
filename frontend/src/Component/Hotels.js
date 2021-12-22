@@ -8,10 +8,10 @@ import {
   Pagination,
   Spinner,
 } from "react-bootstrap";
-import "./hotels.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./hotels.css";
 
 function Hotels(props) {
   const [from, ChangeFrom] = useState(0);
@@ -42,6 +42,7 @@ function Hotels(props) {
           <Col sm={12}>Live the life better way, Explore with us</Col>
         </Row>
       </Container>
+
       <Container className="hotels-page-second-container" fluid>
         <Row className="gx-0 explore-top-location-hotels">
           <Col sm={12} className="explore-top-location-col">

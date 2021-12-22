@@ -8,10 +8,10 @@ import {
   Pagination,
   Spinner,
 } from "react-bootstrap";
-import "./cities.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./cities.css";
 
 function Cities(props) {
   const [from, ChangeFrom] = useState(0);
@@ -64,6 +64,7 @@ function Cities(props) {
                       : to}{" "}
                     of {props.citiesPageData?.data?.totalCount}
                   </Col>
+
                   <Col sm={6} className="location-main-container-third-row-col">
                     <Pagination>
                       {from < 10 ? null : (
@@ -73,6 +74,7 @@ function Cities(props) {
                     </Pagination>
                   </Col>
                 </Row>
+
                 <Col sm={12} className="location-main-container-second-row-col">
                   <Row xs={1} sm={2} md={4} className="g-5">
                     {props.citiesPageData?.data &&

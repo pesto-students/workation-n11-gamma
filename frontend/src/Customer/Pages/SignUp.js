@@ -17,6 +17,17 @@ function SignUp(props) {
   const [isPasswordSame, changeIsPasswordSame] = useState(true);
   const [usertype, setUsertype] = useState("CUSTOMER");
 
+  useEffect(() => {
+    document.title = "Work@tion-Signup-Customer";
+  }, [
+    emailAddress,
+    userPassword,
+    userReEnterPassword,
+    username,
+    isPasswordSame,
+    usertype,
+  ]);
+
   const notifyEmail = async () => {
     toast.error("Required Email!", { theme: "dark" });
   };
@@ -36,17 +47,6 @@ function SignUp(props) {
   const notifyPasswordSame = async () => {
     toast.error("Password must be same!", { theme: "dark" });
   };
-
-  useEffect(() => {
-    document.title = "Work@tion-Signup-Customer";
-  }, [
-    emailAddress,
-    userPassword,
-    userReEnterPassword,
-    username,
-    isPasswordSame,
-    usertype,
-  ]);
 
   function changeEmailFieldValue(e) {
     changeEmailAddress(e.target.value);
@@ -70,7 +70,6 @@ function SignUp(props) {
   }
 
   function reEnterFocused(e) {
-    // console.log('focused');
     if (userPassword === userReEnterPassword) {
       changeIsPasswordSame(true);
     } else {

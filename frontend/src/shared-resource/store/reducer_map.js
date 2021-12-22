@@ -19,6 +19,7 @@ import { load_admin_booking_list_reducer } from "../reducers/admin_booking_list_
 import { load_customer_hotel_details_reducer } from "../reducers/load_customer_hotel_details_reducer";
 import { booking_summary_reducer } from "../reducers/booking_summary_reducer";
 
+// a centralised mapping object
 const reducerMap = Object.freeze({
   CUSTOMER_USER_REDUCER: customer_user_reducer,
   AUTHORIZE_USER_REDUCER: authorize_user_reducer,

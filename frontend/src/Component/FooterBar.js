@@ -16,7 +16,7 @@ function FooterBar() {
               <div className="first-stack-common">Call @ 1800-1234-1234</div>
             </Stack>
           </Col>
-          <Col md={2}>
+          {/* <Col md={2}>
             <Stack gap={2}>
               <div className=" stack-common-heading">Tour</div>
               <div className="first-stack-common">Second item</div>
@@ -47,7 +47,7 @@ function FooterBar() {
               <div className="first-stack-common">Third item</div>
               <div className="first-stack-common">Third item</div>
             </Stack>
-          </Col>
+          </Col> */}
         </Row>
         <Row>
           <Col sm={12} className="copyright-text">

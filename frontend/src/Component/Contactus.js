@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "./contactus.css";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./contactus.css";
 
 function ContactUs(props) {
   toast.configure();
+
   const [name, changeName] = useState("");
   const [emailAddress, changeEmailAddress] = useState("");
   const [query, changeQuery] = useState("");

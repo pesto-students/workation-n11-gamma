@@ -11,8 +11,8 @@ import PaymentSummary from "./Paymentsummary";
 import "./find_city.css";
 
 function HotelAvailable(props) {
-  const city = useParams();
   toast.configure();
+  const city = useParams();
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [noOfRooms, setNoOfRooms] = useState(2);
@@ -27,6 +27,9 @@ function HotelAvailable(props) {
     props.getHotelDetails(city.id);
   }, []);
 
+  const info = props?.hotelDetails?.data && props?.hotelDetails?.data[0];
+  const propsAmount = info?.price;
+
   const notify = async () => {
     toast.error("Please choose the correct date !", { theme: "dark" });
   };
@@ -34,6 +37,7 @@ function HotelAvailable(props) {
   const notifyLogin = async () => {
     toast.error("Please login to book !", { theme: "dark" });
   };
+
   function changeFromDate(e) {
     const value = e.target.value;
     let days = 0;
@@ -53,6 +57,7 @@ function HotelAvailable(props) {
     setFromDate(value);
     setNumberOfDays(days);
   }
+
   function changeToDate(e) {
     const value = e.target.value;
     let days = 0;
@@ -72,6 +77,7 @@ function HotelAvailable(props) {
     setToDate(value);
     setNumberOfDays(days);
   }
+
   function changeNoOfRooms(e) {
     let value = e.target.value;
     if (value > 5) {
@@ -104,6 +110,7 @@ function HotelAvailable(props) {
       props.router.navigate("/customer/findcities");
     }
   }
+
   async function displayRazorpay(payload) {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -170,8 +177,6 @@ function HotelAvailable(props) {
     paymentObject.open();
   }
 
-  const info = props?.hotelDetails?.data && props?.hotelDetails?.data[0];
-  const propsAmount = info?.price;
   function completeTheBooking(e) {
     e.preventDefault();
     const localToDate = new Date(toDate);

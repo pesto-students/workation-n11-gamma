@@ -15,8 +15,8 @@ import FindCity from "../Customer/Pages/Find_city";
 import Aboutus from "./Aboutus";
 import Contactus from "./Contactus";
 import { userContext } from "../shared-resource/Contexts/User_Context";
-import HostLandingPage from "./Host_Landing_Page";
-import HostHotelPage from "./Host_Hotel_Page";
+import HostLandingPage from "../Host/Pages/Host_Landing_Page";
+import HostHotelPage from "../Host/Pages/Host_Hotel_Page";
 import { connect } from "react-redux";
 
 function RouteSection(props) {

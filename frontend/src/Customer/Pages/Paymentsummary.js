@@ -6,10 +6,10 @@ import { withRouter } from "../../shared-resource/store/withRouter";
 
 function PaymentSummary(props) {
   useEffect(() => {
-    //   const bookingId = props.modalData;
     const bookingId = "AKAwiqid7i0sezGL8qFX";
     props.loadBookingDetails(bookingId);
   }, []);
+
   return (
     <>
       <Modal

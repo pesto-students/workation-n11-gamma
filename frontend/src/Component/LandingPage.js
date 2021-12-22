@@ -11,12 +11,12 @@ import {
   FormControl,
   Spinner,
 } from "react-bootstrap";
-import "./landing.css";
 import { Link } from "react-router-dom";
 import firstvideo from "../shared-resource/videos/firstLandingVideo.mp4";
 import secondVideo from "../shared-resource/videos/secondLandingVideo.mp4";
 import { connect } from "react-redux";
 import { withRouter } from "../shared-resource/store/withRouter";
+import "./landing.css";
 
 function LandingPage(props) {
   const todayDate = new Date();
@@ -43,6 +43,8 @@ function LandingPage(props) {
     props.loadLandingPageData();
   }, []);
 
+  useEffect(() => {}, [budget, location, fromDate, toDate]);
+
   function searchPlaceOnBudget() {
     props.searchPlace({
       name: location,
@@ -67,7 +69,6 @@ function LandingPage(props) {
     changeToDate(e.target.value);
   }
 
-  useEffect(() => {}, [budget, location, fromDate, toDate]);
   return (
     <div className=" app-background main-landing-page">
       <Container className="landing-page-top-container" fluid>
@@ -95,13 +96,6 @@ function LandingPage(props) {
                             <InputGroup.Text className="location-input-text">
                               <i className="fa fa-map-pin"></i>
                             </InputGroup.Text>
-                            {/* <Form.Control
-                              id="inlineFormInputName"
-                              className="input-location-box"
-                              value={location}
-                              placeholder=""
-                              onChange={getLocation}
-                            /> */}
                             <Form.Select
                               aria-label="Default select example"
                               className="input-location-box form-select dropdown"
@@ -337,7 +331,6 @@ function LandingPage(props) {
   );
 }
 
-// export {LandingPage};
 const mapStatesToProps = (states, props) => {
   return {
     authorized_user_login: states.app.user,
