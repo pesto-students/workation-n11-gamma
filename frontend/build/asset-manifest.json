@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0619d5d2.chunk.css",
+    "main.js": "/static/js/main.46b8ddd5.chunk.js",
+    "main.js.map": "/static/js/main.46b8ddd5.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ff5b8ea4.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ff5b8ea4.js.map",
+    "static/css/2.f4c56af9.chunk.css": "/static/css/2.f4c56af9.chunk.css",
+    "static/js/2.5b8f771a.chunk.js": "/static/js/2.5b8f771a.chunk.js",
+    "static/js/2.5b8f771a.chunk.js.map": "/static/js/2.5b8f771a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.f4c56af9.chunk.css.map": "/static/css/2.f4c56af9.chunk.css.map",
+    "static/css/main.0619d5d2.chunk.css.map": "/static/css/main.0619d5d2.chunk.css.map",
+    "static/js/2.5b8f771a.chunk.js.LICENSE.txt": "/static/js/2.5b8f771a.chunk.js.LICENSE.txt",
+    "static/media/Workation_2x.2f025a81.png": "/static/media/Workation_2x.2f025a81.png",
+    "static/media/login.css": "/static/media/admin_login_right.1b18208d.jpg",
+    "static/media/alessio-furlan-Vw3a0HgE7AM-unsplash.2ea029b0.jpg": "/static/media/alessio-furlan-Vw3a0HgE7AM-unsplash.2ea029b0.jpg",
+    "static/media/App.css": "/static/media/place-background.13e4f3cd.png",
+    "static/media/signup.css": "/static/media/customer_login_right_panel.dc2f9905.jpg",
+    "static/media/firstLandingVideo.47d5ab00.mp4": "/static/media/firstLandingVideo.47d5ab00.mp4",
+    "static/media/footerbar.css": "/static/media/landing_middle_video.b8093386.jpg",
+    "static/media/landing.css": "/static/media/landing_middle_video_1.d6cf4ab3.jpg",
+    "static/media/not-found.cacaf82e.jpg": "/static/media/not-found.cacaf82e.jpg",
+    "static/media/secondLandingVideo.ea6f2ed3.mp4": "/static/media/secondLandingVideo.ea6f2ed3.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff5b8ea4.js",
+    "static/css/2.f4c56af9.chunk.css",
+    "static/js/2.5b8f771a.chunk.js",
+    "static/css/main.0619d5d2.chunk.css",
+    "static/js/main.46b8ddd5.chunk.js"
+  ]
+}
