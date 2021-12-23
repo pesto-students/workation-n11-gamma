@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const serveStatic = require("serve-static");
+
 const corsOptions = {
   origin: (origin, callback) => {
     callback(null, true);
@@ -24,8 +26,8 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
 // eslint-disable-next-line no-undef
-app.use(express.static(path.join(__dirname, "public")));
-
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(serveStatic(__dirname+"/frontend/build"))
 const placeRoute = require("./place_route/place");
 const customerRoute = require("./auth_routes/customer_auth");
 const uploadRoute = require("./upload/single_upload");

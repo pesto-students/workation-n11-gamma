@@ -7,9 +7,9 @@ toast.configure();
 const notify = async (data) => {
   toast.error(`${data} !`, { theme: "dark" });
 };
-
+const API_URL=process.env.API_URL;
 const isAuthenticated = async () => {
-  return await axios("/v1/isAuth", { method: "GET" })
+  return await axios(API_URL+"/v1/isAuth", { method: "GET" })
     .then((data) => data)
     .catch((err) => {
       throw new Error({
@@ -27,7 +27,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGIN_USER_REDUCER,
       });
       await axios
-        .post("/v1/login", { ...action.payload })
+        .post(API_URL+"/v1/login", { ...action.payload })
         .then((res) => {
           const output = {
             data: {
@@ -68,7 +68,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGIN_HOST_REDUCER,
       });
       await axios
-        .post("/v1/login", { ...action.payload })
+        .post(API_URL+"/v1/login", { ...action.payload })
         .then((res) => {
           const output = {
             data: {
@@ -108,7 +108,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
       });
       await axios
-        .post("/v1/signup", { ...action.payload })
+        .post(API_URL+"/v1/signup", { ...action.payload })
         .then((res) => {
           const output = {
             data: {
@@ -194,7 +194,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGOUT_USER_REDUCER,
       });
       await axios
-        .post("/v1/logout", { ...action.payload })
+        .post(API_URL+"/v1/logout", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -218,7 +218,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
     case actiontype.isLandingSearchAvailable:
       await axios
-        .post("/place/isPlaceAvailable", { ...action.payload })
+        .post(API_URL+"/place/isPlaceAvailable", { ...action.payload })
         .then((res) => {
           if (res.data.isAvailable) {
             window.location.href = `/customer/city/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`;
@@ -235,7 +235,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
        * Author: Rishabh Verma
        * Warning: Please dont remove the below code
        */
-      // await axios.post("/place/register",{...action.payload})
+      // await axios.post(API_URL+"/place/register",{...action.payload})
       //                 .then((res)=>{
       //                     console.log(res);
       //                     storeAPI.dispatch({
@@ -257,7 +257,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LANDING_SEARCH_BUDGET,
       });
       await axios
-        .post("/place/getSearchPlace", { ...action.payload })
+        .post(API_URL+"/place/getSearchPlace", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -282,7 +282,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/searchonfilter", { ...action.payload })
+        .post(API_URL+"/place/searchonfilter", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -308,7 +308,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadLandingPageData")
+        .post(API_URL+"/place/loadLandingPageData")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -335,7 +335,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadcitiesPageData", { ...action.payload })
+        .post(API_URL+"/place/loadcitiesPageData", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -361,7 +361,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHotelsPageData", { ...action.payload })
+        .post(API_URL+"/place/loadHotelsPageData", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -387,7 +387,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHostLandingPageData", { userId: action.payload })
+        .post(API_URL+"/place/loadHostLandingPageData", { userId: action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -413,7 +413,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHostHotelsPageData", { ...action.payload })
+        .post(API_URL+"/place/loadHostHotelsPageData", { ...action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -438,7 +438,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminUsers")
+        .get(API_URL+"/v1/loadAdminUsers")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -463,7 +463,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminHotels")
+        .get(API_URL+"/v1/loadAdminHotels")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -488,7 +488,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminCities")
+        .get(API_URL+"/v1/loadAdminCities")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -513,7 +513,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminBookings")
+        .get(API_URL+"/v1/loadAdminBookings")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -537,7 +537,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.GET_HOTEL_DETAILS_CUSTOMER_REDUCER,
       });
       await axios
-        .post("/place/loadHotelDetails", { hotelId: action.payload })
+        .post(API_URL+"/place/loadHotelDetails", { hotelId: action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -561,7 +561,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.BOOKING_SUMMARY_DATA_REDUCER,
       });
       await axios
-        .post("/place/getbookingsummary", { bookingId: action.payload })
+        .post(API_URL+"/place/getbookingsummary", { bookingId: action.payload })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",

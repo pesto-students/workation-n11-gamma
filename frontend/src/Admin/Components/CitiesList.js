@@ -117,7 +117,7 @@ function CitiesList(props) {
       callDataRepeat();
     }
   }
-
+const API_URL=process.env.API_URL;
   async function postImage({ image, description, name, longitude, latitude }) {
     const formData = new FormData();
     formData.append("image", file);
@@ -126,7 +126,7 @@ function CitiesList(props) {
     formData.append("latitude", latitude);
     formData.append("longitude", longitude);
     setLoading(true);
-    const result = await axios.post("/upload/upload_single", formData, {
+    const result = await axios.post(API_URL+"/upload/upload_single", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

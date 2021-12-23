@@ -295,7 +295,7 @@ function HostLandingPage(props) {
     formData.append("fullAdress", fullAdress);
     formData.append("availability", availablity);
     setLoading(true);
-    const result = await axios.post("/upload/upload_hotel", formData, {
+    const result = await axios.post(API_URL+"/upload/upload_hotel", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

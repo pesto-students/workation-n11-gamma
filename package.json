@@ -20,6 +20,7 @@
     "multer": "^1.4.4",
     "nodemailer": "^6.7.2",
     "razorpay": "^2.8.0",
+    "static-serve": "0.0.1",
     "url-parser": "0.0.1"
   },
   "devDependencies": {
