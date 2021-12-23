@@ -126,7 +126,7 @@ const API_URL=process.env.API_URL;
     formData.append("latitude", latitude);
     formData.append("longitude", longitude);
     setLoading(true);
-    const result = await axios.post(API_URL+"/upload/upload_single", formData, {
+    const result = await axios.post("/upload/upload_single", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
