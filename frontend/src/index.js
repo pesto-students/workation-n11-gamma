@@ -11,7 +11,9 @@ ReactDOM.render(
   <Router history={history}>
     <React.StrictMode>
       <Provider store={store}>
+        <BrowserRouter> 
         <App className="main-app" />
+        </BrowserRouter>
       </Provider>
     </React.StrictMode>
   </Router>,

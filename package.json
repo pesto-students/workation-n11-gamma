@@ -24,7 +24,6 @@
     "url-parser": "0.0.1"
   },
   "devDependencies": {
-    
     "nodemon": "^2.0.15"
   },
   "scripts": {
@@ -37,4 +36,3 @@
   "author": "",
   "license": "ISC"
 }
- 
