@@ -39,7 +39,14 @@ app.use("/v1", customerRoute);
 app.use("/place", placeRoute);
 app.use("/upload", uploadRoute);
 app.use("/payment", paymentRoute);
-
+app.get('/*.html', function (req, res) {
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html')); //serving build folder
+});
+app.get('/*.js', function (req, res) {
+  res.set('Content-Encoding', 'gzip');
+  res.set('Content-Type', 'application/json');
+  res.sendFile(path.join(__dirname, 'frontend/build', `${req.path}.gz`)); //serving build folder
+});
 const PORT = process.env.PORT;
 
 app.listen(PORT || 8080, () => {

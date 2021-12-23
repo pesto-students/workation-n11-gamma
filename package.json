@@ -30,7 +30,8 @@
     "start": "node server.js",
     "start:local": "nodemon server.js",
     "lint": "eslint ./ --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
