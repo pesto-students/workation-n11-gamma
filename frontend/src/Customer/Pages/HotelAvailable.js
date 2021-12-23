@@ -110,7 +110,7 @@ function HotelAvailable(props) {
       props.router.navigate("/customer/findcities");
     }
   }
-
+const API_URL=process.env.API_URL;
   async function displayRazorpay(payload) {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"

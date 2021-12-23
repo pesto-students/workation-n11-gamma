@@ -40,7 +40,7 @@ function HostLandingPage(props) {
   const [tubSelcted, setTubselected] = useState(true);
   const [fullAdress, setFullAdress] = useState("");
   const [availablity, setAvailablity] = useState(5);
-
+const API_URL =process.env.API_URL;
   toast.configure();
 
   useEffect(() => {
