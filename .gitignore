@@ -1,6 +1,23 @@
-backend/node_modules
-frontend/node_modules
-backend/.env
-backend/config.js
-backend/workation-334417-cbb76a2423d5.json
-backend/workation-a447f-firebase-adminsdk-5s32o-ba2d85fa98.json
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
