@@ -9,7 +9,9 @@ const notify = async (data) => {
 };
 
 const isAuthenticated = async () => {
-  return await axios("/v1/isAuth", { method: "GET" })
+  return await axios("https://pesto-workation-be.herokuapp.com/v1/isAuth", {
+    method: "GET",
+  })
     .then((data) => data)
     .catch((err) => {
       throw new Error({
@@ -27,7 +29,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGIN_USER_REDUCER,
       });
       await axios
-        .post("/v1/login", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/v1/login", {
+          ...action.payload,
+        })
         .then((res) => {
           const output = {
             data: {
@@ -68,7 +72,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGIN_HOST_REDUCER,
       });
       await axios
-        .post("/v1/login", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/v1/login", {
+          ...action.payload,
+        })
         .then((res) => {
           const output = {
             data: {
@@ -108,7 +114,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
       });
       await axios
-        .post("/v1/signup", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/v1/signup", {
+          ...action.payload,
+        })
         .then((res) => {
           const output = {
             data: {
@@ -194,7 +202,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LOGOUT_USER_REDUCER,
       });
       await axios
-        .post("/v1/logout", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/v1/logout", {
+          ...action.payload,
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -218,7 +228,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
 
     case actiontype.isLandingSearchAvailable:
       await axios
-        .post("/place/isPlaceAvailable", { ...action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/isPlaceAvailable",
+          { ...action.payload }
+        )
         .then((res) => {
           if (res.data.isAvailable) {
             window.location.href = `/customer/city/${action.payload.name}?dateFrom=${action.payload.date.from}&dateTo=${action.payload.date.to}&budget=${action.payload.budget}`;
@@ -257,7 +270,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.LANDING_SEARCH_BUDGET,
       });
       await axios
-        .post("/place/getSearchPlace", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/place/getSearchPlace", {
+          ...action.payload,
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -282,7 +297,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/searchonfilter", { ...action.payload })
+        .post("https://pesto-workation-be.herokuapp.com/place/searchonfilter", {
+          ...action.payload,
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -308,7 +325,9 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadLandingPageData")
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadLandingPageData"
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -335,7 +354,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadcitiesPageData", { ...action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadcitiesPageData",
+          { ...action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -361,7 +383,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHotelsPageData", { ...action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadHotelsPageData",
+          { ...action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -387,7 +412,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHostLandingPageData", { userId: action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadHostLandingPageData",
+          { userId: action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -413,7 +441,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .post("/place/loadHostHotelsPageData", { ...action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadHostHotelsPageData",
+          { ...action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -438,7 +469,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminUsers")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminUsers")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -463,7 +494,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminHotels")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminHotels")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -488,7 +519,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminCities")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminCities")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -513,7 +544,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("/v1/loadAdminBookings")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminBookings")
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -537,7 +568,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.GET_HOTEL_DETAILS_CUSTOMER_REDUCER,
       });
       await axios
-        .post("/place/loadHotelDetails", { hotelId: action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/loadHotelDetails",
+          { hotelId: action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -561,7 +595,10 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
         type: actiontype.BOOKING_SUMMARY_DATA_REDUCER,
       });
       await axios
-        .post("/place/getbookingsummary", { bookingId: action.payload })
+        .post(
+          "https://pesto-workation-be.herokuapp.com/place/getbookingsummary",
+          { bookingId: action.payload }
+        )
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",

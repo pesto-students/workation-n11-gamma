@@ -126,9 +126,13 @@ function CitiesList(props) {
     formData.append("latitude", latitude);
     formData.append("longitude", longitude);
     setLoading(true);
-    const result = await axios.post("/upload/upload_single", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const result = await axios.post(
+      "https://pesto-workation-be.herokuapp.com/upload/upload_single",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
 
     return result;
   }

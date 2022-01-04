@@ -122,7 +122,10 @@ function HotelAvailable(props) {
     }
 
     // creating a new order
-    const result = await axios.post("/payment/orders", { ...payload });
+    const result = await axios.post(
+      "https://pesto-workation-be.herokuapp.com/payment/orders",
+      { ...payload }
+    );
 
     if (!result) {
       alert("Server error. Are you online?");
@@ -149,7 +152,10 @@ function HotelAvailable(props) {
           razorpaySignature: response.razorpay_signature,
         };
 
-        const result = await axios.post("/payment/success", data);
+        const result = await axios.post(
+          "https://pesto-workation-be.herokuapp.com/payment/success",
+          data
+        );
         if (result.data.msg === "success") {
           // props.router.navigate("/customer/findHotels");
           setModalData(result.data.bookingId);

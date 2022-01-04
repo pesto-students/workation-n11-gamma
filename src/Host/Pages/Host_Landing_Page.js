@@ -295,9 +295,13 @@ function HostLandingPage(props) {
     formData.append("fullAdress", fullAdress);
     formData.append("availability", availablity);
     setLoading(true);
-    const result = await axios.post("/upload/upload_hotel", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const result = await axios.post(
+      "https://pesto-workation-be.herokuapp.com/upload/upload_hotel",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
 
     return result;
   }
