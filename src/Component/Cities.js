@@ -37,7 +37,7 @@ function Cities(props) {
   }
 
   return (
-    <div className=" cities-background main-cities-page">
+    <section className=" cities-background main-cities-page">
       <Container className="cities-page-top-container" fluid>
         <Row>
           <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -80,12 +80,12 @@ function Cities(props) {
                 </Row>
 
                 <Col sm={12} className="location-main-container-second-row-col">
-                  <Row xs={1} sm={2} md={4} className="g-5">
+                  <Row className="g-5">
                     {props.citiesPageData?.data &&
                     props.citiesPageData?.data?.cities &&
                     props.citiesPageData?.data?.cities?.length ? (
                       props.citiesPageData?.data?.cities.map((_, idx) => (
-                        <Col key={idx}>
+                        <Col key={idx} xs={12} lg={4}>
                           <Link
                             to={`/customer/city/${_.name}`}
                             className="text-white"
@@ -120,11 +120,10 @@ function Cities(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 
-// export {LandingPage};
 const mapStatesToProps = (states, props) => {
   return {
     citiesPageData: states.app.citiesPageData,

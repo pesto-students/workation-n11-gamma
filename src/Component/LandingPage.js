@@ -26,16 +26,24 @@ function LandingPage(props) {
   const [fromDate, changeFromDate] = useState(
     todayDate.getFullYear() +
       "-" +
-      parseInt(todayDate.getMonth() + 1) +
+      (parseInt(todayDate.getMonth() + 1) < 10
+        ? "0" + parseInt(todayDate.getMonth() + 1)
+        : parseInt(todayDate.getMonth() + 1)) +
       "-" +
-      todayDate.getDate()
+      (parseInt(todayDate.getDate()) < 10
+        ? "0" + parseInt(todayDate.getDate())
+        : parseInt(todayDate.getDate()))
   );
   const [toDate, changeToDate] = useState(
     nextDay.getFullYear() +
       "-" +
-      parseInt(nextDay.getMonth() + 1) +
+      (parseInt(nextDay.getMonth() + 1) < 10
+        ? "0" + parseInt(nextDay.getMonth() + 1)
+        : parseInt(nextDay.getMonth() + 1)) +
       "-" +
-      nextDay.getDate()
+      (parseInt(nextDay.getDate()) < 10
+        ? "0" + parseInt(nextDay.getDate())
+        : parseInt(nextDay.getDate()))
   );
   const [budget, changeBudget] = useState(12000);
 
@@ -70,7 +78,7 @@ function LandingPage(props) {
   }
 
   return (
-    <div className=" app-background main-landing-page">
+    <section className=" app-background main-landing-page">
       <Container className="landing-page-top-container" fluid>
         <Row>
           <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -84,8 +92,12 @@ function LandingPage(props) {
                 <Row className="search-landing-row">
                   <Col xs={12}>
                     <Form className="search-from-main">
-                      <Row className="align-items-center">
-                        <Col sm={3} className="my-1 px-5 d-flex flex-column">
+                      <Row className="align-items-md-center">
+                        <Col
+                          sm={12}
+                          lg={3}
+                          className="my-1 px-5 d-flex flex-column"
+                        >
                           <Form.Label
                             htmlFor="inlineFormInputName"
                             className="text-center search-label"
@@ -112,6 +124,7 @@ function LandingPage(props) {
                                       <option
                                         value={_.name}
                                         className="bg-dark"
+                                        key={idx}
                                       >
                                         {_.name}
                                       </option>
@@ -122,7 +135,11 @@ function LandingPage(props) {
                           </InputGroup>
                         </Col>
 
-                        <Col sm={4} className="my-1 px-5 d-flex flex-column">
+                        <Col
+                          sm={12}
+                          lg={4}
+                          className="my-1 px-5 d-flex flex-column"
+                        >
                           <Form.Label
                             htmlFor="location-date-group-id"
                             className="text-center search-label"
@@ -153,7 +170,11 @@ function LandingPage(props) {
                           </div>
                         </Col>
 
-                        <Col xs={2} className="my-1 px-5 d-flex flex-column">
+                        <Col
+                          sm={12}
+                          lg={2}
+                          className="my-1 px-5 d-flex flex-column"
+                        >
                           <Form.Label
                             htmlFor="inlineFormInputGroupBudget"
                             className="text-center search-label"
@@ -173,7 +194,11 @@ function LandingPage(props) {
                           </>
                         </Col>
 
-                        <Col xs={3} className="my-1 px-5 d-flex flex-column">
+                        <Col
+                          sm={12}
+                          lg={3}
+                          className="my-1 px-5 d-flex flex-column"
+                        >
                           <Form.Label
                             htmlFor="inlineFormInputButton"
                             className="text-center search-label"
@@ -209,9 +234,9 @@ function LandingPage(props) {
             </Col>
           </Row>
           <Row className="gx-0 explore-top-location">
-            <Col sm={12} className="mandates">
+            {/* <Col sm={12} className="mandates">
               Aman need to add mendates!
-            </Col>
+            </Col> */}
             <Col sm={12} className="explore-top-location-col">
               <Container className="explore-top-location-main-container" fluid>
                 <Row className="gx-0">
@@ -227,14 +252,14 @@ function LandingPage(props) {
                     sm={12}
                     className="location-main-container-second-row-col"
                   >
-                    <Row xs={1} sm={2} md={4} className="g-5">
+                    <Row xs={12} className="g-5">
                       {props.landing_page_data?.data &&
                       props.landing_page_data.data?.cityResult &&
                       props.landing_page_data.data?.cityResult?.length ? (
                         props?.landing_page_data?.data?.cityResult
                           ?.slice(0, 4)
                           ?.map((_, idx) => (
-                            <Col key={idx}>
+                            <Col key={idx} xs={12} lg={3}>
                               <Link
                                 to={`/customer/city/${_.name}`}
                                 className="text-white"
@@ -284,8 +309,8 @@ function LandingPage(props) {
           </Row>
         </Container>
       </div>
-      <div className="landing-page-video-div">
-        <Container className="landing-page-video-container" fluid>
+      <div className="landing-page-video-div-cust">
+        <Container className="landing-page-video-container-cust" fluid>
           <Row className="landing-video-text-top g-0">
             <Col sm={12} className="landing-video-text-top-col">
               <p>DISCOVER THE</p>
@@ -305,12 +330,12 @@ function LandingPage(props) {
             </Col>
           </Row>
           <Row className="landing-video-text-third g-0">
-            <Col sm={5} className="landing-video-text-third-col-A">
+            <Col sm={12} lg={5} className="landing-video-text-third-col-A">
               "Attachment to things and comfort is the main obstacle to the
               interesting life. People, as a rule, do not realize that at any
               time they can throw anything out of their lives. Anytime."
             </Col>
-            <Col sm={7} className="landing-video-text-third-col-B">
+            <Col sm={12} lg={7} className="landing-video-text-third-col-B">
               <Card className="landing-video-card">
                 <video variant="top" className="landing-video " controls>
                   <source src={firstvideo} type="video/mp4" />
@@ -327,7 +352,7 @@ function LandingPage(props) {
           </Row>
         </Container>
       </div>
-    </div>
+    </section>
   );
 }
 

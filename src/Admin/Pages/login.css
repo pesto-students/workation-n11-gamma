@@ -14,12 +14,6 @@
   background-image: url("../../shared-resource/images/admin_login_background.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  /* object-fit: contain; */
-  /* filter: opacity(65%); */
-  /* filter: grayscale(40%); */
-  /* filter: contrast(67%); */
-  /* filter: brightness(45%); */
-  /* backdrop-filter: brightness(45%); */
 }
 
 .admin-login-container-panel {
@@ -41,20 +35,15 @@
 }
 
 .main-div-parent {
-  /* backdrop-filter: brightness(45%); */
   width: 900px;
   display: flex;
   flex-direction: row;
   background-color: rgba(149, 156, 158, 0.2);
   border-radius: 2em;
   height: 475px;
-  /* box-shadow: 0.1px 0.1px 10px white; */
-  /* justify-content: stretch; */
 }
 
 .login-form {
-  /* position: inherit; */
-  /* background-color: #959c9e; */
   backdrop-filter: blur(0.5px);
   border-radius: 2em 0 0 2em;
   padding: 2em;
@@ -68,9 +57,6 @@
   margin-bottom: 2rem;
 }
 
-/* .admin-login-form {
-} */
-
 .admin-login-form > * {
   width: 100%;
 }
@@ -80,11 +66,6 @@
   position: relative;
   margin-bottom: 2em;
 }
-
-/* 
-.email-group > * {
-  position: absolute;
-} */
 
 .email-label,
 .password-label {
@@ -149,7 +130,6 @@
   position: relative;
   background-image: url("../../shared-resource/images/admin_login_right.jpg");
   background-repeat: no-repeat;
-  /* background-position: center center; */
   background-size: 100% 100%;
   object-fit: contain;
   width: 45%;

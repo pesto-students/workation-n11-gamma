@@ -9,9 +9,14 @@ const notify = async (data) => {
 };
 
 const isAuthenticated = async () => {
-  return await axios("https://pesto-workation-be.herokuapp.com/v1/isAuth", {
-    method: "GET",
-  })
+  return await axios
+    .get("https://pesto-workation-be.herokuapp.com/v1/isAuth", {
+      mode: "cors",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      credential: "include",
+    })
     .then((data) => data)
     .catch((err) => {
       throw new Error({
@@ -48,6 +53,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
             },
           };
 
+          localStorage.setItem("token", res.data.token);
           storeAPI.dispatch({
             status: "Success",
             type: actiontype.LOGIN_USER_REDUCER,
@@ -90,6 +96,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
               token: res.data.token,
             },
           };
+          localStorage.setItem("token", res.data.token);
           storeAPI.dispatch({
             status: "Success",
             type: actiontype.LOGIN_HOST_REDUCER,
@@ -132,7 +139,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
               token: res.data.token,
             },
           };
-
+          localStorage.setItem("token", res.data.token);
           storeAPI.dispatch({
             status: "Success",
             type: actiontype.LOAD_CUSTOMER_SIGNUP_REDUCER,
@@ -179,6 +186,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
                 token: data.data.token,
               },
             };
+            localStorage.setItem("token", data.data.token);
             storeAPI.dispatch({
               status: "Success",
               type: actiontype.UPDATE_USER_REDUCER,
@@ -206,6 +214,7 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
           ...action.payload,
         })
         .then((res) => {
+          localStorage.removeItem("token");
           storeAPI.dispatch({
             status: "Success",
             type: actiontype.LOGOUT_USER_REDUCER,
@@ -414,7 +423,14 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       await axios
         .post(
           "https://pesto-workation-be.herokuapp.com/place/loadHostLandingPageData",
-          { userId: action.payload }
+          { userId: action.payload },
+          {
+            mode: "cors",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            credential: "include",
+          }
         )
         .then((res) => {
           storeAPI.dispatch({
@@ -443,7 +459,14 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       await axios
         .post(
           "https://pesto-workation-be.herokuapp.com/place/loadHostHotelsPageData",
-          { ...action.payload }
+          { ...action.payload },
+          {
+            mode: "cors",
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            credential: "include",
+          }
         )
         .then((res) => {
           storeAPI.dispatch({
@@ -469,7 +492,13 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminUsers")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminUsers", {
+          mode: "cors",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          credential: "include",
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -494,7 +523,13 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminHotels")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminHotels", {
+          mode: "cors",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          credential: "include",
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -519,7 +554,13 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminCities")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminCities", {
+          mode: "cors",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          credential: "include",
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",
@@ -544,7 +585,13 @@ export const load_login_creds = (storeAPI) => (next) => async (action) => {
       });
 
       await axios
-        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminBookings")
+        .get("https://pesto-workation-be.herokuapp.com/v1/loadAdminBookings", {
+          mode: "cors",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          credential: "include",
+        })
         .then((res) => {
           storeAPI.dispatch({
             status: "Success",

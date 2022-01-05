@@ -3,14 +3,14 @@
 }
 
 .footer-main-div {
-  height: 15em;
+  height: max-content;
   background-image: url("../shared-resource/images/landing_middle_video.jpg");
 }
 
 .first-main-container {
   backdrop-filter: brightness(5%);
-  height: 100%;
-  padding: 2em 10em;
+  height: max-content;
+  /* padding: 2em 10em; */
 }
 
 .first-main-container > div {

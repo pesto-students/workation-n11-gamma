@@ -1,13 +1,18 @@
 import React from "react";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import { connect } from "react-redux";
-import imagefirst from "../shared-resource/images/alessio-furlan-Vw3a0HgE7AM-unsplash.jpg";
+import developerFirst from "../shared-resource/images/d1png.png";
+import developerTwo from "../shared-resource/images/d2png.png";
+import fundingone from "../shared-resource/images/funding1.jpg";
+import fundingtwo from "../shared-resource/images/funding2.jpg";
+import fundingthree from "../shared-resource/images/funding3.jpg";
+
 import { withRouter } from "../shared-resource/store/withRouter";
 import "./aboutus.css";
 
 function AboutUs(props) {
   return (
-    <div className=" aboutus-background main-aboutus-page">
+    <section className=" aboutus-background main-aboutus-page">
       <Container className="aboutus-page-top-container" fluid>
         <Row>
           <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -34,23 +39,23 @@ function AboutUs(props) {
                       <div class="row g-0 border-none">
                         <div class="col-md-2">
                           <img
-                            src={imagefirst}
+                            src={developerFirst}
                             class="img-fluid rounded-start first-image-class"
                             alt="..."
                           />
                         </div>
                         <div class="col-md-10">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Rishabh Verma</h5>
+                            <h6 class="card-text">Software Developer</h6>
                             <p class="card-text">
-                              This is a wider card with supporting text below as
-                              a natural lead-in to additional content. This
-                              content is a little bit longer.
-                            </p>
-                            <p class="card-text">
-                              <small class="text-muted">
-                                Last updated 3 mins ago
-                              </small>
+                              It is a long established fact that a reader will
+                              be distracted by the readable content of a page
+                              when looking at its layout. The point of using
+                              Lorem Ipsum is that it has a more-or-less normal
+                              distribution of letters, as opposed to using
+                              'Content here, content here', making it look like
+                              readable English.
                             </p>
                           </div>
                         </div>
@@ -62,57 +67,30 @@ function AboutUs(props) {
                       <div class="row g-0 border-none">
                         <div class="col-md-2">
                           <img
-                            src={imagefirst}
+                            src={developerTwo}
                             class="img-fluid rounded-start first-image-class"
                             alt="..."
                           />
                         </div>
                         <div class="col-md-10">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
+                            <h5 class="card-title">Aman Shah</h5>
+                            <h6 class="card-text">Software Developer</h6>
                             <p class="card-text">
-                              This is a wider card with supporting text below as
-                              a natural lead-in to additional content. This
-                              content is a little bit longer.
-                            </p>
-                            <p class="card-text">
-                              <small class="text-muted">
-                                Last updated 3 mins ago
-                              </small>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Row>
-                  <Row sm={12} className="g-0 w-100 ">
-                    <div class="card mb-3 card-backgeound">
-                      <div class="row g-0 border-none">
-                        <div class="col-md-2">
-                          <img
-                            src={imagefirst}
-                            class="img-fluid rounded-start first-image-class"
-                            alt="..."
-                          />
-                        </div>
-                        <div class="col-md-10">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">
-                              This is a wider card with supporting text below as
-                              a natural lead-in to additional content. This
-                              content is a little bit longer.
-                            </p>
-                            <p class="card-text">
-                              <small class="text-muted">
-                                Last updated 3 mins ago
-                              </small>
+                              It is a long established fact that a reader will
+                              be distracted by the readable content of a page
+                              when looking at its layout. The point of using
+                              Lorem Ipsum is that it has a more-or-less normal
+                              distribution of letters, as opposed to using
+                              'Content here, content here', making it look like
+                              readable English.
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </Row>
+
                   <Row sm={12} className="g-0 w-100 ">
                     <Container className="aboutus-page-top-container" fluid>
                       <Row>
@@ -124,12 +102,11 @@ function AboutUs(props) {
                         <div className="carousel-image-div">
                           <img
                             className="d-block  achievements-carousel"
-                            src={imagefirst}
+                            src={fundingone}
                             alt="First slide"
                           />
                         </div>
                         <Carousel.Caption>
-                          <h3>Seed Funding 1</h3>
                           <p>
                             Nulla vitae elit libero, a pharetra augue mollis
                             interdum.
@@ -140,12 +117,11 @@ function AboutUs(props) {
                         <div className="carousel-image-div">
                           <img
                             className="d-block  achievements-carousel"
-                            src={imagefirst}
+                            src={fundingtwo}
                             alt="Second slide"
                           />
                         </div>
                         <Carousel.Caption>
-                          <h3>Seed Funding 2</h3>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit.
@@ -156,13 +132,12 @@ function AboutUs(props) {
                         <div className="carousel-image-div">
                           <img
                             className="d-block  achievements-carousel"
-                            src={imagefirst}
+                            src={fundingthree}
                             alt="Third slide"
                           />
                         </div>
                         <Carousel.Caption>
-                          <h3>Seed Funding 3</h3>
-                          <p>
+                          <p className="">
                             Praesent commodo cursus magna, vel scelerisque nisl
                             consectetur.
                           </p>
@@ -176,7 +151,7 @@ function AboutUs(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

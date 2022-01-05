@@ -31,8 +31,15 @@
   bottom: 0;
   padding: 2em 7em;
   height: fit-content;
+  min-height: 40em;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 992px) {
+  .hotels-page-second-container {
+    padding: 2em 0em;
+  }
 }
 
 .explore-top-location-hotels {
@@ -68,8 +75,6 @@
   position: absolute;
   /* height: 100%; */
   bottom: 0;
-
-  /* backdrop-filter: brightness(15%); */
   z-index: 999;
   border-radius: 0.6em;
   overflow: hidden;

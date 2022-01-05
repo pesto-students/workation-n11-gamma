@@ -13,7 +13,7 @@ function HostHotelPage(props) {
   }, []);
 
   return (
-    <div className=" app-hLanding-background main-hLanding-page">
+    <section className=" app-hLanding-background main-hLanding-page">
       <Container className="hLanding-page-top-container" fluid>
         <Row>
           <Col sm={12}>All hotel Details will come here!</Col>
@@ -107,7 +107,7 @@ function HostHotelPage(props) {
           </Row>
         </Container>
       </div>
-    </div>
+    </section>
   );
 }
 

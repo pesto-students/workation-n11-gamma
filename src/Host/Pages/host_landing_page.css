@@ -31,6 +31,7 @@
   bottom: 0;
   padding: 2em 7em;
   height: fit-content;
+  min-height: 40em;
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -75,8 +76,6 @@
   position: absolute;
   /* height: 100%; */
   bottom: 0;
-
-  /* backdrop-filter: brightness(15%); */
   z-index: 999;
   border-radius: 0.6em;
   overflow: hidden;
@@ -181,8 +180,6 @@
   padding-bottom: 0.4em;
   border-radius: 50%;
   color: white;
-  /* filter: contrast(100%); */
-  /* font-weight: 300; */
 }
 
 .landing-video-text-third {

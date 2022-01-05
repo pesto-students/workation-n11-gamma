@@ -3,9 +3,10 @@ import { Container, Row, Col, Figure } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import notfound from "../shared-resource/images/not-found.jpg";
 import "./notfound.css";
+
 function NotFound() {
   return (
-    <div className="dnd-main-div p-0 m-0">
+    <section className="dnd-main-div p-0 m-0">
       <Container className="main-container-dnd p-0 m-0" fluid>
         <Row className="g-0 p-0 m-0">
           <Col sm={12} className="p-0 m-0">
@@ -24,7 +25,7 @@ function NotFound() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

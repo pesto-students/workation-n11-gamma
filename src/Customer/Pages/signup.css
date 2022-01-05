@@ -171,10 +171,19 @@
   position: relative;
   background-image: url("../../shared-resource/images/customer_login_right_panel.jpg");
   background-repeat: no-repeat;
-  /* background-position: center center; */
   background-size: 100% 100%;
   object-fit: contain;
   width: 45%;
   border-radius: 0 2em 2em 0;
   filter: brightness(75%);
+}
+
+@media screen and (max-width: 992px) {
+  .login-image-customer {
+    display: none;
+    width: 0 !important;
+  }
+  .login-form {
+    width: 100% !important;
+  }
 }
