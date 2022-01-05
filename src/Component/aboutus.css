@@ -50,8 +50,6 @@
 }
 
 .first-image-class {
-  /* position: absolute; */
-  /* object-fit: contain; */
   height: 200px;
   width: auto;
 }
@@ -66,8 +64,8 @@
   justify-content: center;
 }
 .achievements-carousel {
-  height: 200px;
-  width: 400px !important;
+  height: 300px;
+  width: 70% !important;
   justify-content: center;
   text-align: center;
 }

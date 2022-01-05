@@ -72,7 +72,6 @@ function Login(props) {
                         className="email-group mb-3"
                         controlId="formBasicEmail"
                       >
-                        {/* <Form.Label className="email-label">Email address</Form.Label> */}
                         <Form.Control
                           className="email-input"
                           type="email"
@@ -87,7 +86,6 @@ function Login(props) {
                         className="password-group mb-3"
                         controlId="formBasicPassword"
                       >
-                        {/* <Form.Label className="password-label">Password</Form.Label> */}
                         <Form.Control
                           className="password-input"
                           type="password"
@@ -98,15 +96,6 @@ function Login(props) {
                         />
                       </Form.Group>
 
-                      {/* <Form.Text className=" forget-password-text text-muted">
-                        <Link to="" className="link-text">
-                          Forgot Password !
-                        </Link>
-                      </Form.Text> */}
-                      {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                        <Form.Check type="checkbox" label="Check me out" />
-                                        </Form.Group> */}
-
                       <Button
                         className="login-button"
                         variant="primary"
@@ -116,13 +105,6 @@ function Login(props) {
                         Login &nbsp;&nbsp;&nbsp;&nbsp;{" "}
                         {<span className="arrow-inline">&rarr;</span>}
                       </Button>
-
-                      {/* <Form.Text className=" sign-up-text text-muted">
-                        Don't have an account ?
-                        <Link to="/admin/signup" className="link-text">
-                          &nbsp;Sign Up
-                        </Link>
-                      </Form.Text> */}
                     </Form>
                   </div>
                   <div className="login-image-admin"></div>

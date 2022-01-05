@@ -125,7 +125,7 @@ function FindCity(props) {
     props?.customer_searched_place?.data[0];
 
   return (
-    <div className="place-main-div">
+    <section className="place-main-div">
       <Container className="top-container" fluid>
         <Row className="gx-0">
           <Col className="top-div">
@@ -144,9 +144,6 @@ function FindCity(props) {
                       info?.placeLocation?.Longitude}
                   </div>
                   <div className="nomads-uploads">
-                    {/* {info?.nomadsUpload?.map((images) => {
-                      return <div className="">{images.toString()}</div>;
-                    })} */}
                     <Card className="location-cards p-0">
                       <Card.Img
                         variant="top"
@@ -211,7 +208,6 @@ function FindCity(props) {
                                   value={subArea}
                                   onChange={changeTheSubArea}
                                 />
-                                {/* <Form.Label className="">Map</Form.Label>                    */}
                               </Form.Group>
 
                               <Form.Group
@@ -440,10 +436,6 @@ function FindCity(props) {
                                   </Col>
                                 </Row>
                               </Form.Group>
-                              {/* <div className='all-facilties'>
-                                                          All facilties      
-                                        </div> */}
-
                               <Form.Group
                                 className="mt-5"
                                 controlId="formBasicFilterButton"
@@ -471,7 +463,7 @@ function FindCity(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

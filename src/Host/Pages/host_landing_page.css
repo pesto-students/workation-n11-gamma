@@ -75,8 +75,6 @@
   position: absolute;
   /* height: 100%; */
   bottom: 0;
-
-  /* backdrop-filter: brightness(15%); */
   z-index: 999;
   border-radius: 0.6em;
   overflow: hidden;
@@ -181,8 +179,6 @@
   padding-bottom: 0.4em;
   border-radius: 50%;
   color: white;
-  /* filter: contrast(100%); */
-  /* font-weight: 300; */
 }
 
 .landing-video-text-third {

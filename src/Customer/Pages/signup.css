@@ -171,7 +171,6 @@
   position: relative;
   background-image: url("../../shared-resource/images/customer_login_right_panel.jpg");
   background-repeat: no-repeat;
-  /* background-position: center center; */
   background-size: 100% 100%;
   object-fit: contain;
   width: 45%;

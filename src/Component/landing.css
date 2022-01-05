@@ -25,19 +25,25 @@
 .landing-first-div {
   width: 100%;
   position: relative;
-  height: 55em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  /* height: 55em; */
   background-color: rgba(2, 17, 20, 0.7);
   border-radius: 4em 4em 0 0;
+  /* height: max-content; */
+  /* display: none; */
 }
 
 .landing-page-second-container {
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   padding: 2em 7em;
-  height: 4em;
+  height: max-content !important;
   color: white;
 }
 
@@ -50,6 +56,36 @@
   position: relative;
 }
 
+@media screen and (max-width: 992px) {
+  .search-bar-landing {
+    height: 25em;
+  }
+}
+
+@media screen and (max-width: 541px) {
+  .search-bar-landing {
+    height: 28em;
+  }
+}
+
+/* @media screen and (max-width: 993px) {
+  .landing-first-div {
+    height: 75em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .landing-first-div {
+    height: 185em;
+  }
+} */
+
+@media screen and (max-width: 767px) {
+  .landing-page-second-container {
+    padding: 2em 0em;
+  }
+}
+
 .search-landing-row {
   position: absolute;
   top: 0;
@@ -58,6 +94,12 @@
   bottom: 0;
   padding: 1em 3em;
   height: max-content;
+}
+
+@media screen and (max-width: 767px) {
+  .search-landing-row {
+    padding: 1em 0em;
+  }
 }
 
 .under-search-landing {
@@ -69,6 +111,7 @@
 
 .explore-top-location {
   padding: 2em 4em 2em 4em;
+  height: fit-content;
 }
 
 .location-main-container-first-row-col {
@@ -98,10 +141,7 @@
 
 .location-card-body {
   position: absolute;
-  /* height: 100%; */
   bottom: 0;
-
-  /* backdrop-filter: brightness(15%); */
   z-index: 999;
   border-radius: 0.6em;
   overflow: hidden;
@@ -137,23 +177,24 @@
   font-weight: 500;
 }
 
-.landing-page-video-div {
+.landing-page-video-div-cust {
   background-image: url("../shared-resource/images/landing_middle_video_1.jpg");
-  height: 50em;
   object-fit: contain;
   background-size: 100% 100%;
-  position: relative;
 }
 
-.landing-page-video-container {
-  position: relative;
-  height: 100%;
+.landing-page-video-container-cust {
   backdrop-filter: brightness(45%);
   padding: 0 7em;
 }
 
+@media screen and (max-width: 992px) {
+  .landing-page-video-container-cust {
+    padding: 0em;
+  }
+}
+
 .landing-video-text-top {
-  /* border: 2px solid white; */
   padding-top: 9em;
   padding-left: 5em;
   padding-bottom: 1em;
@@ -179,7 +220,6 @@
   font-weight: 500;
   word-spacing: 0.1em;
   letter-spacing: 0.01em;
-  /* filter: contrast(60%); */
 }
 
 .landing-video-text-middle-col .video-link-text {
@@ -191,8 +231,6 @@
   padding-bottom: 0.4em;
   border-radius: 50%;
   color: white;
-  /* filter: contrast(100%); */
-  /* font-weight: 300; */
 }
 
 .landing-video-text-third {

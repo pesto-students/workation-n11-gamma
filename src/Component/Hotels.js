@@ -36,7 +36,7 @@ function Hotels(props) {
   }
 
   return (
-    <div className=" hotels-background main-hotels-page">
+    <section className=" hotels-background main-hotels-page">
       <Container className="hotels-page-top-container" fluid>
         <Row>
           <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -78,12 +78,12 @@ function Hotels(props) {
                   </Col>
                 </Row>
                 <Col sm={12} className="location-main-container-second-row-col">
-                  <Row xs={1} sm={2} md={4} className="g-5">
+                  <Row className="g-5">
                     {props.hotelsPageData?.data &&
                     props.hotelsPageData?.data?.hotels &&
                     props.hotelsPageData?.data?.hotels?.length ? (
                       props.hotelsPageData?.data?.hotels.map((_, idx) => (
-                        <Col key={idx}>
+                        <Col key={idx} xs={12} lg={4}>
                           <Link
                             to={`/customer/hotel/${_.id}`}
                             className="text-white"
@@ -122,7 +122,7 @@ function Hotels(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

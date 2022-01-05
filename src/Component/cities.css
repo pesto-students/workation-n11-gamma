@@ -35,6 +35,12 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+@media screen and (max-width: 992px) {
+  .cities-page-second-container {
+    padding: 2em 0em;
+  }
+}
+
 .explore-top-location-cities {
   padding: 2em 4em 2em 4em;
 }

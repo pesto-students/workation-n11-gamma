@@ -76,7 +76,10 @@ function ContactUs(props) {
           message: query,
         };
         await axios
-          .post("/place/form-submit-url", data)
+          .post(
+            "https://pesto-workation-be.herokuapp.com/place/form-submit-url",
+            data
+          )
           .then((data) => {
             notifySuccessfulSent();
           })
@@ -88,7 +91,7 @@ function ContactUs(props) {
   }
 
   return (
-    <div className=" contactus-background main-contactus-page">
+    <section className=" contactus-background main-contactus-page">
       <Container className="contactus-page-top-container" fluid>
         <Row>
           <Col sm={12}>Live the life better way, Explore with us</Col>
@@ -105,7 +108,7 @@ function ContactUs(props) {
               </Row>
               <Row className="gx-0">
                 <Col sm={12} className="location-main-container-second-row-col">
-                  <Row xs={1} sm={2} md={4} className="g-5">
+                  <Row className="g-5">
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
@@ -167,7 +170,7 @@ function ContactUs(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

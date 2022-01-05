@@ -225,7 +225,7 @@ function HotelAvailable(props) {
   }
 
   return (
-    <div className="place-main-div">
+    <section className="place-main-div">
       <Container className="top-container" fluid>
         <Row className="gx-0">
           <Col className="top-div">
@@ -355,9 +355,6 @@ function HotelAvailable(props) {
                       info?.placeLocation?.Longitude}
                   </div>
                   <div className="nomads-uploads">
-                    {/* {info?.nomadsUpload?.map((images) => {
-                      return <div className="">{images.toString()}</div>;
-                    })} */}
                     <Card className="location-cards p-0">
                       <Card.Img
                         variant="top"
@@ -410,7 +407,7 @@ function HotelAvailable(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

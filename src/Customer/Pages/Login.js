@@ -65,7 +65,7 @@ function Login(props) {
   }
 
   return (
-    <div className="main-customer-login">
+    <section className="main-customer-login">
       {props?.authorized_user_login?.status === "Initiated" ? <Loader /> : null}
       <Container className="login-image-container" fluid>
         <Row>
@@ -80,7 +80,6 @@ function Login(props) {
                         className="email-group mb-3"
                         controlId="formBasicEmail"
                       >
-                        {/* <Form.Label className="email-label">Email address</Form.Label> */}
                         <Form.Control
                           className="email-input"
                           type="email"
@@ -95,7 +94,6 @@ function Login(props) {
                         className="password-group mb-3"
                         controlId="formBasicPassword"
                       >
-                        {/* <Form.Label className="password-label">Password</Form.Label> */}
                         <Form.Control
                           className="password-input"
                           type="password"
@@ -110,7 +108,6 @@ function Login(props) {
                         className="password-group mb-3"
                         controlId="formBasicUserType"
                       >
-                        {/* <Form.Label className="password-label">Password</Form.Label> */}
                         <Form.Select
                           aria-label="Default select example"
                           className="email-input"
@@ -152,7 +149,7 @@ function Login(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 

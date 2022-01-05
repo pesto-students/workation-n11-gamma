@@ -31,20 +31,23 @@ function HeaderBar(props) {
   }
 
   return (
-    <div className="app-background main-header-top">
+    <header className="app-background main-header-top w-100">
       <Container className="header-top-container" fluid>
         <Row className="gx-0">
-          <Col className=" text-white logo-div" xs={1}>
+          <Col className=" text-white logo-div" xs={3} md={1}>
             <Link to="/">
               {" "}
               <img src={logo} alt="work@tion" className="logo-iamge" />
             </Link>
           </Col>
-          <Col className="navbar-div" xs={10}>
+          <Col className="navbar-div" xs={9} md={10}>
             <Navbar className="navbar-main-top" expand={false}>
-              <Container className="justify-content-center" fluid>
-                <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2 ">
-                  <Link className="navbar-links top-links" to="/">
+              <Container
+                className="justify-content-end justify-content-md-center"
+                fluid
+              >
+                <Nav className=" navs-list d-none d-md-flex flex-md-row pl-md-2">
+                  <Link className="navbar-links top-links " to="/">
                     Home
                   </Link>
                   {usersAuth?.isHost ? null : (
@@ -69,7 +72,7 @@ function HeaderBar(props) {
                   <Link className="navbar-links top-links" to="/contact-us">
                     Contact us
                   </Link>
-                  <div className=" login-signup-button flex-grow-1">
+                  <div className=" login-signup-button">
                     {usersAuth?.isLogin ? (
                       <>
                         <Button
@@ -103,12 +106,6 @@ function HeaderBar(props) {
                         >
                           LOGIN
                         </Button>
-                        {/* <Button
-                          className="signin-header-button guestLogin"
-                          onClick={guestLogin}
-                        >
-                          GUEST
-                        </Button> */}
                       </>
                     )}
                   </div>
@@ -116,6 +113,7 @@ function HeaderBar(props) {
                 <Navbar.Toggle
                   className="d-md-none toggle-hamburger"
                   aria-controls="offcanvasNavbar"
+                  data-bs-toggle="offcanvas"
                 >
                   <span className="toggle-arrow">&rarr;</span>
                 </Navbar.Toggle>
@@ -135,36 +133,65 @@ function HeaderBar(props) {
                       <Link className="navbar-links" to="/">
                         Home
                       </Link>
-                      <Link className="navbar-links" to="/customer/login">
+                      <Link className="navbar-links" to="/customer/findcities">
                         Cities
                       </Link>
-                      <Link className="navbar-links" to="/host/login">
+                      <Link className="navbar-links" to="/customer/findHotels">
                         Hotels
                       </Link>
-                      <Link className="navbar-links" to="/admin/login">
+                      <Link className="navbar-links" to="/about-us">
                         About us
                       </Link>
-                      <Link className="navbar-links" to="/admin/login">
+                      <Link className="navbar-links" to="/contact-us">
                         Contact us
                       </Link>
-                      {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-                                <NavDropdown.Item to="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item to="#action4">Another action</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item to="#action5">
-                                Something else here
-                                </NavDropdown.Item>
-                            </NavDropdown> */}
+                      <div className=" login-signup-button">
+                        {usersAuth?.isLogin ? (
+                          <>
+                            <Button
+                              className="signout-header-button"
+                              onClick={pleaseLogout}
+                            >
+                              SIGNOUT
+                            </Button>
+                            {usersAuth?.isCustomer ? (
+                              <Button
+                                className="signin-header-button"
+                                onClick={guestLogin}
+                              >
+                                Customer PRofile
+                              </Button>
+                            ) : usersAuth?.isHost ? (
+                              <Button
+                                className="signin-header-button"
+                                onClick={guestLogin}
+                              >
+                                Host PRofile
+                              </Button>
+                            ) : null}
+                          </>
+                        ) : null}
+                        {usersAuth?.isLogin ? null : (
+                          <>
+                            <Button
+                              className="login-header-button book-login"
+                              onClick={customerLogin}
+                            >
+                              LOGIN
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </Nav>
                   </Offcanvas.Body>
                 </Navbar.Offcanvas>
               </Container>
             </Navbar>
           </Col>
-          <Col className="right-div" xs={1}></Col>
+          <Col className="right-div" xs={0} md={1}></Col>
         </Row>
       </Container>
-    </div>
+    </header>
   );
 }
 

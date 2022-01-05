@@ -307,7 +307,7 @@ function HostLandingPage(props) {
   }
 
   return (
-    <div className=" app-hLanding-background main-hLanding-page">
+    <section className=" app-hLanding-background main-hLanding-page">
       <Container className="hLanding-page-top-container" fluid>
         <Row>
           <Col sm={12}>Help us to make a better world!</Col>
@@ -671,7 +671,7 @@ function HostLandingPage(props) {
           </Row>
         </Container>
       </div>
-    </div>
+    </section>
   );
 }
 

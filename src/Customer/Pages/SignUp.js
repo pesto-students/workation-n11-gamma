@@ -119,7 +119,7 @@ function SignUp(props) {
   }
 
   return (
-    <div className="main-customer-signup">
+    <section className="main-customer-signup">
       {props?.authorized_user_login?.status === "Initiated" ? <Loader /> : null}
       <Container className="signup-image-container" fluid>
         <Row>
@@ -162,7 +162,6 @@ function SignUp(props) {
                         className="password-group mb-3"
                         controlId="formBasicUserType"
                       >
-                        {/* <Form.Label className="password-label">Password</Form.Label> */}
                         <Form.Select
                           aria-label="Default select example"
                           className="email-input"
@@ -234,7 +233,7 @@ function SignUp(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </section>
   );
 }
 
