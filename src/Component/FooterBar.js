@@ -5,9 +5,9 @@ import "./footerbar.css";
 function FooterBar() {
   return (
     <footer className="footer-main-div">
-      <Container className="first-main-container" fluid>
+      <Container className="first-main-container px-sm-0 px-md-5 pb-2" fluid>
         <Row>
-          <Col md={3}>
+          <Col sm={12} md={3}>
             <Stack gap={2}>
               <div className="first-stack-first">Work@tion</div>
               <div className="first-stack-common">

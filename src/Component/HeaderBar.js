@@ -115,7 +115,9 @@ function HeaderBar(props) {
                   aria-controls="offcanvasNavbar"
                   data-bs-toggle="offcanvas"
                 >
-                  <span className="toggle-arrow">&rarr;</span>
+                  <span className="toggle-arrow">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                  </span>
                 </Navbar.Toggle>
                 <Navbar.Offcanvas
                   id="offcanvasNavbar"

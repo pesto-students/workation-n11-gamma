@@ -234,9 +234,9 @@ function LandingPage(props) {
             </Col>
           </Row>
           <Row className="gx-0 explore-top-location">
-            <Col sm={12} className="mandates">
+            {/* <Col sm={12} className="mandates">
               Aman need to add mendates!
-            </Col>
+            </Col> */}
             <Col sm={12} className="explore-top-location-col">
               <Container className="explore-top-location-main-container" fluid>
                 <Row className="gx-0">
