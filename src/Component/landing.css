@@ -112,6 +112,7 @@
 .explore-top-location {
   padding: 2em 4em 2em 4em;
   height: fit-content;
+  min-height: 40em;
 }
 
 .location-main-container-first-row-col {

@@ -107,7 +107,12 @@ function ContactUs(props) {
                 </Col>
               </Row>
               <Row className="gx-0">
-                <Col sm={12} className="location-main-container-second-row-col">
+                <Col
+                  sm={12}
+                  md={8}
+                  lg={7}
+                  className="location-main-container-second-row-col"
+                >
                   <Row className="g-5">
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">

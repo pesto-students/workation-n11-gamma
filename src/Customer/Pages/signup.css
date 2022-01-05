@@ -177,3 +177,13 @@
   border-radius: 0 2em 2em 0;
   filter: brightness(75%);
 }
+
+@media screen and (max-width: 992px) {
+  .login-image-customer {
+    display: none;
+    width: 0 !important;
+  }
+  .login-form {
+    width: 100% !important;
+  }
+}

@@ -356,11 +356,11 @@ function HostLandingPage(props) {
                     className="hLanding-main-container-second-row-col"
                   >
                     {!addHotel ? (
-                      <Row xs={1} sm={2} md={4} className="g-5">
+                      <Row sm={12} className="g-5">
                         {props.landing_page_data?.data &&
                         props.landing_page_data.data?.length ? (
                           props.landing_page_data.data.map((_, idx) => (
-                            <Col key={idx}>
+                            <Col key={idx} sm={12} md={4}>
                               <Link
                                 to={`/host/hotel/${_.id}`}
                                 className="text-white"

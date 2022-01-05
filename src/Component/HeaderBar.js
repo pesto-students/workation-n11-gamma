@@ -81,7 +81,7 @@ function HeaderBar(props) {
                         >
                           SIGNOUT
                         </Button>
-                        {usersAuth?.isCustomer ? (
+                        {/* {usersAuth?.isCustomer ? (
                           <Button
                             className="signin-header-button"
                             onClick={guestLogin}
@@ -95,7 +95,7 @@ function HeaderBar(props) {
                           >
                             Host PRofile
                           </Button>
-                        ) : null}
+                        ) : null} */}
                       </>
                     ) : null}
                     {usersAuth?.isLogin ? null : (

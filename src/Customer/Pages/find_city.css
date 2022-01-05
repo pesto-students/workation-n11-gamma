@@ -4,6 +4,7 @@
 
 .place-main-div {
   height: fit-content;
+  min-height: 40em;
 }
 
 .top-container {
