@@ -6,7 +6,7 @@ import { withRouter } from "../../shared-resource/store/withRouter";
 
 function PaymentSummary(props) {
   useEffect(() => {
-    const bookingId = "AKAwiqid7i0sezGL8qFX";
+    const bookingId = props.modalBookingId;
     props.loadBookingDetails(bookingId);
   }, []);
 
