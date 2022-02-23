@@ -36,6 +36,21 @@ function Login(props) {
 
   function changeTheType(e) {
     const value = e.target.value;
+    if (
+      emailAddress === "guest@gmail.com" &&
+      userPassword === "1234" &&
+      value === "HOST"
+    ) {
+      changeEmailAddress("guestHotel@gmail.com");
+      changeUserPassword("1234");
+    } else if (
+      emailAddress === "guestHotel@gmail.com" &&
+      userPassword === "1234" &&
+      value === "CUSTOMER"
+    ) {
+      changeEmailAddress("guest@gmail.com");
+      changeUserPassword("1234");
+    }
     setUsertype(value);
   }
 
