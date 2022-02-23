@@ -10,8 +10,8 @@ import "./login.css";
 
 function Login(props) {
   toast.configure();
-  const [emailAddress, changeEmailAddress] = useState("");
-  const [userPassword, changeUserPassword] = useState("");
+  const [emailAddress, changeEmailAddress] = useState("guest@gmail.com");
+  const [userPassword, changeUserPassword] = useState("1234");
   const [usertype, setUsertype] = useState("CUSTOMER");
 
   const notify = async () => {
