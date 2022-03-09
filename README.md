@@ -1,18 +1,14 @@
 <!-- PROJECT LOGO -->
 <br />
-<p align="center" style="background:black;">
-    <img src="https://workationpesto.s3.amazonaws.com/Workation.png" alt="Logo" width="400" height="200" style="background" >
+<p align="center">
+    <img src="https://workationpesto.s3.amazonaws.com/Screenshot+(227).png" alt="Logo" width="400" height="200" style="background" >
 </p>
 
 Workation is a web application where people like us, who love to explore the world but can't leave the work aside, can book the special rooms, flats for a long span in minimum expenses with all the required ameneties for the vacations while working.
- 
-  
-<!-- TABLE OF CONTENTS -->
 <br/>
- 
-# About Workation
 
-Workation is a web application where people like us, who love to explore the world but can't leave the work aside, can book the special rooms, flats for a long span in minimum expenses with all the required ameneties for the vacations while working.
+
+## Table of Content
 
 There are three windows in the application.
 
