@@ -73,8 +73,8 @@ Workation is a web application where people like us, who love to explore the wor
 
 ## Technology Stack
 ```
-1. React
-2. React Bootstraps
+1. React JS
+2. Bootstrap UI
 3. Axios
 4. Heroku
 5. Redux
