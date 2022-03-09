@@ -76,6 +76,8 @@ Workation is a web application where people like us, who love to explore the wor
 1. React
 2. React Bootstraps
 3. Axios
+4. Heroku
+5. Redux
 ```
 
 ## Authors
