@@ -1,4 +1,16 @@
-                           ![This is an image](https://pesto-workation-fe.herokuapp.com/src/shared-resource/images/Workation.png)
+                           <!-- PROJECT LOGO -->
+<br />
+<p align="center">
+    <img src="https://workationpesto.s3.amazonaws.com/Workation.png" alt="Logo" width="400" height="200" >
+</p>
+We are living in the age of pandemics, where taking care of personal and loved ones health is the most important. When it comes to storing and searching different medical reports physically in our home is really a difficult task. With care tracker, we are providing an application where you can store your reports in one place and track your health on the basis of these reports. We are also providing different features like doctor consultation, the emergency feature which can be a great help during some emergencies.
+
+
+Welcome! we hope you enjoy the site as much as we enjoyed making it.
+ 
+  
+<!-- TABLE OF CONTENTS -->
+<br/>
  
 # About Workation
 
