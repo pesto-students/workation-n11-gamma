@@ -8,7 +8,7 @@ Workation is a web application where people like us, who love to explore the wor
 <br/>
 
 
-## Table of Content
+## Table of Contents
 
    ###### 1. [Demo](#demo)
    ###### 2. [Installation](#installation)
