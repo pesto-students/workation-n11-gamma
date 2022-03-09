@@ -1,4 +1,4 @@
-                           ![This is an image](s3://workationpesto/Workation.png)
+                           ![This is an image](https://workationpesto.s3.amazonaws.com/Workation.png)
  
 # About Workation
 
