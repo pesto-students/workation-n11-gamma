@@ -1,6 +1,4 @@
 
-                                                    ![Workation_2x](https://user-images.githubusercontent.com/25797820/157436529-89158562-a67d-43e0-8635-fe0086cccd81.png)
-
  
 # About Workation
 
