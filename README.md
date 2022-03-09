@@ -62,6 +62,17 @@ Guest users:
 
 ## Installation
 
+    1. Clone repo:
+        - git clone https://github.com/pesto-students/workation-n11-gamma.git
+     
+    2. Install npm packages
+        - cd workation-n11-gamma && npm install
+    3. Run
+        - npm start
+    
+    4. The application will run on http://localhost:3000 in the browser.
+    
+
 ## Technology Stack
 
 1. React
@@ -71,4 +82,8 @@ Guest users:
 
 ## Authors
 
+    1. Rishabh Verma
+    2. Aman Shah
+    
 ## License
+    1. MIT
