@@ -19,31 +19,28 @@ Workation is a web application where people like us, who love to explore the wor
     
 ## Demo
 
-###### [Live Demo](https://pesto-workation-fe.herokuapp.com/customer/login)
-
-- Note: 
+###### [Live Demo](https://pesto-workation-fe.herokuapp.com/)
+```
+ Note: 
 
 - There are three windows in the application.
 
-- 1. Customer(booking)
-- 2. Hotel(hosting)
-- 3. Admin
+ 1. Customer(booking)
+ 2. Hotel(hosting)
+ 3. Admin
 
-- Customers are the people like us who want to book the place for the vacation while working.
-- Hotel or host are the provider who want to service the customer by providing the assets.
-- Admin is the platform admin who can check all the details.
+ Customers are the people like us who want to book the place for the vacation while working.
+ Hotel or host are the provider who want to service the customer by providing the assets.
+ Admin is the platform admin who can check all the details.
 
-- 1. Login/Signup for the Host and Customer can be done from the landing page.
-- 2. To login to the admin route is "/admin/login".
-- 3. There are multiple pages for each window user.
-- 4. There are alnding pages, hotels pages, cities pages, booking pages etc.
-- 5. To book the room, please skip the things in the payment section as all the desired things are prefilled.
-- 6. Please upload minimum space occupying attachments as there is limited space available.
+ 1. Login/Signup for the Host and Customer can be done from the landing page.
+ 2. To login to the admin route is "/admin/login".
+ 3. There are multiple pages for each window user.
+ 4. There are alnding pages, hotels pages, cities pages, booking pages etc.
+ 5. To book the room, please skip the things in the payment section as all the desired things are prefilled.
+ 6. Please upload minimum space occupying attachments as there is limited space available.
 
-###### URL(app):
-https://pesto-workation-fe.herokuapp.com/
-
-Guest users:
+- Guest users:
 
 1. Customer(booking)
 
@@ -59,6 +56,7 @@ Guest users:
 
    admin@gmail.com
    admin
+```
 
 ## Installation
 
