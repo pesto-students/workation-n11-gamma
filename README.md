@@ -1,12 +1,10 @@
-                           <!-- PROJECT LOGO -->
+<!-- PROJECT LOGO -->
 <br />
 <p align="center">
     <img src="https://workationpesto.s3.amazonaws.com/Workation.png" alt="Logo" width="400" height="200" >
 </p>
-We are living in the age of pandemics, where taking care of personal and loved ones health is the most important. When it comes to storing and searching different medical reports physically in our home is really a difficult task. With care tracker, we are providing an application where you can store your reports in one place and track your health on the basis of these reports. We are also providing different features like doctor consultation, the emergency feature which can be a great help during some emergencies.
 
-
-Welcome! we hope you enjoy the site as much as we enjoyed making it.
+Workation is a web application where people like us, who love to explore the world but can't leave the work aside, can book the special rooms, flats for a long span in minimum expenses with all the required ameneties for the vacations while working.
  
   
 <!-- TABLE OF CONTENTS -->
