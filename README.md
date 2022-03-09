@@ -10,11 +10,11 @@ Workation is a web application where people like us, who love to explore the wor
 
 ## Table of Content
 
-   ###### 1. [Demo](##demo)
-   ###### 2. Installation
-   ###### 3. Technology Stack
-   ###### 4. Authors
-   ###### 5. License
+   ###### 1. [Demo](#demo)
+   ###### 2. [Installation](#installation)
+   ###### 3. [Technology Stack](#technology-stack)
+   ###### 4. [Authors](#authors)
+   ###### 5. [License](#license)
     
     
 ## Demo
