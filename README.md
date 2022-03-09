@@ -9,13 +9,13 @@ Workation is a web application where people like us, who love to explore the wor
 
 
 ## Table of Content
-```
+
    ###### 1. [Demo](#demo)
    ###### 2. [Installation](#installation)
    ###### 3. [Technology Stack](#technology-stack)
    ###### 4. [Authors](#authors)
    ###### 5. [License](#license)
-```    
+    
     
 ## Demo
 
@@ -79,11 +79,11 @@ Workation is a web application where people like us, who love to explore the wor
 ```
 
 ## Authors
-```
-    1. @rishabh-verma-au3
-    2. Aman Shah
-``` 
+
+    - [Rishabh Verma](https://github.com/rishabh-verma-au3)
+    - Aman Shah
+
 ## License
-```
-    1. [MIT](https://opensource.org/licenses/MIT)
-```
+
+    - [MIT](https://opensource.org/licenses/MIT)
+
