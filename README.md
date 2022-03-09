@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fhotel-entrance&psig=AOvVaw3eQPwdcT0N7ZoeIcewDV8k&ust=1646913149449000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiDlNf7uPYCFQAAAAAdAAAAABAD" alt="Logo" width="400" height="200" >
+    <img src="https://workationpesto.s3.amazonaws.com/Workation.png" alt="Logo" width="400" height="200" >
 </p>
 
 Workation is a web application where people like us, who love to explore the world but can't leave the work aside, can book the special rooms, flats for a long span in minimum expenses with all the required ameneties for the vacations while working.
