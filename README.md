@@ -19,7 +19,7 @@ Workation is a web application where people like us, who love to explore the wor
     
 ## Demo
 
-###### Live Demo
+###### [Live Demo](https://pesto-workation-fe.herokuapp.com/customer/login)
 
 Note: 
 
@@ -82,7 +82,7 @@ Guest users:
 
 ## Authors
 
-    1. Rishabh Verma
+    1. [Rishabh Verma](https://github.com/rishabh-verma-au3)
     2. Aman Shah
     
 ## License
