@@ -1,4 +1,4 @@
-                           ![This is an image](https://workationpesto.s3.amazonaws.com/Workation.png)
+                           ![This is an image](https://pesto-workation-fe.herokuapp.com/src/shared-resource/images/Workation.png)
  
 # About Workation
 
