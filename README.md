@@ -59,7 +59,7 @@ Workation is a web application where people like us, who love to explore the wor
 ```
 
 ## Installation
-
+```
     1. Clone repo:
         - git clone https://github.com/pesto-students/workation-n11-gamma.git
      
@@ -69,19 +69,22 @@ Workation is a web application where people like us, who love to explore the wor
         - npm start
     
     4. The application will run on http://localhost:3000 in the browser.
-    
+```   
 
 ## Technology Stack
-
+```
 1. React
 2. React Bootstraps
 3. Axios
 
+```
 
 ## Authors
-
-    1. [Rishabh Verma](https://github.com/rishabh-verma-au3)
+```
+    1. Rishabh Verma
     2. Aman Shah
-    
+``` 
 ## License
+```
     1. MIT
+```
