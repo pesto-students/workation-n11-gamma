@@ -80,10 +80,10 @@ Workation is a web application where people like us, who love to explore the wor
 
 ## Authors
 
-    - [Rishabh Verma](https://github.com/rishabh-verma-au3)
-    - Aman Shah
+   - [Rishabh Verma](https://github.com/rishabh-verma-au3)
+   - Aman Shah
 
 ## License
 
-    - [MIT](https://opensource.org/licenses/MIT)
+   - [MIT](https://opensource.org/licenses/MIT)
 
