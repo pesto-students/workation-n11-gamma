@@ -42,7 +42,7 @@ Admin is the platform admin who can check all the details.
 
 ###### URL(app):
 https://pesto-workation-fe.herokuapp.com/
-
+```sh
 Guest users:
 
 1. Customer(booking)
@@ -59,7 +59,7 @@ Guest users:
 
    admin@gmail.com
    admin
-
+```
 ## Installation
 
     1. Clone repo:
