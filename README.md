@@ -10,11 +10,11 @@ Workation is a web application where people like us, who love to explore the wor
 
 ## Table of Content
 
-    *1. *Demo
-    *2. Installation
-    *3. Technology Stack
-    *4. Authors
-    *5. License
+    * Demo
+    * Installation
+    * Technology Stack
+    * Authors
+    * License
     
 There are three windows in the application.
 
